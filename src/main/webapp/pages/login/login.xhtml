@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template_login.xhtml">
+	<ui:define name="content">
+		<h:form id="formLogin">
+
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+				closable="true" />
+
+			<h:panelGrid columns="3" styleClass="panelgridlogin">
+
+				<h:outputLabel value="Login:" />
+				<p:inputText id="email" value="#{login.usuario.email}"
+					required="true" requiredMessage="Campo Obrigatório" />
+				<p:message for="email" />
+
+				<h:outputLabel value="Senha:" />
+				<p:password id="senha" value="#{login.usuario.senha}"
+					required="true" requiredMessage="Campo Obrigatório" />
+				<p:message for="senha" />
+
+				<p:commandButton value="Entrar" action="#{login.loggar}"
+					ajax="false" />
+				<p:commandLink value="Cadastrar-se" ajax="false" immediate="true" />
+				<p:outputLabel value=""/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

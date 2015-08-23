@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14315320747980" configfile="/saa/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14362761399009" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf143627613990010" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/usuario/cadUsuario.xhtml" id="pf143627613990011" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" outlinks="pf143627613990012" inlinks="pf143627613990010 pf143627613990013 pf143627625289522" path="/pages/usuario/cadUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/usuario/listUsuario.xhtml" id="pf143627613990014" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" outlinks="pf143627613990013 pf143627613990015" inlinks="pf143627613990012 pf143627613990016 pf143627618746718" path="/pages/usuario/listUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/usuario/atualizaUsuario.xhtml" id="pf143627613990017" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf143627613990016" inlinks="pf143627613990015" path="/pages/usuario/atualizaUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/login/login.xhtml" id="pf143627618746719" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf143627618746718 pf143627620703520 pf143627625289522" inlinks="pf143627620703520" path="/pages/login/login.xhtml"/>
+  <links id="pf143627613990010" target="pf143627613990011" source="pf14362761399009" outcome="sucesso"/>
+  <links id="pf143627613990013" target="pf143627613990011" source="pf143627613990014" outcome="sucesso"/>
+  <links id="pf143627613990015" target="pf143627613990017" source="pf143627613990014" outcome="atualiza"/>
+  <links id="pf143627613990012" target="pf143627613990014" source="pf143627613990011" outcome="sucesso"/>
+  <links id="pf143627613990016" target="pf143627613990014" source="pf143627613990017" outcome="sucesso"/>
+  <links id="pf143627618746718" target="pf143627613990014" source="pf143627618746719" outcome="sucesso"/>
+  <links id="pf143627620703520" target="pf143627618746719" source="pf143627618746719" outcome="fracasso"/>
+  <links id="pf143627625289522" target="pf143627613990011" source="pf143627618746719" outcome="cadastro"/>
+</pageflow:Pageflow>

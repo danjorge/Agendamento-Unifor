@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+      http://java.sun.com/xml/ns/javaee
+      http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	
+	<!-- Login Inicio -->
+	<navigation-rule>
+		<from-view-id>/pages/login/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>fracasso</from-outcome>
+			<to-view-id>/pages/login/login.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastro</from-outcome>
+			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Login Fim -->
+
+	<!-- Usuarios Inicio -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>atualiza</from-outcome>
+			<to-view-id>/pages/usuario/atualizaUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/usuario/cadUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/usuario/atualizaUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Usuarios Fim -->
+
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+		<locale-config>
+		</locale-config>
+		<resource-bundle>
+			<base-name>MessageResources</base-name>
+			<var>messages</var>
+		</resource-bundle>
+	</application>
+</faces-config>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formAtualizaUsuario">
+			<h2>Cadastro de Usuários</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid">
+				<p:outputLabel value="Nome: " />
+				<font color="red">*</font>
+				<p:inputText id="nome" value="#{atualizaUsuario.usuarioSelecionado.nome}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="nome" />
+
+				<p:outputLabel value="Email: " />
+				<font color="red">*</font>
+				<p:inputText id="email" value="#{atualizaUsuario.usuarioSelecionado.email}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="email" />
+				
+				<p:outputLabel value="Ativo: " />
+				<font color="red">*</font>
+				<p:selectBooleanButton id="ativo" value="#{atualizaUsuario.usuarioSelecionado.ativo}" onLabel="Sim" offLabel="Não" style="width:60px" />
+				<p:message for="ativo" />
+				
+				<p:outputLabel value="Primeiro Acesso: " />
+				<font color="red">*</font>
+				<p:selectBooleanButton id="primeiro" value="#{atualizaUsuario.usuarioSelecionado.primeiroAcesso}" onLabel="Sim" offLabel="Não" style="width:60px" />
+				<p:message for="primeiro" />
+
+				<p:outputLabel value="Senha: " />
+				<font color="red">*</font>
+				<p:password id="senha" value="#{atualizaUsuario.usuarioSelecionado.senha}" required="true"
+					requiredMessage="Campo Obrigatório" feedback="true"
+					promptLabel="Insira uma senha" weakLabel="Fraco" goodLabel="Bom"
+					strongLabel="Forte" />
+				<p:message for="senha" />
+			</h:panelGrid>
+			<br />
+			<h:panelGrid columns="3" styleClass="panelgrid">
+				<p:commandButton value="Voltar"
+					action="#{listUsuario.preparaListar}" ajax="false"
+					immediate="true" />
+				<p:commandButton value="Atualizar" action="#{atualizaUsuario.atualizar}"
+					ajax="false" />
+				<p:commandButton value="Limpar"
+					actionListener="#{atualizaUsuario.limparDados}" update="@form"
+					type="reset" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
