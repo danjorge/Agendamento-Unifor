@@ -14,7 +14,7 @@
 		<spring.version>3.0.6.RELEASE</spring.version>
 		<aspectj.version>1.8.5</aspectj.version>
 		<slf4j.version>1.5.10</slf4j.version>
-		<java.version>1.5</java.version>
+		<java.version>1.7</java.version>
 		<junit.version>4.8.2</junit.version>
 		<jsf.version>2.2.9</jsf.version>
 		<jstl.version>1.2</jstl.version>
@@ -209,6 +209,13 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>	
+			<groupId>org.jboss.as</groupId>	
+			<artifactId>jboss-as-ee</artifactId>	
+			<version>7.1.1.Final</version>	
+			<scope>provided</scope>          	
+		</dependency> 
 
 	</dependencies>
 
@@ -234,7 +241,7 @@
 	</repositories>
 
 	<build>
-		<finalName>saa</finalName>
+		<finalName>AgendamentouUnifor</finalName>
 		<plugins>
 
 			<plugin>
@@ -248,6 +255,17 @@
 					<password>tomcat</password>
 				</configuration>
 			</plugin>
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>3.3</version>
+		        <configuration>
+          		<!-- or whatever version you use -->
+		          <source>1.7</source>
+		          <target>1.7</target>
+        </configuration>
+      </plugin>
+			
 		</plugins>
 	</build>
 </project>

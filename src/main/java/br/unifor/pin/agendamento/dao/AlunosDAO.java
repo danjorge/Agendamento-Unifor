@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.agendamento.entity.Alunos;
+import br.unifor.pin.agendamento.entity.Aluno;
 
 @Repository
 @Transactional(propagation=Propagation.REQUIRED)
@@ -17,28 +17,28 @@ public class AlunosDAO {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	public void salvar(Alunos aluno) {
+	public void salvar(Aluno aluno) {
 		entityManager.persist(aluno);
 	}
 	
-	public void atualizar(Alunos aluno){
+	public void atualizar(Aluno aluno){
 		entityManager.merge(aluno);
 	}
 	
-	public void excluir(Alunos aluno){
+	public void excluir(Aluno aluno){
 		entityManager.remove(aluno);
 	}
 	
-	public Alunos buscarPorId(Long id){
-		return entityManager.find(Alunos.class, id);
+	public Aluno buscarPorId(Long id){
+		return entityManager.find(Aluno.class, id);
 	}
 	
-	public Alunos buscarPorNome(String nome) {
+	public Aluno buscarPorNome(String nome) {
 		String jpql = "select a from Alunos a where a.nome = :nome";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("nome", nome);
 		
-		return (Alunos) query.getSingleResult();
+		return (Aluno) query.getSingleResult();
 	}
 
 }

@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Clientes {
+@Table(name="TB_COORDENADOR")
+public class Coordenador {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -15,8 +17,8 @@ public class Clientes {
 	
 	private String nome;
 	
-	@Column(name="cpf", nullable=false, length=14, unique=true)
-	private String cpf;
+	@Column(name="matricula", nullable=false, unique=true)
+	private String matricula;
 
 	public Integer getId() {
 		return id;
@@ -34,13 +36,14 @@ public class Clientes {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getMatricula() {
+		return matricula;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
+
 	
 	
 

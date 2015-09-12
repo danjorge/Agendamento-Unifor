@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="alunos")
-public class Alunos implements Serializable{
+@Table(name="TB_ALUNOS")
+public class Aluno implements Serializable{
 
 
 	private static final long serialVersionUID = 7548139743566463644L;
@@ -24,6 +26,13 @@ public class Alunos implements Serializable{
 	
 	@Column(nullable=false)
 	private String nome;
+	
+	@Column(name="matricula", nullable=false, unique=true)
+	private String matricula;
+	
+	@ManyToOne
+	@JoinColumn(name="curso_id", nullable=false)
+	private Cursos curso;
 
 	public Long getId() {
 		return id;
@@ -40,7 +49,16 @@ public class Alunos implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
+	public Cursos getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Cursos curso) {
+		this.curso = curso;
+	}
+
+		
 	
 	
 }
