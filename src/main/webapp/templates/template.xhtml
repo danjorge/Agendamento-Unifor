@@ -4,9 +4,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>SAA Application</title>
+	<title>Agendamento Unifor</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputStylesheet name="css/bootstrap-theme.min.css" />
 	<h:outputStylesheet name="css/screen.css" />
+	<h:outputScript name="js/bootstrap.min.js"/>
 </h:head>
 <h:body>
 	<h:panelGroup id="page" layout="block">
@@ -15,12 +18,12 @@
 				<ui:include src="/templates/header.xhtml" />
 			</ui:insert>
 		</div>
-		<h:panelGroup id="container" layout="block">
-			<div id="sidebar">
+			<div>
 				<ui:insert name="sidebar">
 					<ui:include src="/templates/menu.xhtml" />
 				</ui:insert>
 			</div>
+		<h:panelGroup id="container" layout="block">
 			<h:panelGroup id="content" layout="block">
 				<ui:insert name="content" />
 			</h:panelGroup>

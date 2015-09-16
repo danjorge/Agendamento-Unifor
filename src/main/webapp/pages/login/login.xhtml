@@ -11,21 +11,19 @@
 			<p:messages id="messages" showDetail="true" autoUpdate="true"
 				closable="true" />
 
-			<h:panelGrid columns="3" styleClass="panelgridlogin">
+			<h:panelGrid columns="2" styleClass="panelgridlogin">
 
 				<h:outputLabel value="Login:" />
-				<p:inputText id="email" value="#{login.usuario.email}"
-					required="true" requiredMessage="Campo Obrigatório" />
-				<p:message for="email" />
-
+				<p:inputText id="email" value="#{login.usuario.email}" type="text"
+					required="true" requiredMessage="Campo [EMAIL] Obrigatório" />
+				
 				<h:outputLabel value="Senha:" />
 				<p:password id="senha" value="#{login.usuario.senha}"
-					required="true" requiredMessage="Campo Obrigatório" />
-				<p:message for="senha" />
-
+					required="true" requiredMessage="Campo [SENHA] Obrigatório" />
+				
 				<p:commandButton value="Entrar" action="#{login.loggar}"
 					ajax="false" />
-				<p:commandLink value="Cadastrar-se" ajax="false" immediate="true" />
+				<p:commandLink value="Cadastrar-se" action="#{login.cadastrar}" ajax="false" immediate="true" />
 				<p:outputLabel value=""/>
 			</h:panelGrid>
 		</h:form>

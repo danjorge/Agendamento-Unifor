@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/templates/template_login.xhtml">
 	<ui:define name="content">
 
 		<h:form id="formCadUsuario">
@@ -39,7 +39,7 @@
 			<br />
 			<h:panelGrid columns="3" styleClass="panelgrid">
 				<p:commandButton value="Voltar"
-					action="#{listUsuario.preparaListar}" ajax="false"
+					action="#{cadUsuario.voltar}" ajax="false"
 					immediate="true" />
 				<p:commandButton value="Salvar" action="#{cadUsuario.salvar}"
 					ajax="false" />
