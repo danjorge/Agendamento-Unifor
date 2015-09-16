@@ -67,6 +67,14 @@ a {
 	a0a0a0;
 }
 
+.bootstrap-menu {
+	font-size: 15px
+}
+
+.navbar-collapse {
+	padding-left: 5px !important;
+}
+
 #sidebar {
 	float: right;
 	width: 200px;

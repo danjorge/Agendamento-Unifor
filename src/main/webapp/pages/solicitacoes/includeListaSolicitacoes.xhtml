@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<p:outputPanel>
+		<p:dataTable id="listaSolicitacoes" value="#{solicitacaoManagedBean.listaSolicitacoes}" var="solicitacao" 
+					 paginator="true" paginatorPosition="bottom" rows="10" emptyMessage="Não foram encontradas solicitações"
+					 styleClass="datatable">
+			<p:column>
+				<f:facet name="header"><h:outputText value="Nº Solicitação"/></f:facet>
+				<h:outputText value="#{solicitacao.id}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header"><h:outputText value="Assunto" /></f:facet>
+				<h:outputText value="#{solicitacao.assunto}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header"><h:outputText value="Descrição" /></f:facet>
+				<h:outputText value="#{solicitacao.descricao}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header"><h:outputText value="Status da solicitação" /></f:facet>
+				<h:outputText value="#{solicitacao.statusSolicitacao.descricao}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header"><h:outputText value="Coordenador" /></f:facet>
+				<h:outputText value="#{solicitacao.coordenador.nome}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header"><h:outputText value="Aluno" /></f:facet>
+				<h:outputText value="#{solicitacao.aluno.nome}" />
+			</p:column>
+			
+			<p:column headerText="Ações">
+			</p:column>
+		</p:dataTable>	
+	</p:outputPanel>
+			
+</ui:composition>
