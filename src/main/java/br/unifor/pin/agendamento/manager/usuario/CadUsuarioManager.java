@@ -51,6 +51,12 @@ public class CadUsuarioManager {
 		
 		return Navigation.SUCESSO;
 	}
+	
+	public String voltar(){
+		limpaDados();
+		
+		return Navigation.VOLTAR;
+	}
 			
 	public void limpaDados(){
 		this.nome = "";

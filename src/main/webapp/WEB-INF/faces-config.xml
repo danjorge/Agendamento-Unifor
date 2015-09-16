@@ -32,6 +32,14 @@
 			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/usuario/cadUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/login/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>

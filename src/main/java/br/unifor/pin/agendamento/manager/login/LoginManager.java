@@ -47,6 +47,10 @@ public class LoginManager {
 			return Navigation.FRACASSO;
 		}
 	}
+	
+	public String cadastrar(){
+		return Navigation.CADASTRA;
+	}
 
 	/**
 	 * @return the usuario

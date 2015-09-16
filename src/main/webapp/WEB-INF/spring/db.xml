@@ -12,7 +12,7 @@
 	</bean>
 
 	<context:annotation-config />
-	<context:component-scan base-package="br.unifor.pin.saa" />
+	<context:component-scan base-package="br.unifor.pin.agendamento" />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 
