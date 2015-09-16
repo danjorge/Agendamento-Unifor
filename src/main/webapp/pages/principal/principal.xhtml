@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+		<h:form>
+			<p:tabView id="abasSistema" effect="fade" effectDuration="fast" dynamic="true" activeIndex="0" orientation="top">
+				<p:tab id="tabSolicitacoes" title="Solicitações">
+					<ui:include src="/pages/solicitacoes/includeListaSolicitacoes.xhtml" />
+				</p:tab>
+				<p:tab id="tabAgendamentos" title="Agendamentos"></p:tab>
+			</p:tabView>
+		</h:form>	
+	</ui:define>	
+</ui:composition>
