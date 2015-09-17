@@ -33,7 +33,7 @@ public class LoginManager {
 	private boolean existsEmail;
 
 	public String loggar() {
-		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getEmail(),
+		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getMatricula(),
 				Encripta.encripta(this.usuario.getSenha()));
 		this.usuario = new Usuarios();
 		if (usuario != null) {

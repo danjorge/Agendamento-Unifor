@@ -28,13 +28,13 @@ public class CadUsuarioManager {
 	@Autowired
 	private ListUsuarioManager listUsuario;
 	private String nome;
-	private String email;
+	private String matricula;
 	private String senha;
 	
 	public String salvar(){
 		Usuarios usuario = new Usuarios();
 		usuario.setNome(nome);
-		usuario.setEmail(email);
+		usuario.setMatricula(matricula);
 		usuario.setSenha(Encripta.encripta(senha));
 		Papeis p = usuarioBO.buscaPapelAdmin();
 		usuario.setPapeis(new ArrayList<Papeis>());
@@ -60,7 +60,7 @@ public class CadUsuarioManager {
 			
 	public void limpaDados(){
 		this.nome = "";
-		this.email = "";
+		this.matricula = "";
 		this.senha = "";
 	}
 
@@ -71,11 +71,11 @@ public class CadUsuarioManager {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMatricula() {
+		return matricula;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 
 	public String getSenha() {

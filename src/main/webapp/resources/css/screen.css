@@ -27,6 +27,24 @@ a {
 	margin-top: 0;
 }
 
+.width60{
+	width: 60px
+}
+
+.ui-widget{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;	
+}
+
+.ui-corner-all{
+	border-radius: 4px;
+}
+
+.ui-widget-content{
+	border: 1px solid #DDD;
+	background: #FFF none repeat scroll 0% 0% ;
+	color: #333;
+}
+
 .ui-selectonemenu {
 	width: 199px !important;
 }

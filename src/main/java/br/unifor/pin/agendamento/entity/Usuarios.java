@@ -29,7 +29,7 @@ public class Usuarios {
 	private String nome;
 
 	@Column(unique = true, nullable = false)
-	private String email;
+	private String matricula;
 
 	@Column(nullable = false)
 	private String senha;
@@ -62,12 +62,12 @@ public class Usuarios {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMatricula() {
+		return matricula;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 
 	public String getSenha() {
@@ -118,7 +118,7 @@ public class Usuarios {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -137,10 +137,10 @@ public class Usuarios {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuarios other = (Usuarios) obj;
-		if (email == null) {
-			if (other.email != null)
+		if (matricula == null) {
+			if (other.matricula != null)
 				return false;
-		} else if (!email.equals(other.email))
+		} else if (!matricula.equals(other.matricula))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -152,7 +152,7 @@ public class Usuarios {
 
 	@Override
 	public String toString() {
-		return "Usuarios [id=" + id + ", nome=" + nome + ", email=" + email + ", papeis=" + papeis + "]";
+		return "Usuarios [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", papeis=" + papeis + "]";
 	}
 	
 }

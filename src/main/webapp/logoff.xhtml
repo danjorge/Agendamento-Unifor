@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+				template="/templates/template_login.xhtml">
+				
+				<ui:define name="content">
+				<h:form>
+					<p:panel id="panel" styleClass="text-center" style="height: 400px;">
+						<p:panelGrid id="panelGrid" styleClass="width60 div-center" style="margin: 5% auto;">
+							<p:row styleClass="row">
+								<p:column styleClass="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+									<div id="countdown"></div>
+								</p:column>
+							</p:row>
+					    </p:panelGrid>	
+					</p:panel>
+				</h:form>
+				<h:outputScript>
+						$("#countdown").countdown360({
+							 radius      : 80,
+					         seconds     : 6,
+					         strokeStyle : '#1f2c3c',
+					         fillStyle   : '#FFFFFF',
+					         fontColor   : '#BEBEBE',
+					         autostart   : true,
+					         onComplete  : function () { window.location = "http://localhost:8080/AgendamentoUnifor/pages/login/login.xhtml";}
+					   }).start();
+
+
+					/* 	All the available settings with default values.
+					
+						radius: 15.5,  - radius of arc
+						strokeStyle: "#477050", - the color of the stroke
+						strokeWidth: undefined, - the stroke width, dynamically calulated if omitted in options
+						fillStyle: "#8ac575", - the fill color
+						fontColor: "#477050", - the font color
+						fontFamily: "sans-serif", - the font family
+						fontSize: undefined, - the font size, dynamically calulated if omitted in options
+						fontWeight: 700, - the font weight
+						autostart: true, - start the countdown automatically
+						seconds: 10,  - the number of seconds to count down
+						onComplete: undefined - callback
+					*/
+			  	</h:outputScript>
+					
+					
+									
+				</ui:define>			
+</ui:composition>

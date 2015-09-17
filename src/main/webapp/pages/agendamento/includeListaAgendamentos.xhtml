@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:outputPanel>
+		<p:dataTable id="tbAgendamentos" value="#{agendamentoManagedBean.listaAgendamento}" var="agendamento" emptyMessage="Não foram encontrados agendamentos" 
+					 paginator="true" paginatorPosition="bottom" rows="10">
+			<p:column headerText="Nº Agendamento">
+				<h:outputText value="#{agendamento.id}" />
+			</p:column>
+			
+			<p:column headerText="Nº Solicitação">
+				<h:outputText value="#{agendamento.solicitacao.id}" />
+			</p:column>
+			
+			<p:column headerText="Assunto">
+				<h:outputText value="#{agendamento.solicitacao.assunto}" />
+			</p:column>
+			
+			<p:column headerText="Coordenador">
+				<h:outputText value="#{agendamento.solicitacao.coordenador.nome}" />
+			</p:column>
+			
+			<p:column headerText="Aluno">
+				<h:outputText value="#{agendamento.solicitacao.aluno.nome}" />
+			</p:column>
+			
+			<p:column headerText="Data Agendamento">
+				<h:outputText value="#{agendamento.dataAgendamento}" />
+			</p:column>
+			
+			<p:column headerText="Ações">
+			</p:column>
+		</p:dataTable>
+	</p:outputPanel>
+
+</ui:composition>

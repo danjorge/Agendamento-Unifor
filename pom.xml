@@ -241,7 +241,7 @@
 	</repositories>
 
 	<build>
-		<finalName>AgendamentouUnifor</finalName>
+		<finalName>AgendamentoUnifor</finalName>
 		<plugins>
 
 			<plugin>

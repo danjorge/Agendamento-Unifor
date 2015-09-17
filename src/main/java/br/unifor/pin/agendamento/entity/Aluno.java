@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +19,7 @@ public class Aluno implements Serializable{
 	private static final long serialVersionUID = 7548139743566463644L;
 
 	@Id
-	@SequenceGenerator(name="alunos_seq",sequenceName="alunos_seq",allocationSize=1)
-    @GeneratedValue(generator="alunos_seq",strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column(nullable=false)
