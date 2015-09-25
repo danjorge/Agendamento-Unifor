@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+		<p:panel id="pnlCadastroSolicitacao" header="Cadastro Solicitação">
+			<p:panelGrid style="width: 100%">
+				<p:row>
+					<p:column>
+						<h:outputText value="Assunto:" /><br/>
+						<p:inputText value="#{solicitacaoManagedBean.solicitacao.assunto}" style="width: 50%;"/>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>	
+						<h:outputText value="Descrição da solicitação:" /><br/>
+						<p:inputTextarea value="#{solicitacaoManagedBean.solicitacao.descricao}" cols="100" rows="20"/>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>
+						<p:commandButton value="salvar"/>
+						<p:commandButton value="Limpar"/>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+	</ui:define>
+	
+</ui:composition>

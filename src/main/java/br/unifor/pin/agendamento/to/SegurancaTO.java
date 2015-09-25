@@ -22,7 +22,7 @@ public class SegurancaTO implements Serializable {
 	private static final long serialVersionUID = -9069250861713212366L;
 	
 	private Usuarios usuario;
-
+	
 	public boolean isAutenticado() {
 		return usuario != null;
 	}

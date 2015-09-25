@@ -8,14 +8,14 @@
 	
 	<!-- Login Inicio -->
 	<navigation-rule>
-		<from-view-id>/pages/login/login.xhtml</from-view-id>
+		<from-view-id>/login/login.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
+			<to-view-id>/pages/principal/principal.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>fracasso</from-outcome>
-			<to-view-id>/pages/login/login.xhtml</to-view-id>
+			<to-view-id>/login/login.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cadastro</from-outcome>
@@ -37,7 +37,7 @@
 		<from-view-id>/pages/usuario/cadUsuario.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>voltar</from-outcome>
-			<to-view-id>/pages/login/login.xhtml</to-view-id>
+			<to-view-id>/login/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

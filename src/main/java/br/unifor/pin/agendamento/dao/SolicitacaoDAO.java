@@ -22,7 +22,7 @@ public class SolicitacaoDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Solicitacao> retornaListaSolicitacoes(){
-		return (List<Solicitacao>) entityManager.createQuery("Select s From Solicitacao s")
+		return (List<Solicitacao>) entityManager.createQuery("Select s from Solicitacao s")
 								                .getResultList();
 	}
 }

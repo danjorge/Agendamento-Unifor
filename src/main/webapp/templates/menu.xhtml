@@ -11,40 +11,37 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="bootstrap-menu collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="dropdown">
-	          <a href="#" onmouseover="this.click();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MENU <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><p:commandLink id="cadastrarSolicitacao" value="Cadastrar Solicitação" action="#" ajax="false"/></li>
-	            <li><p:commandLink id="principal" value="Principal" action="/pages/principal" ajax="false"/></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li role="separator" class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li role="separator" class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
-	          </ul>
-	        </li>
+	      	<h:panelGroup>
+	        	<li class="dropdown">
+	          		<a onmouseover="this.click();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MENU <span class="caret"></span></a>
+	          		<ul class="dropdown-menu">
+	            		<li><a role="menuitem" href="#{request.contextPath}/pages/solicitacoes/cadastroSolicitacao.xhtml">Cadastrar Solicitação</a></li>
+	            		<li role="separator" class="divider"></li>
+	            		<li><h:commandLink value="Principal" action="#{menuManagedBean.principal()}" ajax="false"/></li>
+	          		</ul>
+	        	</li>
+	       	</h:panelGroup>
+	       	<h:panelGroup>
+	       		<li class="dropdown">
+	          		<a href="#" onmouseover="this.click();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MANUTENÇÃO<span class="caret"></span></a>
+	          		<ul class="dropdown-menu">
+	          			<li><h:commandLink value="Manutenção" action="#" ajax="false"/> </li>
+	          		</ul>
+	        	</li>
+	       	</h:panelGroup>
 	      </ul>
 	      
 	      <ul class="nav navbar-nav navbar-right text-right">
                <li id="fat-menu" class="dropdown">
                	 <a onmouseover="this.click();" id="drop3" role="button" class="dropdown" data-toggle="dropdown" style="padding: 2px 10px;line-height: 14pt;">
-               	 	<h:outputText value="Daniel Jorge" style="font-size: 8pt;" styleClass="italic" /><br/>
-               	 	<h:outputText value="1413556-1" />
+               	 	<h:outputText value="#{menuManagedBean.usuario.nome}" style="font-size: 8pt;" styleClass="italic" /><br/>
+               	 	<h:outputText value="#{menuManagedBean.usuario.matricula}" />
                	 	<b class="caret"></b>
                	 </a>
                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                       <li>
-                       	<a role="menuitem" href="#" onclick="javascript:ResizePage()">Expandir / Restaurar a Tela
-                       		<span id="changescreen-fatmenu-item" class="glyphicon glyphicon-resize-full" style="margin-left:10px"></span>
-                       	</a>
-                       </li>
-                       <li class="divider"></li>
-                       <li>
-                       	<a role="menuitem" href="#{request.contextPath}/logoff.xhtml" onclick="sair()">Sair do Sistema
-                       		<p:remoteCommand name="sair" actionListener="#{menuManagedBean.logoff}" update="@all" />
-                       		<span class="glyphicon glyphicon-off inlineBlock green" style="margin-left:10px"></span>
-                       	</a>
-                       </li>
+                   	<li>
+                   	 <h:commandLink id="sairlink" value="Sair do Sistema" action="#{menuManagedBean.logoff()}"/>
+                   	</li>                       
                    </ul>
                </li>
           </ul>

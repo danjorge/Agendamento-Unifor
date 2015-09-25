@@ -16,7 +16,7 @@
 			org.springframework.web.context.request.RequestContextListener</listener-class>
   </listener>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>/index.html</welcome-file>
   </welcome-file-list>
   <context-param>
     <param-name>facelets.DEVELOPMENT</param-name>
@@ -32,8 +32,22 @@
     <url-pattern>*.jsf</url-pattern>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+  <filter>
+  	<filter-name>PageFilter</filter-name>
+  	<filter-class>br.unifor.pin.agendamento.utils.PageFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>PageFilter</filter-name>
+  	<url-pattern>/pages/*</url-pattern>
+  </filter-mapping>
+  <session-config>
+  	<session-timeout>30</session-timeout>
+  </session-config>
+  <listener>
+  	<listener-class>br.unifor.pin.agendamento.utils.SessionListener</listener-class>
+  </listener>
   <context-param>
     <param-name>primefaces.THEME</param-name>
     <param-value>bootstrap</param-value>
-  </context-param>
+  </context-param>  
 </web-app>

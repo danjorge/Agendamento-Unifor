@@ -14,6 +14,7 @@ import br.unifor.pin.agendamento.dao.UsuarioDAO;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
+import br.unifor.pin.agendamento.utils.SessionContext;
 
 /**
  * @author patrick.cunha
@@ -25,6 +26,9 @@ public class UsuarioBO {
 
 	@Autowired
 	private UsuarioDAO usuarioDAO;
+	
+	@Autowired
+	private SessionContext sessao;
 
 	@RolesAllowed(value = { "INCLUIR_USUARIO" })
 	public void salvar(Usuarios usuario) {
@@ -40,14 +44,20 @@ public class UsuarioBO {
 
 	@PermitAll
 	@Loggable(enable = false)
-	public Usuarios loggar(String email, String senha) {
-		return usuarioDAO.buscarPorEmailSenha(email, senha);
+	public Usuarios loggar(String matricula, String senha) {
+		
+		Usuarios usuario = usuarioDAO.buscarPorMatriculaSenha(matricula, senha);
+		if(usuario != null){
+			sessao.setarObjetoSessao("usuario", usuario);
+		}
+		
+		return usuario;
 	}
 
 	@PermitAll
 	@Loggable(enable = false)
-	public Usuarios buscarUsuarioPorEmail(String email) {
-		return usuarioDAO.buscarPorEmail(email);
+	public Usuarios buscarUsuarioPorEmail(String matricula) {
+		return usuarioDAO.buscarPorMatricula(matricula);
 	}
 
 	@RolesAllowed(value = { "LISTAR_USUARIO" })

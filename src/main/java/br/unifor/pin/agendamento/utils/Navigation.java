@@ -10,5 +10,7 @@ public class Navigation {
 	public static final String ATUALIZA = "atualiza";
 	public static final String FRACASSO = "fracasso";
 	public static final String CADASTRA = "cadastro";
+	public static final String LOGOFF = "/logoff";
+	public static final String PRINCIPAL = "/pages/principal/principal.xhtml";
 
 }

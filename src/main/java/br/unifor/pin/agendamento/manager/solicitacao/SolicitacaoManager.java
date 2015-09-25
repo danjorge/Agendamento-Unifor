@@ -20,6 +20,8 @@ public class SolicitacaoManager {
 	@Autowired
 	private SolicitacaoBO solicitacaoBO;
 	
+	private Solicitacao solicitacao;
+	
 	private List<Solicitacao> listaSolicitacoes;
 	
 	@PostConstruct
@@ -33,6 +35,14 @@ public class SolicitacaoManager {
 
 	public void setListaSolicitacoes(List<Solicitacao> listaSolicitacoes) {
 		this.listaSolicitacoes = listaSolicitacoes;
+	}
+
+	public Solicitacao getSolicitacao() {
+		return solicitacao;
+	}
+
+	public void setSolicitacao(Solicitacao solicitacao) {
+		this.solicitacao = solicitacao;
 	}
 
 }

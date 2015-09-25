@@ -9,33 +9,27 @@
 		<p:dataTable id="listaSolicitacoes" value="#{solicitacaoManagedBean.listaSolicitacoes}" var="solicitacao" 
 					 paginator="true" paginatorPosition="bottom" rows="10" emptyMessage="Não foram encontradas solicitações"
 					 styleClass="datatable">
-			<p:column>
-				<f:facet name="header"><h:outputText value="Nº Solicitação"/></f:facet>
+			<p:column headerText="Nº Solicitação">
 				<h:outputText value="#{solicitacao.id}" />
 			</p:column>
 			
-			<p:column>
-				<f:facet name="header"><h:outputText value="Assunto" /></f:facet>
+			<p:column headerText="Assunto">
 				<h:outputText value="#{solicitacao.assunto}" />
 			</p:column>
 			
-			<p:column>
-				<f:facet name="header"><h:outputText value="Descrição" /></f:facet>
+			<p:column headerText="Descrição">
 				<h:outputText value="#{solicitacao.descricao}" />
 			</p:column>
 			
-			<p:column>
-				<f:facet name="header"><h:outputText value="Status da solicitação" /></f:facet>
+			<p:column headerText="Status da Solicitação">
 				<h:outputText value="#{solicitacao.statusSolicitacao.descricao}" />
 			</p:column>
 			
-			<p:column>
-				<f:facet name="header"><h:outputText value="Coordenador" /></f:facet>
+			<p:column headerText="Coordenador">
 				<h:outputText value="#{solicitacao.coordenador.nome}" />
 			</p:column>
 			
-			<p:column>
-				<f:facet name="header"><h:outputText value="Aluno" /></f:facet>
+			<p:column headerText="Aluno">
 				<h:outputText value="#{solicitacao.aluno.nome}" />
 			</p:column>
 			

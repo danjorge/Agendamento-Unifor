@@ -38,11 +38,11 @@ public class UsuarioDAO {
 		entityManager.merge(usuario);
 	}
 	
-	public Usuarios buscarPorEmail(String email){
+	public Usuarios buscarPorMatricula(String matricula){
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
 		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
-		criteriaQuery.where(criteriaBuilder.equal(usuarios.<String>get("email"), email));
+		criteriaQuery.where(criteriaBuilder.equal(usuarios.<String>get("matricula"), matricula));
 		
 		Query query = entityManager.createQuery(criteriaQuery);
 		try {
@@ -52,12 +52,12 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public Usuarios buscarPorEmailSenha(String email, String senha){
+	public Usuarios buscarPorMatriculaSenha(String matricula, String senha){
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
 		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
 		Predicate restriction = criteriaBuilder.and(
-				criteriaBuilder.equal(usuarios.<String>get("email"), email),
+				criteriaBuilder.equal(usuarios.<String>get("matricula"), matricula),
 				criteriaBuilder.equal(usuarios.<String>get("senha"), senha)
 			);
 		criteriaQuery.where(criteriaBuilder.and(restriction));

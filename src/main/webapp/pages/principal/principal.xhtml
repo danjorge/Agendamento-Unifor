@@ -7,15 +7,17 @@
 	template="/templates/template.xhtml">
 	
 	<ui:define name="content">
-		<h:form>
-			<p:tabView id="abasSistema" effect="fade" effectDuration="fast" dynamic="true" activeIndex="0" orientation="top">
-				<p:tab id="tabSolicitacoes" title="Solicitações">
-					<ui:include src="/pages/solicitacoes/includeListaSolicitacoes.xhtml" />
-				</p:tab>
-				<p:tab id="tabAgendamentos" title="Agendamentos">
-					<ui:include src="/pages/agendamento/includeListaAgendamentos.xhtml" />
-				</p:tab>
-			</p:tabView>
-		</h:form>	
+		<h:form id="formTbViews">
+			<p:panel header="Solicitações e Agendamentos">
+				<p:tabView id="abasSistema" effect="fade" effectDuration="fast" activeIndex="0" orientation="top" >
+					<p:tab id="tabSolicitacoes" title="Solicitações">
+						<ui:include src="/pages/solicitacoes/includeListaSolicitacoes.xhtml" />
+					</p:tab>
+					<p:tab id="tabAgendamentos" title="Agendamentos">
+						<ui:include src="/pages/agendamento/includeListaAgendamentos.xhtml" />	
+					</p:tab>
+				</p:tabView>
+			</p:panel>
+		</h:form>
 	</ui:define>	
 </ui:composition>
