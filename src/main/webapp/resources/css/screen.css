@@ -234,3 +234,24 @@ a {
 .property {
 	margin-bottom: 12px;
 }
+
+
+/*
+*	TIPOS GENÉRICOS
+* -----------------------------------------------------------------------------*/
+.italic{font-style: italic;}
+.bold{font-weight: bold !important;}
+.textleft{text-align: left;}
+.textJustify{text-align: justify;}
+.textCenter{text-align: center;}
+.textRight{text-align: right;}
+.width100{width: 100% !important;}
+.width80{width: 80% !important;}
+.width70{width: 70% !important;}
+.width60{width: 60% !important;}
+.width50{width: 50% !important;}
+.width30{width: 30% !important;}
+.width20{width: 20% !important;}
+.width10{width: 10% !important;}
+/*-----------------------------------------------------------------------------*/
+

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -45,6 +46,10 @@ public class Usuarios {
 		joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id") , 
 		inverseJoinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id") )
 	private List<Papeis> papeis;
+	
+	@ManyToOne
+	@JoinColumn(name = "curso_id", nullable = false)
+	private Cursos curso;
 
 	public Integer getId() {
 		return id;
@@ -92,6 +97,14 @@ public class Usuarios {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+	
+	public Cursos getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Cursos curso) {
+		this.curso = curso;
 	}
 
 	/**

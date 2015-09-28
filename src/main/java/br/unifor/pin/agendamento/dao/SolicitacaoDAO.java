@@ -25,4 +25,8 @@ public class SolicitacaoDAO {
 		return (List<Solicitacao>) entityManager.createQuery("Select s from Solicitacao s")
 								                .getResultList();
 	}
+	
+	public void salvarSolicitacao(Solicitacao sol){
+		entityManager.persist(sol);
+	}
 }

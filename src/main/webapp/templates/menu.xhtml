@@ -35,7 +35,7 @@
                <li id="fat-menu" class="dropdown">
                	 <a onmouseover="this.click();" id="drop3" role="button" class="dropdown" data-toggle="dropdown" style="padding: 2px 10px;line-height: 14pt;">
                	 	<h:outputText value="#{menuManagedBean.usuario.nome}" style="font-size: 8pt;" styleClass="italic" /><br/>
-               	 	<h:outputText value="#{menuManagedBean.usuario.matricula}" />
+               	 	<h:outputText value="PERFIL - #{menuManagedBean.usuario.papeis.get(0).nome}" />
                	 	<b class="caret"></b>
                	 </a>
                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">

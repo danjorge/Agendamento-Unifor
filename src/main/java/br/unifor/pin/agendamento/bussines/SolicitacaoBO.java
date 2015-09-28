@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import br.unifor.pin.agendamento.dao.SolicitacaoDAO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
+import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.utils.SessionContext;
 
 
 @Service
@@ -15,8 +17,16 @@ public class SolicitacaoBO {
 	@Autowired
 	private SolicitacaoDAO solicitacaoDAO;
 	
+	private SessionContext sessao;
+	
 	public List<Solicitacao> buscarTodasSolcitacoes(){
 		return solicitacaoDAO.retornaListaSolicitacoes();
+	}
+	
+	public void salvarSolicitacao(Solicitacao sol){
+		sol.setUsuario((Usuarios) sessao.recuperaObjetoSessao("usuario"));
+		sol.getStatusSolicitacao().setId(1);
+		solicitacaoDAO.salvarSolicitacao(sol);
 	}
 
 }

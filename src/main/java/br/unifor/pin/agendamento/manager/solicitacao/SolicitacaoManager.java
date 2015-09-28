@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.bussines.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
+import br.unifor.pin.agendamento.utils.MessagesUtils;
+import br.unifor.pin.agendamento.utils.Navigation;
 
 @RequestScoped
 @ManagedBean(name="solicitacaoManagedBean")
@@ -24,9 +26,30 @@ public class SolicitacaoManager {
 	
 	private List<Solicitacao> listaSolicitacoes;
 	
+	private MessagesUtils mensagem;
+	
 	@PostConstruct
 	public void init(){
 		listaSolicitacoes = solicitacaoBO.buscarTodasSolcitacoes();
+		solicitacao = new Solicitacao();
+	}
+	
+	@SuppressWarnings("static-access")
+	public String salvarSolicitacao(){
+		if(solicitacao.getAssunto() != null && solicitacao.getDescricao() != null){
+			solicitacaoBO.salvarSolicitacao(solicitacao);
+			mensagem.info("Solicitação salva com sucesso");
+			listaSolicitacoes.add(solicitacao);
+		} else {
+			mensagem.error("Algo errado aconteceu.");
+		}
+		
+		return Navigation.PRINCIPAL;
+	}
+	
+	public void limparSolicitacao(){
+		solicitacao.setAssunto("");
+		solicitacao.setDescricao("");
 	}
 
 	public List<Solicitacao> getListaSolicitacoes() {

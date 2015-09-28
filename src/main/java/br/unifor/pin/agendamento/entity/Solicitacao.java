@@ -2,7 +2,6 @@ package br.unifor.pin.agendamento.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,14 +33,12 @@ public class Solicitacao implements Serializable {
 	private Status statusSolicitacao;
 	
 	@ManyToOne
-	@JoinColumn(name="coordenador_id", nullable=false)
-	private Coordenador coordenador;
+	@JoinColumn(name="usuario_id", nullable=false)
+	private Usuarios usuario;
 	
-	@ManyToOne
-	@JoinColumn(name="aluno_id", nullable=false)
-	private Aluno aluno;
-	
-	public Solicitacao(){}
+	public Solicitacao(){
+		statusSolicitacao = new Status();
+	}
 
 	public Long getId() {
 		return id;
@@ -75,22 +72,13 @@ public class Solicitacao implements Serializable {
 		this.statusSolicitacao = statusSolicitacao;
 	}
 
-	public Coordenador getCoordenador() {
-		return coordenador;
+	public Usuarios getUsuario() {
+		return usuario;
 	}
 
-	public void setCoordenador(Coordenador coordenador) {
-		this.coordenador = coordenador;
+	public void setUsuario(Usuarios usuario) {
+		this.usuario = usuario;
 	}
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-	
 	
 
 }
