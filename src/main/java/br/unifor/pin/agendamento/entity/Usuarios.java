@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -41,15 +40,13 @@ public class Usuarios {
 	@Column(nullable = false)
 	private boolean ativo;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "perfis", 
-		joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id") , 
-		inverseJoinColumns = @JoinColumn(name = "papel_id", referencedColumnName = "id") )
-	private List<Papeis> papeis;
-	
 	@ManyToOne
-	@JoinColumn(name = "curso_id", nullable = false)
-	private Cursos curso;
+	@JoinColumn(name="papel_id", nullable = false)
+	private Papeis papel;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="curso_id", nullable = false)
+	private List<Cursos> cursos;
 
 	public Integer getId() {
 		return id;
@@ -98,30 +95,6 @@ public class Usuarios {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
-	public Cursos getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Cursos curso) {
-		this.curso = curso;
-	}
-
-	/**
-	 * @return the papeis
-	 */
-	public List<Papeis> getPapeis() {
-		return papeis;
-	}
-
-	/**
-	 * @param papeis
-	 *            the papeis to set
-	 */
-	public void setPapeis(List<Papeis> papeis) {
-		this.papeis = papeis;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -165,7 +138,23 @@ public class Usuarios {
 
 	@Override
 	public String toString() {
-		return "Usuarios [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", papeis=" + papeis + "]";
+		return "Usuarios [id=" + id + ", nome=" + nome + ", matricula=" + matricula + ", papel=" + getPapel() + "]";
+	}
+
+	public Papeis getPapel() {
+		return papel;
+	}
+
+	public void setPapel(Papeis papel) {
+		this.papel = papel;
+	}
+
+	public List<Cursos> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<Cursos> cursos) {
+		this.cursos = cursos;
 	}
 	
 }

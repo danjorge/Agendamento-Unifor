@@ -11,8 +11,10 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.bussines.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
+import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
+import br.unifor.pin.agendamento.utils.SessionContext;
 
 @RequestScoped
 @ManagedBean(name="solicitacaoManagedBean")
@@ -21,6 +23,9 @@ public class SolicitacaoManager {
 	
 	@Autowired
 	private SolicitacaoBO solicitacaoBO;
+	
+	@Autowired
+	private SessionContext sessao;
 	
 	private Solicitacao solicitacao;
 	
@@ -45,6 +50,14 @@ public class SolicitacaoManager {
 		}
 		
 		return Navigation.PRINCIPAL;
+	}
+	
+	public String visualizarSolicitacao(){
+		return "";
+	}
+	
+	public Usuarios retornaCoordenador(){		
+		return solicitacaoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario"));
 	}
 	
 	public void limparSolicitacao(){

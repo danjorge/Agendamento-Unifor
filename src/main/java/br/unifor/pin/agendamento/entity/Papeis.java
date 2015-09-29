@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -34,7 +35,7 @@ public class Papeis implements Serializable {
 	@Column(nullable = false, unique = true)
 	private String nome;
 
-	@ManyToMany(mappedBy = "papeis")
+	@OneToMany(mappedBy="papel")
 	private List<Usuarios> usuarios;
 
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -73,16 +74,10 @@ public class Papeis implements Serializable {
 		this.nome = nome;
 	}
 	
-	/**
-	 * @return the usuarios
-	 */
 	public List<Usuarios> getUsuarios() {
 		return usuarios;
 	}
 
-	/**
-	 * @param usuarios the usuarios to set
-	 */
 	public void setUsuarios(List<Usuarios> usuarios) {
 		this.usuarios = usuarios;
 	}

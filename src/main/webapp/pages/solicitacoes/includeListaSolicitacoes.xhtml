@@ -9,31 +9,33 @@
 		<p:dataTable id="listaSolicitacoes" value="#{solicitacaoManagedBean.listaSolicitacoes}" var="solicitacao" 
 					 paginator="true" paginatorPosition="bottom" rows="10" emptyMessage="Não foram encontradas solicitações"
 					 styleClass="datatable">
-			<p:column headerText="Nº Solicitação">
+			<p:column headerText="Nº Solicitação" styleClass="text-center">
 				<h:outputText value="#{solicitacao.id}" />
 			</p:column>
 			
-			<p:column headerText="Assunto">
-				<h:outputText value="#{solicitacao.assunto}" />
+			<p:column headerText="Assunto" styleClass="text-center">
+				<h:outputText value="#{solicitacao.assunto.toUpperCase()}" />
 			</p:column>
 			
-			<p:column headerText="Descrição">
-				<h:outputText value="#{solicitacao.descricao}" />
+			<p:column headerText="Descrição" styleClass="text-center">
+				<h:outputText value="#{solicitacao.descricao.toUpperCase()}" />
 			</p:column>
 			
-			<p:column headerText="Status da Solicitação">
+			<p:column headerText="Status da Solicitação" styleClass="text-center">
 				<h:outputText value="#{solicitacao.statusSolicitacao.descricao}" />
 			</p:column>
 			
-			<p:column headerText="Coordenador">
-				<h:outputText value="#{solicitacao.coordenador.nome}" />
+			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{solicitacao.usuario.papel.id != 1}">
+				<h:outputText value="#{solicitacaoManagedBean.retornaCoordenador().nome}" />
 			</p:column>
 			
-			<p:column headerText="Aluno">
-				<h:outputText value="#{solicitacao.aluno.nome}" />
+			<p:column headerText="Aluno" styleClass="text-center" rendered="#{solicitacao.usuario.papel.id == 1}">				
 			</p:column>
 			
-			<p:column headerText="Ações">
+			<p:column headerText="Ações" styleClass="text-center">
+				<p:commandLink title="Visualizar Solicitação" ajax="false" action="#{solicitacaoManagedBean.visualizarSolicitacao()}">
+							   <p:graphicImage name="../img/visualizar.png" width="24"/>
+				</p:commandLink>
 			</p:column>
 		</p:dataTable>	
 	</p:outputPanel>

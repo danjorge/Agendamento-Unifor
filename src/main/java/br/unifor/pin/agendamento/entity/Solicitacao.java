@@ -3,6 +3,7 @@ package br.unifor.pin.agendamento.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Solicitacao implements Serializable {
 	
 	private String descricao;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="status_solicitacao", nullable=false)
 	private Status statusSolicitacao;
 	
@@ -37,7 +38,6 @@ public class Solicitacao implements Serializable {
 	private Usuarios usuario;
 	
 	public Solicitacao(){
-		statusSolicitacao = new Status();
 	}
 
 	public Long getId() {

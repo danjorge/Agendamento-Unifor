@@ -25,7 +25,7 @@ public class AgendamentoManager {
 	
 	@PostConstruct
 	public void init(){
-		setListaAgendamento(agendamentoBO.buscarTodosAgendamentos()); 
+		listaAgendamento = agendamentoBO.buscarTodosAgendamentos(); 
 	}
 
 	public List<Agendamento> getListaAgendamento() {

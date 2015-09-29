@@ -6,10 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -39,32 +35,21 @@ public class UsuarioDAO {
 	}
 	
 	public Usuarios buscarPorMatricula(String matricula){
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
-		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
-		criteriaQuery.where(criteriaBuilder.equal(usuarios.<String>get("matricula"), matricula));
-		
-		Query query = entityManager.createQuery(criteriaQuery);
 		try {
-			return (Usuarios)query.getSingleResult();
+			return (Usuarios) entityManager.createQuery("Select u from Usuarios u where u.matricula = :matricula")
+														.setParameter("matricula", matricula)
+														.getSingleResult();
 		} catch(NoResultException e){
 			return null;
 		}
 	}
 	
 	public Usuarios buscarPorMatriculaSenha(String matricula, String senha){
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
-		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
-		Predicate restriction = criteriaBuilder.and(
-				criteriaBuilder.equal(usuarios.<String>get("matricula"), matricula),
-				criteriaBuilder.equal(usuarios.<String>get("senha"), senha)
-			);
-		criteriaQuery.where(criteriaBuilder.and(restriction));
-		
-		Query query = entityManager.createQuery(criteriaQuery);
 		try {
-			return (Usuarios)query.getSingleResult();
+		return (Usuarios) entityManager.createQuery("Select u from Usuarios u where u.matricula = :matricula and u.senha = :senha")
+													.setParameter("matricula", matricula)
+													.setParameter("senha", senha)
+													.getSingleResult();
 		} catch(NoResultException e){
 			return null;
 		}
@@ -72,13 +57,9 @@ public class UsuarioDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Usuarios> listarPorNome(String nome) {
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
-		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
-		criteriaQuery.where(criteriaBuilder.like(usuarios.<String>get("nome"), "%"+nome+"%"));
-		
-		Query query = entityManager.createQuery(criteriaQuery);
-		return query.getResultList();
+		return (List<Usuarios>) entityManager.createQuery("Select u from Usuarios u where u.nome like ('%' || :nome || '%'")
+													.setParameter("nome", nome)
+													.getResultList();
 	}
 	
 	public Usuarios buscaPorId(Integer id) throws DAOException {

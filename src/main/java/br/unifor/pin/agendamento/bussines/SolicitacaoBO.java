@@ -16,11 +16,16 @@ public class SolicitacaoBO {
 	
 	@Autowired
 	private SolicitacaoDAO solicitacaoDAO;
-	
+
+	@Autowired
 	private SessionContext sessao;
 	
 	public List<Solicitacao> buscarTodasSolcitacoes(){
 		return solicitacaoDAO.retornaListaSolicitacoes();
+	}
+	
+	public Usuarios retornaCoordenadorPorCurso(Usuarios usuario){
+		return solicitacaoDAO.retornaCoordenadorPorCurso(usuario);
 	}
 	
 	public void salvarSolicitacao(Solicitacao sol){

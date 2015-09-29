@@ -58,11 +58,10 @@ public class SecurityConfig {
 				+ joinPoint.getSignature());
 
 		//Se o usuario por Administrador, libera todos os acessos
-		for (Papeis papel : usuario.getPapeis()) {
+		Papeis papel = usuario.getPapel();
 			if (papel.getNome().equals("Administrador")) {
 				return;
 			}
-		}
 
 		RolesAllowed permissoesDoMetodo = metodo
 				.getAnnotation(RolesAllowed.class) != null ? metodo
@@ -89,12 +88,11 @@ public class SecurityConfig {
 	 */
 	private List<String> retornaPermissoesDoUsuario(Usuarios usuario) {
 		List<String> permissoesDoUsuario = new ArrayList<String>();
-		for (Papeis papel : usuario.getPapeis()) {
+		Papeis papel = usuario.getPapel();
 			for (Permissoes permissao : papel.getPermissoes()) {
 				permissoesDoUsuario.add(permissao.getPermissao());
 			}
-		}
-		return permissoesDoUsuario;
+			return permissoesDoUsuario;
 	}
 
 	/**
