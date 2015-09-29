@@ -17,6 +17,7 @@ public class SolicitacaoBO {
 	@Autowired
 	private SolicitacaoDAO solicitacaoDAO;
 	
+	@Autowired
 	private SessionContext sessao;
 	
 	public List<Solicitacao> buscarTodasSolcitacoes(){

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.agendamento.bussines.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Encripta;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
@@ -27,6 +28,8 @@ public class CadUsuarioManager {
 	private UsuarioBO usuarioBO;
 	@Autowired
 	private ListUsuarioManager listUsuario;
+	@Autowired
+	private SegurancaTO segurancaTO;
 	private String nome;
 	private String matricula;
 	private String senha;
@@ -39,6 +42,7 @@ public class CadUsuarioManager {
 		Papeis p = usuarioBO.buscaPapelAdmin();
 		usuario.setPapeis(new ArrayList<Papeis>());
 		usuario.getPapeis().add(p);
+		segurancaTO.setUsuario(usuario);
 		usuarioBO.salvar(usuario);
 		MessagesUtils.info("Usuário salvo com sucesso!");
 		listUsuario.lista();
