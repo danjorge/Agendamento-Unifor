@@ -6,34 +6,33 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:outputPanel>
-		<p:dataTable id="tbAgendamentos" value="#{agendamentoManagedBean.listaAgendamento}" var="agendamento" emptyMessage="Não foram encontrados agendamentos" 
-					 paginator="true" paginatorPosition="bottom" rows="10"
+		<p:dataTable id="tbAgendamentos" value="#{agendamentoManagedBean.listaAgendamento}" var="agendamento"  
+					 paginator="true" paginatorPosition="bottom" rows="10" emptyMessage="Não foram encontrados agendamentos"
 					 styleClass="datatable">
-			<p:column headerText="Nº Agendamento">
+			<p:column headerText="Nº Agendamento" styleClass="text-center">
 				<h:outputText value="#{agendamento.id}" />
 			</p:column>
 			
-			<p:column headerText="Nº Solicitação">
+			<p:column headerText="Nº Solicitação" styleClass="text-center">
 				<h:outputText value="#{agendamento.solicitacao.id}" />
 			</p:column>
 			
-			<p:column headerText="Assunto">
+			<p:column headerText="Assunto" styleClass="text-center">
 				<h:outputText value="#{agendamento.solicitacao.assunto}" />
 			</p:column>
 			
-			<p:column headerText="Coordenador">
-				<h:outputText value="#{agendamento.solicitacao.coordenador.nome}" />
+			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{agendamento.solicitacao.usuario.papel.id != 1}">
+				<h:outputText value="#{agendamentoManagedBean.retornaCoordenador().nome}" />
 			</p:column>
 			
-			<p:column headerText="Aluno">
-				<h:outputText value="#{agendamento.solicitacao.aluno.nome}" />
+			<p:column headerText="Aluno" styleClass="text-center" rendered="#{agendamento.solicitacao.usuario.papel.id == 1}">
 			</p:column>
 			
-			<p:column headerText="Data Agendamento">
+			<p:column headerText="Data Agendamento" styleClass="text-center">
 				<h:outputText value="#{agendamento.dataAgendamento}" />
 			</p:column>
 			
-			<p:column headerText="Ações">
+			<p:column headerText="Ações" styleClass="text-center">
 			</p:column>
 		</p:dataTable>
 	</p:outputPanel>

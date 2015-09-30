@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.agendamento.bussines.MenuBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.utils.Navigation;
+import br.unifor.pin.agendamento.utils.SessionContext;
 
 @RequestScoped
 @ManagedBean(name="menuManagedBean")
@@ -18,11 +19,15 @@ public class MenuManagedBean {
 	@Autowired
 	private MenuBO menuBO;
 	
+	@Autowired
+	private SessionContext sessao;
+	
 	private Usuarios usuario;
 	
 	public MenuManagedBean() {}
 	
 	public String logoff(){
+		sessao.encerraSessao();
 		menuBO.finalizarSessao();
 		return Navigation.LOGOFF;
 	}

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.bussines.AgendamentoBO;
 import br.unifor.pin.agendamento.entity.Agendamento;
+import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.utils.SessionContext;
 
 
 @RequestScoped
@@ -21,11 +23,18 @@ public class AgendamentoManager {
 	@Autowired
 	private AgendamentoBO agendamentoBO;
 	
+	@Autowired
+	private SessionContext sessao;
+	
 	private List<Agendamento> listaAgendamento;
 	
 	@PostConstruct
 	public void init(){
 		listaAgendamento = agendamentoBO.buscarTodosAgendamentos(); 
+	}
+	
+	public Usuarios retornaCoordenador(){
+		return agendamentoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario"));
 	}
 
 	public List<Agendamento> getListaAgendamento() {

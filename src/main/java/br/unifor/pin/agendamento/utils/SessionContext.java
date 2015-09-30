@@ -33,7 +33,6 @@ public class SessionContext {
 	}
 	
 	public void encerraSessao(){
-		limparSessao();
 		currentExternalContext().invalidateSession();
 	}
 	

@@ -11,11 +11,18 @@
 				<ui:define name="content">
 				<h:form>
 					<p:panel id="panel" styleClass="text-center" style="height: 400px;">
-						<p:panelGrid id="panelGrid" styleClass="width20 div-center" style="margin: 5% auto;">
+						<p:panelGrid id="panelGrid" styleClass="width60 div-center" style="margin: 5% auto;">
 							<p:row styleClass="row">
 								<p:column styleClass="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 									<div id="countdown"></div>
-								</p:column>								
+								</p:column>
+								<p:column styleClass="hidden-xs hidden-sm">
+									<div class="vertical-line" style="height: 150px;" />
+								</p:column>
+								<p:column  styleClass="col-xs-12 col-sm-12 col-md-9 col-lg-9 text-left">
+									<h2><h:outputText value="Sessão Encerrada" /> </h2>
+									<h:outputText value="Você será redirecionado para a página de login." />
+								</p:column>							
 							</p:row>
 					    </p:panelGrid>	
 					</p:panel>
