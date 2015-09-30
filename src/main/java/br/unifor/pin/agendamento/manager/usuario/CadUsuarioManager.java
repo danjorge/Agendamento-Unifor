@@ -13,6 +13,7 @@ import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Encripta;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
+
 /**
  * @author patrick.cunha
  * 
@@ -86,3 +87,4 @@ public class CadUsuarioManager {
 		this.senha = senha;
 	}	
 }
+

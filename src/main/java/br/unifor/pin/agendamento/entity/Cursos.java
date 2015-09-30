@@ -3,6 +3,7 @@ package br.unifor.pin.agendamento.entity;
 import java.io.Serializable;
 import java.util.List;
 
+//github.com/danjorge/Agendamento-Unifor
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -16,7 +16,6 @@ public class SolicitacaoBO {
 	
 	@Autowired
 	private SolicitacaoDAO solicitacaoDAO;
-
 	@Autowired
 	private SessionContext sessao;
 	
