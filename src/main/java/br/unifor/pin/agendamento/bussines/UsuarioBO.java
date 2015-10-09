@@ -14,7 +14,7 @@ import br.unifor.pin.agendamento.dao.UsuarioDAO;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
-import br.unifor.pin.agendamento.utils.SessionContext;
+import br.unifor.pin.agendamento.filter.SessionContext;
 
 /**
  * @author patrick.cunha
@@ -45,7 +45,7 @@ public class UsuarioBO {
 	@PermitAll
 	@Loggable(enable = false)
 	public Usuarios loggar(String matricula, String senha) {
-		
+		sessao.limparSessao();		
 		Usuarios usuario = usuarioDAO.buscarPorMatriculaSenha(matricula, senha);
 		if(usuario != null){
 			sessao.setarObjetoSessao("usuario", usuario);

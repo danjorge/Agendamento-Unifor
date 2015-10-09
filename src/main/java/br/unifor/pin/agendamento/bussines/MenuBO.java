@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.unifor.pin.agendamento.aspectj.Loggable;
-import br.unifor.pin.agendamento.utils.SessionContext;
+import br.unifor.pin.agendamento.filter.SessionContext;
 
 @Loggable
 @Service
@@ -19,6 +19,14 @@ public class MenuBO {
 	
 	public void finalizarSessao(){
 		sessao.encerraSessao();
+	}
+	
+	public Object recuperaObjetoSessao(String string){
+		return sessao.recuperaObjetoSessao(string);
+	}
+	
+	public void removeObjetoSessao(String string){
+		sessao.removeObjetoSessao(string);
 	}
 	
 }

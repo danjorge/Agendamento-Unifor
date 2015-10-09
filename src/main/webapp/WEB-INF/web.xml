@@ -34,7 +34,7 @@
   </servlet-mapping>
   <filter>
   	<filter-name>PageFilter</filter-name>
-  	<filter-class>br.unifor.pin.agendamento.utils.PageFilter</filter-class>
+  	<filter-class>br.unifor.pin.agendamento.filter.PageFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>PageFilter</filter-name>
@@ -44,7 +44,7 @@
   	<session-timeout>30</session-timeout>
   </session-config>
   <listener>
-  	<listener-class>br.unifor.pin.agendamento.utils.SessionListener</listener-class>
+  	<listener-class>br.unifor.pin.agendamento.filter.SessionListener</listener-class>
   </listener>
   <context-param>
     <param-name>primefaces.THEME</param-name>

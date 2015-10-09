@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.utils;
+package br.unifor.pin.agendamento.filter;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -34,6 +34,10 @@ public class SessionContext {
 	
 	public void encerraSessao(){
 		currentExternalContext().invalidateSession();
+	}
+	
+	public String recuperaIdSessao(){
+		return currentExternalContext().getSessionId(true);
 	}
 	
 	public Object recuperaObjetoSessao(String name){

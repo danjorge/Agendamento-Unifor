@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.bussines.MenuBO;
-import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Navigation;
-import br.unifor.pin.agendamento.utils.SessionContext;
 
 @RequestScoped
 @ManagedBean(name="menuManagedBean")
@@ -20,30 +19,29 @@ public class MenuManagedBean {
 	private MenuBO menuBO;
 	
 	@Autowired
-	private SessionContext sessao;
-	
-	private Usuarios usuario;
+	private SegurancaTO seguranca;
 	
 	public MenuManagedBean() {}
 	
 	public String logoff(){
-		sessao.encerraSessao();
-		menuBO.finalizarSessao();
+		getSeguranca().setUsuario(null);
+		menuBO.removeObjetoSessao("usuario");
 		return Navigation.LOGOFF;
+	}
+	
+	public Object recuperaObjetoSessao(String string){
+		return menuBO.recuperaObjetoSessao(string);
 	}
 	
 	public String principal(){
 		return Navigation.PRINCIPAL;
 	}
 
-	public Usuarios getUsuario() {
-		if(usuario == null){
-			usuario = (Usuarios) menuBO.recuperaUsuarioSessao();
-		}
-		return usuario;
+	public SegurancaTO getSeguranca() {
+		return seguranca;
 	}
 
-	public void setUsuario(Usuarios usuario) {
-		this.usuario = usuario;
+	public void setSeguranca(SegurancaTO seguranca) {
+		this.seguranca = seguranca;
 	}
 }

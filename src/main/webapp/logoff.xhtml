@@ -20,8 +20,8 @@
 									<div class="vertical-line" style="height: 150px;" />
 								</p:column>
 								<p:column  styleClass="col-xs-12 col-sm-12 col-md-9 col-lg-9 text-left">
-									<h2><h:outputText value="Sessão Encerrada" /> </h2>
-									<h:outputText value="Você será redirecionado para a página de login." />
+									<h2><h:outputText value="#{menuManagedBean.recuperaObjetoSessao('logoffTitle')}" /> </h2>
+									<h:outputText value="#{menuManagedBean.recuperaObjetoSessao('logoffMsg')}" escape="false"/>
 								</p:column>							
 							</p:row>
 					    </p:panelGrid>	

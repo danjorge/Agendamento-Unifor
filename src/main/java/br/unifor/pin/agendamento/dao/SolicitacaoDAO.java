@@ -42,4 +42,11 @@ public class SolicitacaoDAO {
 	public void salvarSolicitacao(Solicitacao sol){
 		entityManager.persist(sol);
 	}
+	
+	public Solicitacao recuperaSolicitacaoPorId(Long solicitacaoId){
+		return (Solicitacao) entityManager.createQuery("Select s from Solicitacao s where s.id = :solicitacaoId")
+										  .setParameter("solicitacaoId", solicitacaoId)
+										  .getSingleResult();
+	}
+	
 }

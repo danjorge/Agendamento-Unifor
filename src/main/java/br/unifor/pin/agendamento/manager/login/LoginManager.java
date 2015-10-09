@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.bussines.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.filter.SessionContext;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Encripta;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
@@ -29,10 +30,13 @@ public class LoginManager {
 	private UsuarioBO usuarioBO;
 	@Autowired
 	private SegurancaTO seguranca;
+	@Autowired
+	private SessionContext sessao;	
 	private Usuarios usuario = new Usuarios();
 	private boolean existsEmail;
 
 	public String loggar() {
+		sessao.limparSessao();
 		Usuarios usuario = this.usuarioBO.loggar(this.usuario.getMatricula(),
 				Encripta.encripta(this.usuario.getSenha()));
 		this.usuario = new Usuarios();

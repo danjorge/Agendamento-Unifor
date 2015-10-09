@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.agendamento.bussines.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.filter.SessionContext;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
-import br.unifor.pin.agendamento.utils.SessionContext;
 
 @RequestScoped
 @ManagedBean(name="solicitacaoManagedBean")
@@ -31,7 +31,6 @@ public class SolicitacaoManager {
 	
 	private List<Solicitacao> listaSolicitacoes;
 	
-	private MessagesUtils mensagem;
 	
 	@PostConstruct
 	public void init(){
@@ -39,25 +38,35 @@ public class SolicitacaoManager {
 		solicitacao = new Solicitacao();
 	}
 	
-	@SuppressWarnings("static-access")
 	public String salvarSolicitacao(){
 		if(solicitacao.getAssunto() != null && solicitacao.getDescricao() != null){
 			solicitacaoBO.salvarSolicitacao(solicitacao);
-			mensagem.info("Solicitação salva com sucesso");
+			MessagesUtils.info("Solicitação salva com sucesso");
 			listaSolicitacoes.add(solicitacao);
 		} else {
-			mensagem.error("Algo errado aconteceu.");
+			MessagesUtils.error("Algo errado aconteceu.");
 		}
 		
 		return Navigation.PRINCIPAL;
 	}
 	
-	public String visualizarSolicitacao(){
-		return "";
+	public String visualizarSolicitacao(Solicitacao sol){
+		solicitacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
+		return Navigation.VISUALIZARSOLICITACAO;
 	}
 	
-	public Usuarios retornaCoordenador(){		
-		return solicitacaoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario"));
+	public Usuarios retornaCoordenador(){
+		if(sessao != null){
+			Usuarios usuario = solicitacaoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario")); 
+			if(usuario != null){
+				return usuario;
+			}
+		}
+		return null;
+	}
+	
+	public String voltar(){
+		return Navigation.PRINCIPAL;
 	}
 	
 	public void limparSolicitacao(){

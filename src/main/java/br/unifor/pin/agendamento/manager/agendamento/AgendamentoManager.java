@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.agendamento.bussines.AgendamentoBO;
 import br.unifor.pin.agendamento.entity.Agendamento;
 import br.unifor.pin.agendamento.entity.Usuarios;
-import br.unifor.pin.agendamento.utils.SessionContext;
+import br.unifor.pin.agendamento.filter.SessionContext;
 
 
 @RequestScoped

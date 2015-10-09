@@ -34,15 +34,16 @@
 	      <ul class="nav navbar-nav navbar-right text-right">
                <li id="fat-menu" class="dropdown">
                	 <a onmouseover="this.click();" id="drop3" role="button" class="dropdown" data-toggle="dropdown" style="padding: 2px 10px;line-height: 14pt;">
-               	 	<h:outputText value="#{menuManagedBean.usuario.nome}" style="font-size: 8pt;" styleClass="italic" /><br/>
-               	 	<h:outputText value="PERFIL - #{menuManagedBean.usuario.papel.nome}" />
+               	 	<h:outputText value="#{menuManagedBean.seguranca.usuario.nome}" style="font-size: 8pt;" styleClass="italic" /><br/>
+               	 	<h:outputText value="PERFIL - #{menuManagedBean.seguranca.usuario.papel.nome}" />
                	 	<b class="caret"></b>
                	 </a>
                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                    	<li>
-                   	 <h:commandLink id="sairlink" value="Sair do Sistema" action="#{menuManagedBean.logoff()}">
+                   	 <a role="menuitem" href="#{request.contextPath}/logoff.xhtml" onclick="sair()">Sair do Sistema
+	                    <p:remoteCommand name="sair" actionListener="#{menuManagedBean.logoff()}" update="@all" />
                    	 	<i class="fa fa-power-off"></i>
-                   	 </h:commandLink>
+                   	 </a>
                    	</li>                       
                    </ul>
                </li>

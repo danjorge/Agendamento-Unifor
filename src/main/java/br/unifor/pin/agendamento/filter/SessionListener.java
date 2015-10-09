@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.unifor.pin.agendamento.utils;
+package br.unifor.pin.agendamento.filter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

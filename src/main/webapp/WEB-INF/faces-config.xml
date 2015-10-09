@@ -5,6 +5,13 @@
       http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
+
+
+	<factory>
+		<exception-handler-factory>
+			br.unifor.pin.agendamento.exceptions.CustomExceptionHandlerFactory
+		</exception-handler-factory>
+	</factory>
 	
 	<!-- Login Inicio -->
 	<navigation-rule>
@@ -73,6 +80,10 @@
 		</navigation-case>
 	</navigation-rule>
 	<!-- Usuarios Fim -->
+	
+	<lifecycle>
+		<phase-listener>br.unifor.pin.agendamento.filter.AutorizacaoAgendamentoUniforListener</phase-listener>
+	</lifecycle>
 
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
