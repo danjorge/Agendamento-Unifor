@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.agendamento.bussines.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
+import br.unifor.pin.agendamento.manager.solicitacao.SolicitacaoManager;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Encripta;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
@@ -31,7 +32,11 @@ public class LoginManager {
 	@Autowired
 	private SegurancaTO seguranca;
 	@Autowired
-	private SessionContext sessao;	
+	private SessionContext sessao;
+	
+	@Autowired
+	private SolicitacaoManager solicitacaoManager;
+	
 	private Usuarios usuario = new Usuarios();
 	private boolean existsEmail;
 
@@ -43,6 +48,7 @@ public class LoginManager {
 		if (usuario != null) {
 			seguranca.setUsuario(usuario);
 			existsEmail = true;
+			solicitacaoManager.carregaListas();
 			MessagesUtils.info("Bem vindo "+usuario.getNome());
 			return Navigation.SUCESSO;
 		} else {
@@ -84,6 +90,14 @@ public class LoginManager {
 	 */
 	public void setExistsEmail(boolean existsEmail) {
 		this.existsEmail = existsEmail;
+	}
+
+	public SolicitacaoManager getSolicitacaoManager() {
+		return solicitacaoManager;
+	}
+
+	public void setSolicitacaoManager(SolicitacaoManager solicitacaoManager) {
+		this.solicitacaoManager = solicitacaoManager;
 	}
 
 }

@@ -14,9 +14,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.unifor.pin.agendamento.utils.BaseEntity;
+
 @Entity
 @Table(name="TB_AGENDAMENTO")
-public class Agendamento implements Serializable {
+public class Agendamento implements Serializable, BaseEntity {
 
 	/**
 	 * 
@@ -25,7 +27,7 @@ public class Agendamento implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	
 	@Column(name="data_agendamento")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -37,11 +39,11 @@ public class Agendamento implements Serializable {
 	
 	public Agendamento(){}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

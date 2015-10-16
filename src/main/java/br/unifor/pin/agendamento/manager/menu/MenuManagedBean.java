@@ -25,12 +25,16 @@ public class MenuManagedBean {
 	
 	public String logoff(){
 		getSeguranca().setUsuario(null);
-		menuBO.removeObjetoSessao("usuario");
 		return Navigation.LOGOFF;
 	}
 	
 	public Object recuperaObjetoSessao(String string){
 		return menuBO.recuperaObjetoSessao(string);
+	}
+	
+	public String cadastrarSolicitacao(){
+		menuBO.limparSessao();
+		return Navigation.CADASTRARSOLICITACAO;
 	}
 	
 	public String principal(){

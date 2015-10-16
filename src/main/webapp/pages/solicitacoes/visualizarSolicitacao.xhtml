@@ -27,7 +27,11 @@
 			</p:panelGrid>
 			<hr/>
 			<h:form>
-				<p:commandButton id="btnVoltarVS" value="Voltar" action="#{solicitacaoManagedBean.voltar()}" ajax="false"/>
+				<p:panelGrid>
+					<p:commandButton id="btnResponderVS" value="Responder Solicitação" action="#" ajax="false"/>
+					<p:commandButton id="btnAgendarVS" value="Agendar Atendimento" action="#" ajax="false"/>
+					<p:commandButton id="btnVoltarVS" value="Voltar" action="#{solicitacaoManagedBean.voltar()}" ajax="false"/>
+				</p:panelGrid>
 			</h:form>
 		</p:panel>	
 	</ui:define>

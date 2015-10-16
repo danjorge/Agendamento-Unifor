@@ -3,13 +3,21 @@ package br.unifor.pin.agendamento.filter;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.to.SegurancaTO;
 
 @Component
 public class SessionContext {
 	
 	private static SessionContext instance;
 	
+	@Autowired
+	private SegurancaTO seguranca;
+	
+	private Usuarios usuario;
 	
 	public static SessionContext getInstance(){
 		if(instance == null){
@@ -53,6 +61,25 @@ public class SessionContext {
 	}
 	
 	public void limparSessao(){
+		usuario = (usuario == null ? getUsuario() : seguranca.getUsuario());
 		currentExternalContext().getSessionMap().clear();
+		
+		setarObjetoSessao("usuario", usuario);
+	}
+
+	public SegurancaTO getSeguranca() {
+		return seguranca;
+	}
+
+	public void setSeguranca(SegurancaTO seguranca) {
+		this.seguranca = seguranca;
+	}
+
+	public Usuarios getUsuario() {
+		return (Usuarios) (usuario != null ? usuario : recuperaObjetoSessao("usuario"));
+	}
+
+	public void setUsuario(Usuarios usuario) {
+		this.usuario = usuario;
 	}
 }

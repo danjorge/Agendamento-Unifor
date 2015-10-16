@@ -22,8 +22,13 @@ public class SolicitacaoDAO {
 	
 	
 	@SuppressWarnings("unchecked")
-	public List<Solicitacao> retornaListaSolicitacoes(){
-		return (List<Solicitacao>) entityManager.createQuery("Select s from Solicitacao s")
+	public List<Solicitacao> retornaListaSolicitacoesPorCurso(Usuarios usuario){
+		return (List<Solicitacao>) entityManager.createQuery("Select s "
+														   + "from Solicitacao s "
+														   + "inner join fetch s.usuario u "
+														   + "inner join fetch u.cursos c " 
+														   + "where c.id = :cursoId")
+												.setParameter("cursoId", usuario.getCursos().get(0).getId())
 								                .getResultList();
 	}
 	
@@ -43,7 +48,7 @@ public class SolicitacaoDAO {
 		entityManager.persist(sol);
 	}
 	
-	public Solicitacao recuperaSolicitacaoPorId(Long solicitacaoId){
+	public Solicitacao recuperaSolicitacaoPorId(Integer solicitacaoId){
 		return (Solicitacao) entityManager.createQuery("Select s from Solicitacao s where s.id = :solicitacaoId")
 										  .setParameter("solicitacaoId", solicitacaoId)
 										  .getSingleResult();

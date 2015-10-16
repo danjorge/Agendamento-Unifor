@@ -18,6 +18,8 @@ public class AutorizacaoAgendamentoUniforListener implements PhaseListener {
 	private static final long serialVersionUID = -9143181125138243807L;
 	
 	private FacesContext fc;
+	private String currentPage;
+	private HttpSession session;
 	
 	public AutorizacaoAgendamentoUniforListener() {
 		// TODO Auto-generated constructor stub
@@ -28,13 +30,14 @@ public class AutorizacaoAgendamentoUniforListener implements PhaseListener {
 		// SETA VARIÁVEIS
 		// ------------------------------------------------------------------------------
 		fc  = (fc == null ? event.getFacesContext() : fc);
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+		session = ( session == null ? (HttpSession) fc.getExternalContext().getSession(true) : session );
 		Usuarios usuario = (Usuarios) session.getAttribute("usuario");
-		String currentPage = fc.getViewRoot().getViewId();
-		boolean isindexPage = (currentPage.lastIndexOf("login/login.xhtml") > -1);
+		currentPage = (currentPage == null ? fc.getViewRoot().getViewId() : currentPage);
+		boolean isIndexPage = (currentPage.lastIndexOf("login/login.xhtml") > -1);
 		boolean isLogoffPage = (currentPage.lastIndexOf("logoff.xhtml") > -1);
 		// ------------------------------------------------------------------------------
 		
+		System.out.println("Finalizando Fase: " +event.getPhaseId());
 		// SE USUÁRIO JÁ ESTIVER LOGADO, NÃO FAZ NADA.
 		if (session.getAttribute("usuario") != null && !isLogoffPage){ return; }
 		
@@ -47,40 +50,27 @@ public class AutorizacaoAgendamentoUniforListener implements PhaseListener {
 		}
 		
 		// SE HOUVER TENTATIVA DE ACESSO DIRETO PELA URL (ACESSO INCORRETO):
-		else if (usuario == null && !isindexPage) { 
+		/*else if (usuario == null && !isIndexPage) { 
 			session.setAttribute("logoffTitle", "Acesso negado!");
 			session.setAttribute("logoffMsg", "Este sistema não permite acesso direto pela URL.<br/><br/>Você será redirecionado para a página de Login.");
-			this.redirect(fc, "/logoff.xhtml");
-		}
-		
-		// SE ACESSO VIA GUARDIÃO (ACESSO CORRETO) + USUÁRIO NÃO ENCONTRADO:
-		/*else if (p != null && usuario == null){
-				session.setAttribute("logoffTitle", "Usuário não encontrado!");
-				session.setAttribute("logoffMsg", "O Sistema não encontrou suas credenciais de usuário. "
-								   + "Por favor entre em contato com o atendimento para solucionar o problema.<br/><br/>Você será redirecionado para o Guardião.");
-				this.redirect(fc, "/logoff.xhtml");
+			this.redirect(fc, fc.getExternalContext().getRequestContextPath().toString()  + "/logoff.xhtml");
 		}*/
-			
+		
 	}
 
 	@Override
 	public void beforePhase(PhaseEvent event) {
-		// SETA VARIÁVEIS
-		// ------------------------------------------------------------------------------
-		fc  = event.getFacesContext();
-        HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
-        request.getSession().setAttribute("p", fc.getExternalContext().getSessionId(true));
-        // ------------------------------------------------------------------------------
-        
-        // CASO usuario == null, ACESSA A PÁGINA DE LOGIN.
-        if (request.getSession().getAttribute("usuario") == null){
-       		this.redirect(fc, "index.xhtml");
-        }
+		System.out.println("Iniciando Fase: " +event.getPhaseId());
+		
+		HttpServletRequest request = (HttpServletRequest) event.getFacesContext().getExternalContext().getRequest();
+		
+		if (request.getSession().getAttribute("usuario") == null){
+			this.redirect(event.getFacesContext(), event.getFacesContext().getExternalContext().getRequestContextPath().toString() + "login/login.xhtml");
+		}
 	}
 
 	@Override
 	public PhaseId getPhaseId() {
-		// TODO Auto-generated method stub
 		return PhaseId.RESTORE_VIEW;
 	}
 	

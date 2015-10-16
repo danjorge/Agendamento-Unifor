@@ -16,13 +16,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.unifor.pin.agendamento.utils.BaseEntity;
+
 /**
  * @author patrick.cunha
  * @since 07/05/2015
  */
 @Entity
 @Table
-public class Permissoes implements Serializable {
+public class Permissoes implements Serializable, BaseEntity {
 
 	private static final long serialVersionUID = 2489782025501425429L;
 	

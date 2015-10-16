@@ -19,13 +19,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.unifor.pin.agendamento.utils.BaseEntity;
+
 /**
  * @author patrick.cunha
  * @since 07/05/2015
  */
 @Entity
 @Table
-public class Papeis implements Serializable {
+public class Papeis implements Serializable, BaseEntity {
 
 	private static final long serialVersionUID = -6442104966262202162L;
 

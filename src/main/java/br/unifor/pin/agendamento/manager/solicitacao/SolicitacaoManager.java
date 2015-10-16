@@ -34,8 +34,11 @@ public class SolicitacaoManager {
 	
 	@PostConstruct
 	public void init(){
-		listaSolicitacoes = solicitacaoBO.buscarTodasSolcitacoes();
 		solicitacao = new Solicitacao();
+	}
+	
+	public void carregaListas(){
+		listaSolicitacoes = solicitacaoBO.buscarSolcitacoesPorCurso();		
 	}
 	
 	public String salvarSolicitacao(){

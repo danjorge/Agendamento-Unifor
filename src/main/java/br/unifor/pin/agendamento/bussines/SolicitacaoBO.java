@@ -9,6 +9,7 @@ import br.unifor.pin.agendamento.dao.SolicitacaoDAO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
+import br.unifor.pin.agendamento.to.SegurancaTO;
 
 
 @Service
@@ -18,9 +19,11 @@ public class SolicitacaoBO {
 	private SolicitacaoDAO solicitacaoDAO;
 	@Autowired
 	private SessionContext sessao;
+	@Autowired
+	private SegurancaTO segurança;
 	
-	public List<Solicitacao> buscarTodasSolcitacoes(){
-		return solicitacaoDAO.retornaListaSolicitacoes();
+	public List<Solicitacao> buscarSolcitacoesPorCurso(){
+		return solicitacaoDAO.retornaListaSolicitacoesPorCurso(segurança.getUsuario());
 	}
 	
 	public Usuarios retornaCoordenadorPorCurso(Usuarios usuario){
@@ -33,7 +36,7 @@ public class SolicitacaoBO {
 		solicitacaoDAO.salvarSolicitacao(sol);
 	}
 	
-	public Solicitacao recuperaSolicitacaoPorId(Long solicitacaoId){
+	public Solicitacao recuperaSolicitacaoPorId(Integer solicitacaoId){
 		return solicitacaoDAO.recuperaSolicitacaoPorId(solicitacaoId);
 	}
 

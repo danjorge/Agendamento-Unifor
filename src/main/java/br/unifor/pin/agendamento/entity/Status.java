@@ -9,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.unifor.pin.agendamento.utils.BaseEntity;
+
 @Entity
 @Table(name="TB_STATUS")
-public class Status implements Serializable{
+public class Status implements Serializable, BaseEntity{
 
 	/**
 	 * 

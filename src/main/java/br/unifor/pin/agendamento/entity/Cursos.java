@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 //github.com/danjorge/Agendamento-Unifor
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import br.unifor.pin.agendamento.utils.BaseEntity;
+
 @Entity
 @Table(name = "TB_CURSOS")
-public class Cursos implements Serializable {
+public class Cursos implements Serializable, BaseEntity {
 
 	private static final long serialVersionUID = 8450477603285891175L;
 

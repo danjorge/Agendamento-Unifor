@@ -88,7 +88,7 @@ public class CustomExceptionHandler extends ExceptionHandlerWrapper {
 	                
 	                // Tranquiliza o usuário para que ele continue usando o sistema
 	                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage
-	                    (FacesMessage.SEVERITY_ERROR, exception.getCause().toString(), ""));
+	                    (FacesMessage.SEVERITY_ERROR, exception.getMessage(), ""));
                 }
                 
                 

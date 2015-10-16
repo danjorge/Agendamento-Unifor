@@ -12,13 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.unifor.pin.agendamento.utils.BaseEntity;
+
 /**
  * @author patrick.cunha
  * @since 07/05/2015
  */
 @Entity
 @Table
-public class Funcionalidades implements Serializable {
+public class Funcionalidades implements Serializable, BaseEntity {
 
 	private static final long serialVersionUID = -2165752164541929877L;
 	

@@ -21,6 +21,10 @@ public class MenuBO {
 		sessao.encerraSessao();
 	}
 	
+	public void limparSessao(){
+		sessao.limparSessao();
+	}
+	
 	public Object recuperaObjetoSessao(String string){
 		return sessao.recuperaObjetoSessao(string);
 	}

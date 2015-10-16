@@ -12,9 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.unifor.pin.agendamento.utils.BaseEntity;
+
 @Entity
 @Table(name="TB_SOLICITACOES")
-public class Solicitacao implements Serializable {
+public class Solicitacao implements Serializable, BaseEntity {
 
 	/**
 	 * 
@@ -23,7 +25,7 @@ public class Solicitacao implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	
 	private String assunto;
 	
@@ -40,11 +42,11 @@ public class Solicitacao implements Serializable {
 	public Solicitacao(){
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
