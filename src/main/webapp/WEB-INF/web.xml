@@ -37,14 +37,6 @@
     <url-pattern>*.jsf</url-pattern>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
-  <filter>
-  	<filter-name>PageFilter</filter-name>
-  	<filter-class>br.unifor.pin.agendamento.filter.PageFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>PageFilter</filter-name>
-  	<url-pattern>/pages/*</url-pattern>
-  </filter-mapping>
   <session-config>
   	<session-timeout>30</session-timeout>
   </session-config>
