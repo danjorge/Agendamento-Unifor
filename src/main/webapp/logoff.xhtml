@@ -11,7 +11,7 @@
 				<ui:define name="content">
 				<h:form>
 					<p:panel id="panel" styleClass="text-center" style="height: 400px;">
-						<p:panelGrid id="panelGrid" styleClass="width60 div-center" style="margin: 5% auto;">
+						<p:panelGrid id="panelGrid" styleClass="width60 div-center noGridBorder" style="margin: 5% auto;">
 							<p:row styleClass="row">
 								<p:column styleClass="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 									<div id="countdown"></div>
@@ -35,7 +35,7 @@
 					         fillStyle   : '#FFFFFF',
 					         fontColor   : '#BEBEBE',
 					         autostart   : true,
-					         onComplete  : function () { window.location = "http://localhost:8080/AgendamentoUnifor/login/login.xhtml";}
+					         onComplete  : function () { window.location = "http://localhost:8080/AgendamentoUnifor/login/login.xhtml";} 
 					   }).start();
 
 

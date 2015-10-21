@@ -28,9 +28,14 @@ public class SolicitacaoManager {
 	private SessionContext sessao;
 	
 	private Solicitacao solicitacao;
-	
+	private Solicitacao solicitacaoVisualizacao;
 	private List<Solicitacao> listaSolicitacoes;
 	
+	// VARIÁVEIS DE TELA
+	// -----------------------------------------------------------
+	private boolean exibeCampoResponderSolicitacao = false;
+	private boolean escondeBtnResponderSolicitacao = false;
+	// -----------------------------------------------------------	
 	
 	@PostConstruct
 	public void init(){
@@ -54,7 +59,7 @@ public class SolicitacaoManager {
 	}
 	
 	public String visualizarSolicitacao(Solicitacao sol){
-		solicitacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
+		solicitacaoVisualizacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
 		return Navigation.VISUALIZARSOLICITACAO;
 	}
 	
@@ -66,6 +71,11 @@ public class SolicitacaoManager {
 			}
 		}
 		return null;
+	}
+	
+	public void preparaCampoResponderSolicitacao(){
+		setExibeCampoResponderSolicitacao(true);
+		setEscondeBtnResponderSolicitacao(true);
 	}
 	
 	public String voltar(){
@@ -91,6 +101,32 @@ public class SolicitacaoManager {
 
 	public void setSolicitacao(Solicitacao solicitacao) {
 		this.solicitacao = solicitacao;
+	}
+
+	public boolean isEscondeBtnResponderSolicitacao() {
+		return escondeBtnResponderSolicitacao;
+	}
+
+	public void setEscondeBtnResponderSolicitacao(
+			boolean escondeBtnResponderSolicitacao) {
+		this.escondeBtnResponderSolicitacao = escondeBtnResponderSolicitacao;
+	}
+
+	public boolean isExibeCampoResponderSolicitacao() {
+		return exibeCampoResponderSolicitacao;
+	}
+
+	public void setExibeCampoResponderSolicitacao(
+			boolean exibeCampoResponderSolicitacao) {
+		this.exibeCampoResponderSolicitacao = exibeCampoResponderSolicitacao;
+	}
+
+	public Solicitacao getSolicitacaoVisualizacao() {
+		return solicitacaoVisualizacao;
+	}
+
+	public void setSolicitacaoVisualizacao(Solicitacao solicitacaoVisualizacao) {
+		this.solicitacaoVisualizacao = solicitacaoVisualizacao;
 	}
 
 }

@@ -31,6 +31,8 @@ public class Solicitacao implements Serializable, BaseEntity {
 	
 	private String descricao;
 	
+	private String repostaSolicitacao;
+	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="status_solicitacao", nullable=false)
 	private Status statusSolicitacao;
@@ -105,6 +107,14 @@ public class Solicitacao implements Serializable, BaseEntity {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getRepostaSolicitacao() {
+		return repostaSolicitacao;
+	}
+
+	public void setRepostaSolicitacao(String repostaSolicitacao) {
+		this.repostaSolicitacao = repostaSolicitacao;
 	}
 
 	

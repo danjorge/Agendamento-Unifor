@@ -7,30 +7,46 @@
 	template="/templates/template.xhtml">
 	
 	<ui:define name="content">
-		<p:panel header="Visualizar Solicitação">
-			<p:panelGrid styleClass="div-center">
-				<p:row>
-					<p:column>
-						<h:outputText value="Solicitante:" />
-						<h:outputText value="#{solicitacaoManagedBean.solicitacao.usuario.nome}" />
-					</p:column>
-				</p:row>	
-				<p:row>
-					<p:column width="100%">
-						<h:outputText value="Assunto:" />
-						<h:outputText value="#{solicitacaoManagedBean.solicitacao.assunto}" styleClass="bold" />
+		<p:panel id="pnlVisualizarSolicitacao" header="Visualizar Solicitação">
+			<p:panelGrid>
+				
+				
+						<h:outputText value="Solicitante: " /><br/>
+						<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.usuario.nome}" />
+				
+					<hr/>
+					<p:outputPanel styleClass="div-center">
+						<h:outputText value="Assunto: " /><br/>
+						<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.assunto}" styleClass="bold" />
 					<br/>
-						<h:outputText value="Descrição da Solicitação:" />
-						<h:outputText value="#{solicitacaoManagedBean.solicitacao.descricao}" styleClass="bold" />
-					</p:column>
-				</p:row>
+						<h:outputText value="Descrição da Solicitação: " /><br/>
+						<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.descricao}" styleClass="bold" />
+					</p:outputPanel>
+				
 			</p:panelGrid>
 			<hr/>
 			<h:form>
+				<p:outputPanel rendered="#{solicitacaoManagedBean.exibeCampoResponderSolicitacao}">
+					<p:inputTextarea value="#{solicitacaoManagedBean.solicitacao.repostaSolicitacao}" cols="100" rows="10"/>
+				</p:outputPanel>
 				<p:panelGrid>
-					<p:commandButton id="btnResponderVS" value="Responder Solicitação" action="#" ajax="false"/>
-					<p:commandButton id="btnAgendarVS" value="Agendar Atendimento" action="#" ajax="false"/>
-					<p:commandButton id="btnVoltarVS" value="Voltar" action="#{solicitacaoManagedBean.voltar()}" ajax="false"/>
+					<p:commandButton id="btnResponderVSAux" icon="ui-icon-circle-check" 
+									 value="Responder Solicitação" 
+									 rendered="#{solicitacaoManagedBean.escondeBtnResponderSolicitacao}"/>
+					<p:commandButton id="btnResponderVS" icon="ui-icon-circle-check"
+									 value="Responder Solicitação" 
+									 actionListener="#{solicitacaoManagedBean.preparaCampoResponderSolicitacao()}" 
+									 rendered="#{!solicitacaoManagedBean.escondeBtnResponderSolicitacao}"
+									 update="pnlVisualizarSolicitacao"/>
+					<p:commandButton id="btnAgendarVS" 
+									 value="Agendar Atendimento" 
+									 action="#" 
+									 ajax="false"/>
+					<p:commandButton id="btnVoltarVS" 
+									 value="Voltar" 
+									 action="#{solicitacaoManagedBean.voltar()}" 
+									 ajax="false" 
+									 immediate="true"/>
 				</p:panelGrid>
 			</h:form>
 		</p:panel>	

@@ -25,6 +25,14 @@ a {
 	font-size: 33px;
 	letter-spacing: -2px;
 	margin-top: 0;
+	margin-left: 20px;
+}
+
+.header-template {
+	width: 120px; 
+	padding: 0px; 
+	margin-top: -20px; 
+	margin-bottom: 0px;
 }
 
 .width60{
@@ -216,6 +224,10 @@ a {
 	width: 100px;
 }
 
+.noGridBorder tr, .noGridBorder td {
+	border: none !important
+} 
+
 .formCaption {
 	float: left;
 	width: 100px;
@@ -253,6 +265,7 @@ a {
 .width30{width: 30% !important;}
 .width20{width: 20% !important;}
 .width10{width: 10% !important;}
+.div-center {margin: 0 auto;}
 .vertical-line{border-left: 1px solid #dfdfdf;}
 /*-----------------------------------------------------------------------------*/
 
