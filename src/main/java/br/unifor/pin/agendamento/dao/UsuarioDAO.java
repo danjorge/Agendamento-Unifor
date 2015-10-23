@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
@@ -54,6 +55,12 @@ public class UsuarioDAO {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Cursos> retornaTodosCursos(){
+		return (List<Cursos>) entityManager.createQuery("Select c from Cursos c")
+										   .getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Usuarios> listarPorNome(String nome) {
@@ -75,8 +82,10 @@ public class UsuarioDAO {
 		
 	}
 	
-	public Papeis buscaPapel(){
-		return entityManager.find(Papeis.class, 2);
+	@SuppressWarnings("unchecked")
+	public List<Papeis> buscaTodosPapeis(){
+		return (List<Papeis>) entityManager.createQuery("Select p from Papeis p")
+										   .getResultList();
 	}
 	
 	public void excluir(Usuarios usuario) {

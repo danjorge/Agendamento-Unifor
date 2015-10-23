@@ -35,8 +35,10 @@ a {
 	margin-bottom: 0px;
 }
 
-.width60{
-	width: 60px
+.header-datatable {
+	display: inline-block;
+	font-weight: 100; 
+	font-style: normal;
 }
 
 .ui-widget{
@@ -214,9 +216,8 @@ a {
 	border: 1px solid #f0f0f0;
 }
 
-.dataTable td {
+.dataTable tr, .dataTable td {
 	border: 1px solid #d0d0d0;
-	padding: 4px;
 }
 
 .caption {
@@ -247,12 +248,51 @@ a {
 	margin-bottom: 12px;
 }
 
+.required{
+	position: relative;
+}
+
+h4.required{
+	display:inline-block;
+}
+
+.required:after {
+  content: "*" !important;
+  color: #f00;
+  font-weight: bold;
+}
+
+.required:before{
+	content:"Obrigat\00f3rio";
+	font-size: 7pt;
+	position: absolute;
+	top: -2px;
+	right: -50px;
+	text-align: center;
+	color: #f00;
+	background-color: #F9F0D9;
+	padding: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0.5px 0.5px 0.5px 0.5px darksalmon;
+	box-shadow: 0.5px 0.5px 0.5px 0.5px darksalmon;
+	visibility: hidden;
+	z-index: 98;
+}
+
+.required:hover:before{
+	visibility:visible;
+}
+
 
 /*
 *	TIPOS GENÉRICOS
 * -----------------------------------------------------------------------------*/
 .italic{font-style: italic;}
+.uppercase{text-transform: uppercase;}
 .bold{font-weight: bold !important;}
+.underline{text-decoration: underline;}
 .textleft{text-align: left;}
 .textJustify{text-align: justify;}
 .textCenter{text-align: center;}

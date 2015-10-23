@@ -63,5 +63,52 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#principal#principal.xhtml"
-  PATH="/pages/principal/principal.xhtml" SHAPE="288,33,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/pages/principal/principal.xhtml" SHAPE="288,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:0"
+   NAME="item" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarSolicitacao::#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    TITLE="cadastrarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:1"
+   NAME="item1" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizarSolicitacao::#pages#solicitacoes#visualizarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
+    TITLE="visualizarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:" SHAPE="48,337,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principal::#pages#principal#principal.xhtml"
+    NAME="output" PATH="/pages/principal/principal.xhtml"
+    TARGET="rules:#pages#principal#principal.xhtml" TITLE="principal" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="48,337,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="manutencao::#login#cadUsuario.xhtml"
+    NAME="output" PATH="/login/cadUsuario.xhtml"
+    TARGET="rules:#login#cadUsuario.xhtml" TITLE="manutencao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,561,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logoff::#logoff.xhtml" NAME="output"
+    PATH="/logoff.xhtml" TARGET="rules:#logoff.xhtml" TITLE="logoff" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#logoff.xhtml" PATH="/logoff.xhtml"
+  SHAPE="240,577,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+  PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+  SHAPE="528,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
+  PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml"
+  SHAPE="528,337,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

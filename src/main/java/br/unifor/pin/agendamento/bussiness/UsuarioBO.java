@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.bussines;
+package br.unifor.pin.agendamento.bussiness;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import br.unifor.pin.agendamento.aspectj.Loggable;
 import br.unifor.pin.agendamento.aspectj.PermitAll;
 import br.unifor.pin.agendamento.aspectj.RolesAllowed;
 import br.unifor.pin.agendamento.dao.UsuarioDAO;
+import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
@@ -59,6 +60,12 @@ public class UsuarioBO {
 	public Usuarios buscarUsuarioPorEmail(String matricula) {
 		return usuarioDAO.buscarPorMatricula(matricula);
 	}
+	
+	@PermitAll
+	@Loggable(enable = false)
+	public List<Cursos> retornaTodosCursos(){
+		return usuarioDAO.retornaTodosCursos();
+	}
 
 	@RolesAllowed(value = { "LISTAR_USUARIO" })
 	@Loggable(enable = false)
@@ -89,8 +96,8 @@ public class UsuarioBO {
 		usuarioDAO.excluir(usuario);
 	}
 	
-	public Papeis buscaPapelAdmin(){
-		return usuarioDAO.buscaPapel();
+	public List<Papeis> retornaTodosPapeis(){
+		return usuarioDAO.buscaTodosPapeis();
 	}
 
 }

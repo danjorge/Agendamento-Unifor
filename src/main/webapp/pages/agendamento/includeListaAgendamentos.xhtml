@@ -9,6 +9,7 @@
 		<p:dataTable id="tbAgendamentos" value="#{agendamentoManagedBean.listaAgendamento}" var="agendamento"  
 					 paginator="true" paginatorPosition="bottom" rows="10" emptyMessage="Não foram encontrados agendamentos"
 					 styleClass="datatable">
+					 
 			<p:column headerText="Nº Agendamento" styleClass="text-center">
 				<h:outputText value="#{agendamento.id}" />
 			</p:column>

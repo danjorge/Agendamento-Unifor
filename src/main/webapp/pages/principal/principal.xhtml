@@ -8,15 +8,22 @@
 	
 	<ui:define name="content">
 			<p:panel header="Solicitações e Agendamentos">
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
 				<h:form id="formTabView">
 					<p:tabView id="abasSistema" effect="fade" effectDuration="fast" orientation="top" dynamic="true" >
-						<p:tab id="tabSolicitacoes" title="Solicitações">
-							<h:panelGrid id="pnlIncludeListaSolicitacoes" cellpadding="10">
+						<p:tab id="tabSolicitacoes" title="Solicitações (#{solicitacaoManagedBean.listaSolicitacoes.size()})">
+							<h:panelGrid id="pnlIncludeListaSolicitacoes">
 								<ui:include src="/pages/solicitacoes/includeListaSolicitacoes.xhtml" />
 							</h:panelGrid>
 						</p:tab>
-						<p:tab id="tabAgendamentos" title="Agendamentos">
-							<h:panelGrid id="pnlIncludeListaAgendamento" cellpadding="10">
+						<p:tab id="tabRespSolicitacoes" title="Respostas das Solicitações (#{solicitacaoManagedBean.listaRespostasSolicitacoes.size()})">
+							<p:panelGrid id="pnlInclideListaRespSolicitacoes">
+								<ui:include src="/pages/solicitacoes/includeListaRespostasSolicitacoes.xhtml" />
+							</p:panelGrid>
+						</p:tab>
+						<p:tab id="tabAgendamentos" title="Agendamentos (#{agendamentoManagedBean.listaAgendamento.size()})">
+							<h:panelGrid id="pnlIncludeListaAgendamento">
 								<ui:include src="/pages/agendamento/includeListaAgendamentos.xhtml" />
 							</h:panelGrid>
 						</p:tab>

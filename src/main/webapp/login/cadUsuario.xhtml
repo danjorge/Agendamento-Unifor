@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" template="/templates/template_login.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
 	<ui:define name="content">
 
 		<h:form id="formCadUsuario">
@@ -11,10 +11,6 @@
 			<h2>Cadastro de Usuários</h2>
 			<p:separator />
 			<br />
-			<h:panelGrid>
-				<p:messages id="messages" showDetail="true" autoUpdate="true"
-					closable="true" />
-			</h:panelGrid>
 			<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid">
 				<p:outputLabel value="Nome: " />
 				<font color="red">*</font>
@@ -35,6 +31,27 @@
 					promptLabel="Insira uma senha" weakLabel="Fraco" goodLabel="Bom"
 					strongLabel="Forte" />
 				<p:message for="senha" />
+				
+				<p:outputLabel value="Curso: "/>
+				<font color="red">*</font>
+ 				<p:selectOneMenu id="curso" value="#{cadUsuario.usuario.cursos}" converter="simpleEntityConverter"
+								 required="true" requiredMessage="Campo Obrigatório">
+					<f:selectItem itemLabel="SELECIONE" itemValue=""/>
+					<f:selectItems value="#{cadUsuario.listarCursos()}" var="c" 
+								   itemLabel="#{c.descricao}" itemValue="#{c}"/>				
+				</p:selectOneMenu>
+				<p:message for="curso"/>
+				
+				<p:outputLabel value="Perfil: "/>
+				<font color="red">*</font>
+				<p:selectOneMenu id="papeis" value="#{cadUsuario.usuario.papel}" converter="simpleEntityConverter"
+								 required="true" requiredMessage="Campo Obrigatório">
+					<f:selectItem itemLabel="SELECIONE" itemValue=""/>
+					<f:selectItems value="#{cadUsuario.listarPapeis()}" var="p"
+								   itemLabel="#{p.nome}" itemValue="#{p}"/>
+				</p:selectOneMenu>
+				<p:message for="papeis"/>
+				
 			</h:panelGrid>
 			<br />
 			<h:panelGrid columns="3" styleClass="panelgrid">

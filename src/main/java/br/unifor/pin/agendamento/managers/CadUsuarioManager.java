@@ -1,4 +1,6 @@
-package br.unifor.pin.agendamento.manager.usuario;
+package br.unifor.pin.agendamento.managers;
+
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -6,7 +8,8 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussines.UsuarioBO;
+import br.unifor.pin.agendamento.bussiness.UsuarioBO;
+import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.to.SegurancaTO;
@@ -32,16 +35,25 @@ public class CadUsuarioManager {
 	private String nome;
 	private String matricula;
 	private String senha;
+	private Usuarios usuario;
+	private List<Cursos> listaCursos;
+	private List<Papeis> listaPapeis;
+	
+	public List<Cursos> listarCursos(){
+		return listaCursos = usuarioBO.retornaTodosCursos();
+	}
+	
+	public List<Papeis> listarPapeis(){
+		return listaPapeis = usuarioBO.retornaTodosPapeis(); 
+	}
 	
 	public String salvar(){
-		Usuarios usuario = new Usuarios();
-		usuario.setNome(nome);
-		usuario.setMatricula(matricula);
-		usuario.setSenha(Encripta.encripta(senha));
-		Papeis p = usuarioBO.buscaPapelAdmin();
-		usuario.setPapel(p);
-		segurancaTO.setUsuario(usuario);
-		usuarioBO.salvar(usuario);
+		setUsuario(new Usuarios());
+		getUsuario().setNome(nome);
+		getUsuario().setMatricula(matricula);
+		getUsuario().setSenha(Encripta.encripta(senha));
+		segurancaTO.setUsuario(getUsuario());
+		usuarioBO.salvar(getUsuario());
 		MessagesUtils.info("Usuário salvo com sucesso!");
 		listUsuario.lista();
 		
@@ -57,7 +69,7 @@ public class CadUsuarioManager {
 	public String voltar(){
 		limpaDados();
 		
-		return Navigation.VOLTAR;
+		return Navigation.PRINCIPAL;
 	}
 			
 	public void limpaDados(){
@@ -85,6 +97,30 @@ public class CadUsuarioManager {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Cursos> getListaCursos() {
+		return listaCursos;
+	}
+
+	public void setListaCursos(List<Cursos> listaCursos) {
+		this.listaCursos = listaCursos;
+	}
+
+	public Usuarios getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuarios usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Papeis> getListaPapeis() {
+		return listaPapeis;
+	}
+
+	public void setListaPapeis(List<Papeis> listaPapeis) {
+		this.listaPapeis = listaPapeis;
 	}	
 }
 

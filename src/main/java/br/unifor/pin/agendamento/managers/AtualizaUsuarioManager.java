@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.manager.usuario;
+package br.unifor.pin.agendamento.managers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -6,7 +6,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussines.UsuarioBO;
+import br.unifor.pin.agendamento.bussiness.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;

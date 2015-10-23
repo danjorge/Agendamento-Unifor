@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.bussines;
+package br.unifor.pin.agendamento.bussiness;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.manager.solicitacao;
+package br.unifor.pin.agendamento.managers;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussines.SolicitacaoBO;
+import br.unifor.pin.agendamento.bussiness.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
@@ -30,8 +30,10 @@ public class SolicitacaoManager {
 	private Solicitacao solicitacao;
 	private Solicitacao solicitacaoVisualizacao;
 	private List<Solicitacao> listaSolicitacoes;
+	private List<Solicitacao> listaRespostasSolicitacoes;
 	
-	// VARIÁVEIS DE TELA
+	//------------------------------------------------------------
+	// VARIÁVEIS DE CAMPO
 	// -----------------------------------------------------------
 	private boolean exibeCampoResponderSolicitacao = false;
 	private boolean escondeBtnResponderSolicitacao = false;
@@ -43,24 +45,30 @@ public class SolicitacaoManager {
 	}
 	
 	public void carregaListas(){
-		listaSolicitacoes = solicitacaoBO.buscarSolcitacoesPorCurso();		
+		listaSolicitacoes = solicitacaoBO.buscarSolcitacoesPorCurso();
+		listaRespostasSolicitacoes = solicitacaoBO.buscarRespostasSolicitacoesPorCurso();
 	}
 	
+	//-------------------------------------------------------------------------------------	
+	// TELA CADASTRO SOLICITAÇÃO
+	//-------------------------------------------------------------------------------------
 	public String salvarSolicitacao(){
 		if(solicitacao.getAssunto() != null && solicitacao.getDescricao() != null){
 			solicitacaoBO.salvarSolicitacao(solicitacao);
 			MessagesUtils.info("Solicitação salva com sucesso");
 			listaSolicitacoes.add(solicitacao);
 		} else {
-			MessagesUtils.error("Algo errado aconteceu.");
+			MessagesUtils.error("Algo errado aconteceu. Preencha todos os campos e tente novamente.");
+			return Navigation.CADASTRARSOLICITACAO;
 		}
+		carregaListas();
 		
 		return Navigation.PRINCIPAL;
 	}
 	
-	public String visualizarSolicitacao(Solicitacao sol){
-		solicitacaoVisualizacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
-		return Navigation.VISUALIZARSOLICITACAO;
+	public void limparSolicitacao(){
+		solicitacao.setAssunto("");
+		solicitacao.setDescricao("");
 	}
 	
 	public Usuarios retornaCoordenador(){
@@ -72,20 +80,44 @@ public class SolicitacaoManager {
 		}
 		return null;
 	}
+	//-------------------------------------------------------------------------------------
 	
+	//-------------------------------------------------------------------------------------
+	// TELA PRINCIPAL
+	//-------------------------------------------------------------------------------------
+	public String visualizarSolicitacao(Solicitacao sol){
+		solicitacaoVisualizacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
+		return Navigation.VISUALIZARSOLICITACAO;
+	}
+	//-------------------------------------------------------------------------------------
+	
+	//-------------------------------------------------------------------------------------
+	// TELA VISUALIZAR SOLICITACAO
+	//-------------------------------------------------------------------------------------
 	public void preparaCampoResponderSolicitacao(){
 		setExibeCampoResponderSolicitacao(true);
 		setEscondeBtnResponderSolicitacao(true);
 	}
 	
 	public String voltar(){
+		setExibeCampoResponderSolicitacao(false);
+		setEscondeBtnResponderSolicitacao(false);
 		return Navigation.PRINCIPAL;
 	}
 	
-	public void limparSolicitacao(){
-		solicitacao.setAssunto("");
-		solicitacao.setDescricao("");
+	public String salvarRespostaSolicitacao(){
+		solicitacaoBO.salvarRespostaSolicitacao(solicitacaoVisualizacao);
+		MessagesUtils.info("Resposta salva com sucesso.");
+		listaRespostasSolicitacoes.add(solicitacaoVisualizacao);
+		solicitacaoVisualizacao.setRespostaSolicitacao(null);
+		carregaListas();
+		
+		return Navigation.PRINCIPAL;
 	}
+	//-------------------------------------------------------------------------------------	
+	
+	
+	
 
 	public List<Solicitacao> getListaSolicitacoes() {
 		return listaSolicitacoes;
@@ -127,6 +159,15 @@ public class SolicitacaoManager {
 
 	public void setSolicitacaoVisualizacao(Solicitacao solicitacaoVisualizacao) {
 		this.solicitacaoVisualizacao = solicitacaoVisualizacao;
+	}
+
+	public List<Solicitacao> getListaRespostasSolicitacoes() {
+		return listaRespostasSolicitacoes;
+	}
+
+	public void setListaRespostasSolicitacoes(
+			List<Solicitacao> listaRespostasSolicitacoes) {
+		this.listaRespostasSolicitacoes = listaRespostasSolicitacoes;
 	}
 
 }

@@ -8,41 +8,59 @@
 	
 	<ui:define name="content">
 		<p:panel id="pnlVisualizarSolicitacao" header="Visualizar Solicitação">
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
 			<p:panelGrid>
-				
-				
-						<h:outputText value="Solicitante: " /><br/>
-						<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.usuario.nome}" />
-				
+				<h:outputText value="Solicitante: " styleClass="underline"/><br/>
+				<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.usuario.nome}" styleClass="uppercase"/>
 					<hr/>
-					<p:outputPanel styleClass="div-center">
-						<h:outputText value="Assunto: " /><br/>
-						<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.assunto}" styleClass="bold" />
-					<br/>
-						<h:outputText value="Descrição da Solicitação: " /><br/>
-						<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.descricao}" styleClass="bold" />
-					</p:outputPanel>
+				<h:outputText value="Assunto: " styleClass="underline"/><br/>
+				<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.assunto}" styleClass="bold uppercase" />
+					<hr/>
+				<h:outputText value="Descrição da Solicitação: " styleClass="underline"/><br/>
+				<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.descricao}" styleClass="bold uppercase" />
+				
+				<p:outputPanel rendered="#{not empty solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao or solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao != null}">	
+					<hr/>
+					<h:outputText value="Resposta: " styleClass="underline" /><br/>
+					<h:outputText value="#{solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao}" styleClass="bold uppercase"/>
+				</p:outputPanel>
 				
 			</p:panelGrid>
 			<hr/>
 			<h:form>
 				<p:outputPanel rendered="#{solicitacaoManagedBean.exibeCampoResponderSolicitacao}">
-					<p:inputTextarea value="#{solicitacaoManagedBean.solicitacao.repostaSolicitacao}" cols="100" rows="10"/>
+					<h:outputText value="Resposta: " styleClass="required underline" /><br/>
+					<p:inputTextarea value="#{solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao}" 
+									 cols="100" 
+									 rows="10" 
+									 styleClass="uppercase" 
+									 required="true"
+									 requiredMessage="Campo [RESPOSTA] é obrigatório."/>
 				</p:outputPanel>
 				<p:panelGrid>
-					<p:commandButton id="btnResponderVSAux" icon="ui-icon-circle-check" 
+					<p:commandButton id="btnResponderVS" icon="ui-icon-circle-check" 
 									 value="Responder Solicitação" 
-									 rendered="#{solicitacaoManagedBean.escondeBtnResponderSolicitacao}"/>
-					<p:commandButton id="btnResponderVS" icon="ui-icon-circle-check"
+									 rendered="#{solicitacaoManagedBean.escondeBtnResponderSolicitacao 
+									 		     and (solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao == null
+									 		     or empty solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao)}"
+									 action="#{solicitacaoManagedBean.salvarRespostaSolicitacao()}"
+									 ajax="false"/>
+									 
+					<p:commandButton id="btnResponderVSAux" icon="ui-icon-circle-check"
 									 value="Responder Solicitação" 
 									 actionListener="#{solicitacaoManagedBean.preparaCampoResponderSolicitacao()}" 
-									 rendered="#{!solicitacaoManagedBean.escondeBtnResponderSolicitacao}"
-									 update="pnlVisualizarSolicitacao"/>
-					<p:commandButton id="btnAgendarVS" 
+									 rendered="#{!solicitacaoManagedBean.escondeBtnResponderSolicitacao 
+									 			 and (solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao == null
+									 			 or empty solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao)}"
+									 update=":pnlVisualizarSolicitacao"/>
+									 
+					<p:commandButton id="btnAgendarVS" icon="ui-icon-clock"
 									 value="Agendar Atendimento" 
 									 action="#" 
 									 ajax="false"/>
-					<p:commandButton id="btnVoltarVS" 
+									 
+					<p:commandButton id="btnVoltarVS" icon="ui-icon-circle-arrow-w" 
 									 value="Voltar" 
 									 action="#{solicitacaoManagedBean.voltar()}" 
 									 ajax="false" 

@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.manager.menu;
+package br.unifor.pin.agendamento.managers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -6,7 +6,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussines.MenuBO;
+import br.unifor.pin.agendamento.bussiness.MenuBO;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Navigation;
 
@@ -39,6 +39,10 @@ public class MenuManagedBean {
 	
 	public String principal(){
 		return Navigation.PRINCIPAL;
+	}
+	
+	public String manutencao(){
+		return Navigation.CADASTROUSUARIO;
 	}
 
 	public SegurancaTO getSeguranca() {

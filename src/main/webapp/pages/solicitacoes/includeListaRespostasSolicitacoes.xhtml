@@ -4,51 +4,46 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-	
-	<p:outputPanel>
-		<p:dataTable id="listaSolicitacoes" value="#{solicitacaoManagedBean.listaSolicitacoes}" var="solicitacao" 
+
+	<p:outputPanel>	
+		<p:dataTable id="listaRespostasSolicitacoes" value="#{solicitacaoManagedBean.listaRespostasSolicitacoes}" var="respSol" 
 					 paginator="true" paginatorPosition="bottom" rows="10" emptyMessage="Não foram encontradas solicitações"
 					 styleClass="datatable">
-					 
+						 
 			<p:column headerText="Nº Solicitação" styleClass="text-center" width="10%">
-				<h:outputText value="#{solicitacao.id}" />
+				<h:outputText value="#{respSol.id}" />
 			</p:column>
 			
 			<p:column headerText="Assunto" styleClass="text-center" width="10%">
-				<h:outputText value="#{solicitacao.assunto.toUpperCase().subSequence(0,10)}..." />
+				<h:outputText value="#{respSol.assunto.toUpperCase().subSequence(0,10)}..." />
 			</p:column>
 			
 			<p:column headerText="Descrição" styleClass="text-center" width="30%">
-				<h:outputText value="#{solicitacao.descricao.toUpperCase().subSequence(0,10)}..." />
+				<h:outputText value="#{respSol.descricao.toUpperCase().subSequence(0,10)}..." />
 			</p:column>
 			
 			<p:column headerText="Status da Solicitação" styleClass="text-center" width="20%">
-				<h:outputText value="#{solicitacao.statusSolicitacao.descricao}" />
+				<h:outputText value="#{respSol.statusSolicitacao.descricao}" />
 			</p:column>
-
+	
 			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id != 1}" 
 					  width="15%">
 				<h:outputText value="#{solicitacaoManagedBean.retornaCoordenador().nome}" />
 			</p:column>
 			
 			<p:column headerText="Aluno" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id == 1}">
-				<h:outputText value="#{solicitacao.usuario.nome}" />				
+				<h:outputText value="#{respSol.usuario.nome}" />				
 			</p:column>
 			
-			<p:column headerText="Ações" styleClass="text-center" width="12%">
-				<p:commandLink title="Visualizar Solicitação" 
-							   ajax="false" 
-							   action="#{solicitacaoManagedBean.visualizarSolicitacao(solicitacao)}">
-							   <p:graphicImage name="/img/visualizar.png" width="24" />
+			<p:column headerText="Ações" styleClass="text-center">
+				<p:commandLink title="Visualizar Resposta" 
+						   ajax="false" 
+						   action="#{solicitacaoManagedBean.visualizarSolicitacao(respSol)}">
+						   <p:graphicImage name="/img/visualizar.png" width="24" />
 				</p:commandLink>
+			</p:column>
 				
-				<p:commandLink title="Cancelar solicitação" 
-				               ajax="false" 
-				               action="#">
-							   <p:graphicImage name="/img/cancel.png" width="24"/>
-				</p:commandLink>
-			</p:column>
-		</p:dataTable>	
+		</p:dataTable>
 	</p:outputPanel>
-			
+	
 </ui:composition>

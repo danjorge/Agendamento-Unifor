@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.bussines;
+package br.unifor.pin.agendamento.bussiness;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

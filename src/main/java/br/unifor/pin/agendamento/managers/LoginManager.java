@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.unifor.pin.agendamento.manager.login;
+package br.unifor.pin.agendamento.managers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -9,10 +9,9 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussines.UsuarioBO;
+import br.unifor.pin.agendamento.bussiness.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
-import br.unifor.pin.agendamento.manager.solicitacao.SolicitacaoManager;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Encripta;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
