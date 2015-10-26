@@ -11,6 +11,8 @@
 			<h2>Cadastro de Usuários</h2>
 			<p:separator />
 			<br />
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
 			<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid">
 				<p:outputLabel value="Nome: " />
 				<font color="red">*</font>
@@ -34,7 +36,7 @@
 				
 				<p:outputLabel value="Curso: "/>
 				<font color="red">*</font>
- 				<p:selectOneMenu id="curso" value="#{cadUsuario.usuario.cursos}" converter="simpleEntityConverter"
+ 				<p:selectOneMenu id="curso" value="#{cadUsuario.cursos}" converter="simpleEntityConverter"
 								 required="true" requiredMessage="Campo Obrigatório">
 					<f:selectItem itemLabel="SELECIONE" itemValue=""/>
 					<f:selectItems value="#{cadUsuario.listarCursos()}" var="c" 
@@ -44,7 +46,7 @@
 				
 				<p:outputLabel value="Perfil: "/>
 				<font color="red">*</font>
-				<p:selectOneMenu id="papeis" value="#{cadUsuario.usuario.papel}" converter="simpleEntityConverter"
+				<p:selectOneMenu id="papeis" value="#{cadUsuario.papeis}" converter="simpleEntityConverter"
 								 required="true" requiredMessage="Campo Obrigatório">
 					<f:selectItem itemLabel="SELECIONE" itemValue=""/>
 					<f:selectItems value="#{cadUsuario.listarPapeis()}" var="p"

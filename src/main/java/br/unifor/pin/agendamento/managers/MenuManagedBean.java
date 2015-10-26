@@ -41,6 +41,10 @@ public class MenuManagedBean {
 		return Navigation.PRINCIPAL;
 	}
 	
+	public String pesquisarSolicitacao(){
+		return Navigation.PESQUISARSOLICITACAO;
+	}
+	
 	public String manutencao(){
 		return Navigation.CADASTROUSUARIO;
 	}

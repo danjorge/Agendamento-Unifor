@@ -47,8 +47,18 @@ public class SolicitacaoBO {
 		solicitacaoDAO.atualizarSolicitacao(sol);
 	}
 	
+	public List<Solicitacao> pesquisarSolicitacao(Solicitacao sol, Status statusSolicitacao){
+		sol.setStatusSolicitacao(new Status());
+		sol.getStatusSolicitacao().setId(statusSolicitacao != null ? statusSolicitacao.getId() : null);
+		return solicitacaoDAO.retornaPesquisaSolicitacao(sol);
+	}
+	
 	public Solicitacao recuperaSolicitacaoPorId(Integer solicitacaoId){
 		return solicitacaoDAO.recuperaSolicitacaoPorId(solicitacaoId);
+	}
+	
+	public List<Status> recuperaStatusSolicitacao(){
+		return solicitacaoDAO.retornaStatusSolicitacao();
 	}
 
 }

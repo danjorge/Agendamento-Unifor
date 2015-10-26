@@ -114,6 +114,10 @@ public class SolicitacaoManager {
 		
 		return Navigation.PRINCIPAL;
 	}
+	
+	public String preparaAgendamento(){
+		return Navigation.AGENDAR;
+	}
 	//-------------------------------------------------------------------------------------	
 	
 	

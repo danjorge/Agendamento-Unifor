@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template.xhtml">
+	
+		<ui:define name="content">
+			<h:form id="formPesquisaSolicitacao">
+			
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+						
+				<p:panel id="pnlPesquisaSolicitacao" header="Pesquisar Solicitação">
+					<p:panelGrid id="panelGridPesquisaSol" styleClass="noGridBorder">
+						<p:row>
+							<p:column>
+								<h:outputText value="Nº Solicitação: " /><br/>
+								<p:inputText value="#{pesquisaSolicitacaoManagedBean.pesquisaSolicitacao.id}" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<h:outputText value="Assunto: " /><br/>
+								<p:inputText value="#{pesquisaSolicitacaoManagedBean.pesquisaSolicitacao.assunto}"/>
+							</p:column>
+							
+							<p:column>
+								<h:outputText value="Status da solicitação: " /><br/>
+								<p:selectOneMenu value="#{pesquisaSolicitacaoManagedBean.statusSolicitacao}" converter="simpleEntityConverter">
+									<f:selectItem itemLabel="SELECIONE" itemValue=""/>
+									<f:selectItems value="#{pesquisaSolicitacaoManagedBean.listarStatusSolicitacao()}" var="s"
+												   itemLabel="#{s.descricao}" itemValue="#{s}"/>
+								</p:selectOneMenu>
+							</p:column>														
+						</p:row>
+					</p:panelGrid>
+					<hr/>
+					<p:panelGrid id="panelGridBtns">
+						<p:commandButton id="btnPesquisarSolicitacao" 
+										 value="Pesquisar" 
+										 icon="ui-icon ui-icon-search"
+										 action="#{pesquisaSolicitacaoManagedBean.pesquisarSolicitacao()}" 
+										 update="tbPesquisaSolicitacao" process="@form"/>
+										 
+						<p:commandButton id="btnLimparPesquisaSolicitacao" 
+										 value="Limpar" 
+										 action="#{pesquisaSolicitacaoManagedBean.limparPesquisa()}" 
+										 update="formPesquisaSolicitacao" process="@form"/>		
+					</p:panelGrid>
+					
+					<br/>
+					<p:dataTable id="tbPesquisaSolicitacao" emptyMessage="Não foram encontradas SOLICITAÇÕES." value="#{pesquisaSolicitacaoManagedBean.listaSolicitacoes}"
+								 var="solicitacao">
+					
+						<p:outputPanel>
+							<f:facet name="header">
+								<h:outputText value="Nº de solicitações encontradas: " />
+								<h:outputText value="#{pesquisaSolicitacaoManagedBean.listaSolicitacoes.size() == null ? 0 : pesquisaSolicitacaoManagedBean.listaSolicitacoes.size()}" />
+							</f:facet>
+						</p:outputPanel>
+						
+						
+						<p:column headerText="Nº Solicitação" styleClass="text-center">
+							<h:outputText value="#{solicitacao.id}" />
+						</p:column>
+						
+						<p:column headerText="Assunto" styleClass="text-center">
+							<h:outputText value="#{solicitacao.assunto}" />
+						</p:column>
+						
+						<p:column headerText="Descrição" styleClass="text-center">
+							<h:outputText value="#{solicitacao.descricao.subSequence(0,20)}..." />
+						</p:column>
+						
+						<p:column headerText="Status da Solicitação" styleClass="text-center">
+							<h:outputText value="#{solicitacao.statusSolicitacao.descricao}" />
+						</p:column>
+						
+						<p:column headerText="Ações" styleClass="text-center">
+						</p:column>
+					</p:dataTable>
+					
+				</p:panel>
+			</h:form>
+		</ui:define>	
+	
+</ui:composition>

@@ -1,5 +1,6 @@
 package br.unifor.pin.agendamento.managers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -36,6 +37,8 @@ public class CadUsuarioManager {
 	private String matricula;
 	private String senha;
 	private Usuarios usuario;
+	private Cursos cursos;
+	private Papeis papeis;
 	private List<Cursos> listaCursos;
 	private List<Papeis> listaPapeis;
 	
@@ -48,12 +51,15 @@ public class CadUsuarioManager {
 	}
 	
 	public String salvar(){
-		setUsuario(new Usuarios());
-		getUsuario().setNome(nome);
-		getUsuario().setMatricula(matricula);
-		getUsuario().setSenha(Encripta.encripta(senha));
-		segurancaTO.setUsuario(getUsuario());
-		usuarioBO.salvar(getUsuario());
+		usuario = new Usuarios();
+		usuario.setNome(nome);
+		usuario.setMatricula(matricula);
+		usuario.setSenha(Encripta.encripta(senha));
+		usuario.setCursos(new ArrayList<Cursos>());
+		usuario.getCursos().add(cursos);
+		usuario.setPapel(papeis);
+		segurancaTO.setUsuario(usuario);
+		usuarioBO.salvar(usuario);
 		MessagesUtils.info("Usuário salvo com sucesso!");
 		listUsuario.lista();
 		
@@ -73,9 +79,7 @@ public class CadUsuarioManager {
 	}
 			
 	public void limpaDados(){
-		this.nome = "";
-		this.matricula = "";
-		this.senha = "";
+		usuario = null;
 	}
 
 	public String getNome() {
@@ -121,6 +125,22 @@ public class CadUsuarioManager {
 
 	public void setListaPapeis(List<Papeis> listaPapeis) {
 		this.listaPapeis = listaPapeis;
+	}
+
+	public Cursos getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(Cursos cursos) {
+		this.cursos = cursos;
+	}
+
+	public Papeis getPapeis() {
+		return papeis;
+	}
+
+	public void setPapeis(Papeis papeis) {
+		this.papeis = papeis;
 	}	
 }
 

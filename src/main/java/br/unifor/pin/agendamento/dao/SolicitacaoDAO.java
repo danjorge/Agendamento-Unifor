@@ -10,38 +10,42 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.agendamento.entity.Solicitacao;
+import br.unifor.pin.agendamento.entity.Status;
 import br.unifor.pin.agendamento.entity.Usuarios;
 
 
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
+@SuppressWarnings("unchecked")
 public class SolicitacaoDAO {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	
 	
-	@SuppressWarnings("unchecked")
 	public List<Solicitacao> retornaListaSolicitacoesPorCurso(Usuarios usuario){
 		return (List<Solicitacao>) entityManager.createQuery("Select s "
 														   + "from Solicitacao s "
 														   + "inner join fetch s.usuario u "
 														   + "inner join fetch u.cursos c " 
 														   + "where c.id = :cursoId "
-														   + "and s.statusSolicitacao.id = 1")
+														   + "and s.statusSolicitacao.id = 1 "
+														   + "and u.id = :usuarioId")
 												.setParameter("cursoId", usuario.getCursos().get(0).getId())
+												.setParameter("usuarioId", usuario.getId())
 								                .getResultList();
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Solicitacao> retornaListaRespostaSolicitacoesPorCurso(Usuarios usuario){
 		return (List<Solicitacao>) entityManager.createQuery("Select s "
 														   + "from Solicitacao s "
 														   + "inner join fetch s.usuario u "
 														   + "inner join fetch u.cursos c "
 														   + "where c.id = :cursoId "
-														   + "and s.statusSolicitacao.id = 6")
+														   + "and s.statusSolicitacao.id = 6 "
+														   + "and u.id = :usuarioId")
 												.setParameter("cursoId", usuario.getCursos().get(0).getId())
+												.setParameter("usuarioId", usuario.getId())
 												.getResultList();
 	}
 	
@@ -55,6 +59,30 @@ public class SolicitacaoDAO {
 									   			  + "and c.id = :cursoId ")
 									   			  .setParameter("cursoId", usuario.getCursos().get(0).getId())
 									   			  .getSingleResult();
+	}
+	
+	public List<Solicitacao> retornaPesquisaSolicitacao(Solicitacao sol){
+		return (List<Solicitacao>) entityManager.createQuery("Select s "
+														   + "from Solicitacao s "
+														   + "inner join fetch s.usuario u "
+														   + "inner join fetch s.statusSolicitacao st "
+														   + "where "
+														   + ":solIdAux is null  or s.id = :solId "
+														   + "and :assuntoAux is null or s.assunto like ('%' || :assunto || '%') "
+														   + "and :statusSolicitacaoIdAux is null or s.statusSolicitacao.id = :statusSolicitacaoId "
+														   + "order by s.id")
+														   .setParameter("solIdAux", sol.getId())
+														   .setParameter("solId", sol.getId())
+														   .setParameter("assuntoAux", sol.getAssunto())
+														   .setParameter("assunto", sol.getAssunto())
+														   .setParameter("statusSolicitacaoIdAux", sol.getStatusSolicitacao().getId())
+														   .setParameter("statusSolicitacaoId", sol.getStatusSolicitacao().getId())
+														   .getResultList();
+	}
+	
+	public List<Status> retornaStatusSolicitacao(){
+		return (List<Status>) entityManager.createQuery("Select s from Status s where s.descricao like ('%' || 'SOLICITAÇÃO' || '%')")
+										   .getResultList();
 	}
 	
 	public void salvarSolicitacao(Solicitacao sol){

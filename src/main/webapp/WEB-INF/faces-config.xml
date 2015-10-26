@@ -103,8 +103,26 @@
 			<from-outcome>visualizarSolicitacao</from-outcome>
 			<to-view-id>/pages/solicitacoes/visualizarSolicitacao.xhtml</to-view-id>
 		</navigation-case>
-	</navigation-rule>	
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/principal/principal.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisarSolicitacao</from-outcome>
+			<to-view-id>/pages/solicitacoes/pesquisarSolicitacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<!-- Solicitação fim -->
+	
+	<!-- Agendamento Início -->
+	<navigation-rule>
+		<from-view-id>/pages/solicitacoes/visualizarSolicitacao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>agendar</from-outcome>
+			<to-view-id>/pages/agendamento/agendamento.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Agendamento Fim -->
 	
 	<!-- Manutenção início -->
 	<navigation-rule>

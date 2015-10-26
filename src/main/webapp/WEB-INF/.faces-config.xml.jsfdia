@@ -80,6 +80,14 @@
     TARGET="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
     TITLE="visualizarSolicitacao" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:2"
+   NAME="item2" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pesquisarSolicitacao::#pages#solicitacoes#pesquisarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/pesquisarSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#pesquisarSolicitacao.xhtml"
+    TITLE="pesquisarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:" SHAPE="48,337,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
@@ -110,5 +118,20 @@
  <PROCESS-ITEM
   NAME="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
   PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml"
-  SHAPE="528,337,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="528,337,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml:0"
+   NAME="item" PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="agendar::#pages#agendamento#agendamento.xhtml" NAME="output"
+    PATH="/pages/agendamento/agendamento.xhtml"
+    TARGET="rules:#pages#agendamento#agendamento.xhtml" TITLE="agendar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#solicitacoes#pesquisarSolicitacao.xhtml"
+  PATH="/pages/solicitacoes/pesquisarSolicitacao.xhtml"
+  SHAPE="544,337,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#agendamento#agendamento.xhtml"
+  PATH="/pages/agendamento/agendamento.xhtml" SHAPE="768,465,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

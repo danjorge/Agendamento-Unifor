@@ -54,6 +54,9 @@ public class Usuarios implements Serializable, BaseEntity {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="curso_id", nullable = false)
 	private List<Cursos> cursos;
+	
+	public Usuarios() {
+	}
 
 	public Integer getId() {
 		return id;

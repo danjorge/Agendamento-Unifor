@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+		<h:form>
+			<p:schedule id="calendarAgendamento" value="#{agendamentoManagedBean.eventModel}" timeZone="GMT-3" locale="br"/>
+		</h:form>
+		
+		<script type="text/javascript">
+			PrimeFaces.locales['br'] = {
+			        closeText: 'fechar',
+			        prevText: 'atrás',
+			        nextText: 'próximo',
+			        currentText: 'Hoje',
+			        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+			            'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun',
+			            'Jul','Ago','Set','Out','Nov','Dez'],
+			        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+			        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+			        dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+			        weekHeader: 'Hf',
+			        firstDay: 0,
+			        isRTL: false,
+			        showMonthAfterYear: false,
+			        yearSuffix: '',
+			        month: 'Mês',
+			        week: 'Semana',
+			        day: 'Dia',
+			        allDayText : 'O dia todo'
+			    };
+		</script>
+		
+	</ui:define>
+</ui:composition>

@@ -14,6 +14,8 @@ public class Navigation {
 	public static final String PRINCIPAL = "principal";
 	public static final String CADASTRARSOLICITACAO = "cadastrarSolicitacao";
 	public static final String VISUALIZARSOLICITACAO = "visualizarSolicitacao";
+	public static final String PESQUISARSOLICITACAO = "pesquisarSolicitacao";
+	public static final String AGENDAR = "agendar";
 	public static final String CADASTROUSUARIO = "manutencao";
 
 }
