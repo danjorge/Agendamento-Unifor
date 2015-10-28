@@ -30,7 +30,9 @@
 			</p:column>
 			
 			<p:column headerText="Data Agendamento" styleClass="text-center">
-				<h:outputText value="#{agendamento.dataAgendamento}" />
+				<h:outputText value="#{agendamento.agendamentoEvent.dataInicio}" >
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"/>
+				</h:outputText>
 			</p:column>
 			
 			<p:column headerText="Ações" styleClass="text-center">

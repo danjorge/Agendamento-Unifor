@@ -1,9 +1,7 @@
 package br.unifor.pin.agendamento.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import br.unifor.pin.agendamento.utils.BaseEntity;
 
@@ -29,13 +25,13 @@ public class Agendamento implements Serializable, BaseEntity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name="data_agendamento")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAgendamento;
-	
 	@OneToOne
 	@JoinColumn(name="solicitacao_id", nullable=false)
 	private Solicitacao solicitacao;
+	
+	@OneToOne
+	@JoinColumn(name="agendamento_event_id", nullable=false)
+	private AgendamentoEvent agendamentoEvent;
 	
 	public Agendamento(){}
 
@@ -45,14 +41,6 @@ public class Agendamento implements Serializable, BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Date getDataAgendamento() {
-		return dataAgendamento;
-	}
-
-	public void setDataAgendamento(Date dataAgendamento) {
-		this.dataAgendamento = dataAgendamento;
 	}
 
 	public Solicitacao getSolicitacao() {
@@ -86,6 +74,14 @@ public class Agendamento implements Serializable, BaseEntity {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public AgendamentoEvent getAgendamentoEvent() {
+		return agendamentoEvent;
+	}
+
+	public void setAgendamentoEvent(AgendamentoEvent agendamentoEvent) {
+		this.agendamentoEvent = agendamentoEvent;
 	}
 	
 

@@ -8,7 +8,39 @@
 	
 	<ui:define name="content">
 		<h:form>
-			<p:schedule id="calendarAgendamento" value="#{agendamentoManagedBean.eventModel}" timeZone="GMT-3" locale="br"/>
+		
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			
+			<p:schedule id="calendarAgendamento" value="#{agendamentoManagedBean.eventModel}" widgetVar="agendamento" timeZone="GMT-3" locale="br">
+				<p:ajax event="dateSelect" listener="#{agendamentoManagedBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+            	<p:ajax event="eventSelect" listener="#{agendamentoManagedBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+			</p:schedule>
+			
+			<p:dialog widgetVar="eventDialog" header="Detalhes do Agendamento" modal="true" 
+					  showEffect="clip" hideEffect="clip" appendTo="@(body)" dynamic="true"
+					  closeOnEscape="true" width="20%" position="middle" >
+					  
+        		<h:panelGrid id="eventDetails" columns="2">
+		            <p:outputLabel for="title" value="Título:" />
+		            <p:inputText id="title" value="#{agendamentoManagedBean.event.title}" required="true" />
+		            
+		            <p:outputLabel for="description" value="Descrição:"/>
+		            <p:inputTextarea id="description" value="#{agendamentoManagedBean.event.description}" required="true" cols="23" rows="5"/>
+		 
+		            <p:outputLabel for="from" value="De:" />
+		            <p:calendar id="from" value="#{agendamentoManagedBean.event.startDate}" timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" locale="br"/>
+		 
+		            <p:outputLabel for="to" value="Até:" />
+		            <p:calendar id="to" value="#{agendamentoManagedBean.event.endDate}" timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" locale="br"/>
+		            
+		            <p:outputLabel for="allDay" value="Dia todo:" />
+            		<h:selectBooleanCheckbox id="allDay" value="#{agendamentoManagedBean.event.allDay}" />
+            				 
+		            <p:commandButton id="addButton" value="Salvar" actionListener="#{agendamentoManagedBean.addEvent()}" oncomplete="PF('agendamento').update();PF('eventDialog').hide();" />
+        		</h:panelGrid>
+    		</p:dialog>
+			
+			
 		</h:form>
 		
 		<script type="text/javascript">
@@ -32,6 +64,9 @@
 			        month: 'Mês',
 			        week: 'Semana',
 			        day: 'Dia',
+			        timeText: 'Horário',
+			        hourText: 'Hora',
+			        minuteText: 'Minutos',
 			        allDayText : 'O dia todo'
 			    };
 		</script>

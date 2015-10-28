@@ -15,11 +15,7 @@
 			</p:column>
 			
 			<p:column headerText="Assunto" styleClass="text-center" width="10%">
-				<h:outputText value="#{respSol.assunto.toUpperCase().subSequence(0,10)}..." />
-			</p:column>
-			
-			<p:column headerText="Descrição" styleClass="text-center" width="30%">
-				<h:outputText value="#{respSol.descricao.toUpperCase().subSequence(0,10)}..." />
+				<h:outputText value="#{respSol.assunto.toUpperCase()}" />
 			</p:column>
 			
 			<p:column headerText="Status da Solicitação" styleClass="text-center" width="20%">
@@ -35,7 +31,7 @@
 				<h:outputText value="#{respSol.usuario.nome}" />				
 			</p:column>
 			
-			<p:column headerText="Ações" styleClass="text-center">
+			<p:column headerText="Ações" styleClass="text-center" width="12%">
 				<p:commandLink title="Visualizar Resposta" 
 						   ajax="false" 
 						   action="#{solicitacaoManagedBean.visualizarSolicitacao(respSol)}">

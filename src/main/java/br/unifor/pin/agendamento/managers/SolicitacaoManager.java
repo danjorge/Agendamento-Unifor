@@ -87,6 +87,7 @@ public class SolicitacaoManager {
 	//-------------------------------------------------------------------------------------
 	public String visualizarSolicitacao(Solicitacao sol){
 		solicitacaoVisualizacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
+		sessao.setarObjetoSessao("solicitacao", solicitacaoVisualizacao);
 		return Navigation.VISUALIZARSOLICITACAO;
 	}
 	//-------------------------------------------------------------------------------------

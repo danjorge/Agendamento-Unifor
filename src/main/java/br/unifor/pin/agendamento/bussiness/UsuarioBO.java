@@ -31,7 +31,8 @@ public class UsuarioBO {
 	@Autowired
 	private SessionContext sessao;
 
-	@RolesAllowed(value = { "INCLUIR_USUARIO" })
+	@PermitAll
+	@Loggable(enable = false)
 	public void salvar(Usuarios usuario) {
 		usuario.setAtivo(false);
 		usuario.setPrimeiroAcesso(true);

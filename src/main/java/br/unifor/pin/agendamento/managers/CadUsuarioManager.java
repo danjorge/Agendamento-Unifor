@@ -58,7 +58,6 @@ public class CadUsuarioManager {
 		usuario.setCursos(new ArrayList<Cursos>());
 		usuario.getCursos().add(cursos);
 		usuario.setPapel(papeis);
-		segurancaTO.setUsuario(usuario);
 		usuarioBO.salvar(usuario);
 		MessagesUtils.info("Usuário salvo com sucesso!");
 		listUsuario.lista();
