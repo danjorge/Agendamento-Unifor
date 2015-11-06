@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
@@ -17,9 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.bussiness.AgendamentoBO;
+import br.unifor.pin.agendamento.bussiness.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Agendamento;
 import br.unifor.pin.agendamento.entity.AgendamentoEvent;
 import br.unifor.pin.agendamento.entity.Solicitacao;
+import br.unifor.pin.agendamento.entity.Status;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
 
@@ -31,6 +32,9 @@ public class AgendamentoManager {
 	
 	@Autowired
 	private AgendamentoBO agendamentoBO;
+	
+	@Autowired
+	private SolicitacaoBO solicitacaoBO;
 	
 	@Autowired
 	private SessionContext sessao;
@@ -48,7 +52,6 @@ public class AgendamentoManager {
 	public void init(){
 		listaAgendamento = agendamentoBO.buscarTodosAgendamentos();
 		eventModel = new DefaultScheduleModel();
-		event = new DefaultScheduleEvent();
 		carregarListas();
 	}
 	
@@ -61,7 +64,7 @@ public class AgendamentoManager {
 		}
 	}	
 		
-	public void addEvent(ActionEvent actionEvent){
+	public void addEvent(){
 		//guarda as informações do evento em tela no banco
 		agendamentoEvent = new AgendamentoEvent();
 		agendamentoEvent.setTitulo(event.getTitle());
@@ -70,13 +73,19 @@ public class AgendamentoManager {
 		agendamentoEvent.setDataFim(event.getEndDate());
 		
 		//guarda as informações da solicitação e do evento em tela no banco
+		sol.getStatusSolicitacao().setId(3);
 		agendamento = new Agendamento();
 		agendamento.setSolicitacao(sol);
+		agendamento.setStatusAgendamento(new Status());
+		agendamento.getStatusAgendamento().setId(3);
 		agendamento.setAgendamentoEvent(agendamentoEvent);
 		
 		//salva o agendamento
 		agendamentoBO.salvarAgendamentoEvent(agendamentoEvent);
 		agendamentoBO.salvarAgendamento(agendamento);
+		
+		//atualiza a solicitacao
+		solicitacaoBO.atualizarSolicitacao(sol);
 		
 		listaAgendamento.add(agendamento);
 		

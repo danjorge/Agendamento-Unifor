@@ -58,7 +58,7 @@ public class UsuarioBO {
 
 	@PermitAll
 	@Loggable(enable = false)
-	public Usuarios buscarUsuarioPorEmail(String matricula) {
+	public Usuarios buscarUsuarioPorMatricula(String matricula) {
 		return usuarioDAO.buscarPorMatricula(matricula);
 	}
 	

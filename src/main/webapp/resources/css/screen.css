@@ -51,8 +51,12 @@ a {
 
 .ui-widget-content{
 	border: 1px solid #DDD;
-	background: #FFF none repeat scroll 0% 0% ;
+	/* background: #FFF none repeat scroll 0% 0% ; */
 	color: #333;
+}
+
+.ui-state-highlight{
+	background-image: linear-gradient(to bottom, #DDDDDD, #000);
 }
 
 .ui-selectonemenu {

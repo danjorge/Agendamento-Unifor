@@ -12,7 +12,7 @@
 	</bean>
 
 	<context:annotation-config />
-	<context:component-scan base-package="br.unifor.pin.saa" />
+	<context:component-scan base-package="br.unifor.pin.agendamento" />
 	<tx:annotation-driven />
 
 
@@ -37,7 +37,7 @@
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="saa" />
+		<property name="persistenceUnitName" value="agendamento" />
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaDialect" ref="jpaDialect" />
 		<property name="jpaProperties">

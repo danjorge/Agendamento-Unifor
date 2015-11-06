@@ -3,6 +3,7 @@ package br.unifor.pin.agendamento.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +29,10 @@ public class Agendamento implements Serializable, BaseEntity {
 	@OneToOne
 	@JoinColumn(name="solicitacao_id", nullable=false)
 	private Solicitacao solicitacao;
+	
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="status_agendamento", nullable=false)
+	private Status StatusAgendamento;
 	
 	@OneToOne
 	@JoinColumn(name="agendamento_event_id", nullable=false)
@@ -82,6 +87,14 @@ public class Agendamento implements Serializable, BaseEntity {
 
 	public void setAgendamentoEvent(AgendamentoEvent agendamentoEvent) {
 		this.agendamentoEvent = agendamentoEvent;
+	}
+
+	public Status getStatusAgendamento() {
+		return StatusAgendamento;
+	}
+
+	public void setStatusAgendamento(Status statusAgendamento) {
+		StatusAgendamento = statusAgendamento;
 	}
 	
 

@@ -22,6 +22,7 @@ import br.unifor.pin.agendamento.exceptions.DAOException;
  */
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
+@SuppressWarnings("unchecked")
 public class UsuarioDAO {
 
 	@PersistenceContext
@@ -56,15 +57,19 @@ public class UsuarioDAO {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Cursos> retornaTodosCursos(){
 		return (List<Cursos>) entityManager.createQuery("Select c from Cursos c")
 										   .getResultList();
 	}
+	
+	public Cursos retornaCursoADS(){
+		return (Cursos) entityManager.createQuery("Select c from Cursos c where c.id = 1")
+				.getSingleResult();
+	}
+	
 
-	@SuppressWarnings("unchecked")
 	public List<Usuarios> listarPorNome(String nome) {
-		return (List<Usuarios>) entityManager.createQuery("Select u from Usuarios u where u.nome like ('%' || :nome || '%'")
+		return (List<Usuarios>) entityManager.createQuery("Select u from Usuarios u where u.nome like ('%' || :nome || '%')")
 													.setParameter("nome", nome)
 													.getResultList();
 	}
@@ -82,7 +87,6 @@ public class UsuarioDAO {
 		
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Papeis> buscaTodosPapeis(){
 		return (List<Papeis>) entityManager.createQuery("Select p from Papeis p")
 										   .getResultList();

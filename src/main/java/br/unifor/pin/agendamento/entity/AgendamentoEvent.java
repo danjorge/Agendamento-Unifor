@@ -13,12 +13,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import org.primefaces.component.schedule.Schedule;
+import org.primefaces.model.ScheduleEvent;
 
 
 @Entity
 @Table(name="TB_AGENDAMENTO_EVENT")
-public class AgendamentoEvent extends Schedule implements Serializable{
+public class AgendamentoEvent implements Serializable, ScheduleEvent{
 	
 	/**
 	 * 
@@ -89,6 +89,54 @@ public class AgendamentoEvent extends Schedule implements Serializable{
 
 	public void setIdEvent(Integer idEvent) {
 		this.idEvent = (id != null ?  Integer.parseInt(id) : idEvent);
+	}
+
+	@Override
+	public Object getData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return this.getTitulo();
+	}
+
+	@Override
+	public Date getStartDate() {
+		// TODO Auto-generated method stub
+		return this.getDataInicio();
+	}
+
+	@Override
+	public Date getEndDate() {
+		// TODO Auto-generated method stub
+		return this.getDataFim();
+	}
+
+	@Override
+	public boolean isAllDay() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getStyleClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isEditable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return this.getDscAgendamentoEvent();
 	}
 	
 	

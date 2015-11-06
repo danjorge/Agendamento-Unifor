@@ -133,5 +133,22 @@
   PATH="/pages/solicitacoes/pesquisarSolicitacao.xhtml"
   SHAPE="544,337,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#agendamento#agendamento.xhtml"
-  PATH="/pages/agendamento/agendamento.xhtml" SHAPE="768,465,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/pages/agendamento/agendamento.xhtml" SHAPE="768,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#agendamento#agendamento.xhtml:0"
+   NAME="item" PATH="/pages/agendamento/agendamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarSolicitacao::#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    TITLE="cadastrarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#agendamento#agendamento.xhtml:1"
+   NAME="item1" PATH="/pages/agendamento/agendamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pesquisarSolicitacao::#pages#solicitacoes#pesquisarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/pesquisarSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#pesquisarSolicitacao.xhtml"
+    TITLE="pesquisarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

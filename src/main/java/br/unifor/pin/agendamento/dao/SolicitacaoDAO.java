@@ -36,6 +36,16 @@ public class SolicitacaoDAO {
 								                .getResultList();
 	}
 	
+	
+	public Solicitacao retornaSolicitacaoPorAssunto(Solicitacao solicitacao){
+		return (Solicitacao) entityManager.createQuery("Select s "
+													 + "from Solicitacao s "
+													 + "where s.assunto like ('%' || :assunto || '%')")
+													 .setParameter("assunto", solicitacao.getAssunto())
+													 .getSingleResult();
+													 
+	}
+	
 	public List<Solicitacao> retornaListaRespostaSolicitacoesPorCurso(Usuarios usuario){
 		return (List<Solicitacao>) entityManager.createQuery("Select s "
 														   + "from Solicitacao s "
@@ -91,6 +101,10 @@ public class SolicitacaoDAO {
 	
 	public void atualizarSolicitacao(Solicitacao sol){
 		entityManager.merge(sol);
+	}
+	
+	public void removerSolicitacao(Solicitacao sol){
+		entityManager.remove(sol);
 	}
 	
 	public Solicitacao recuperaSolicitacaoPorId(Integer solicitacaoId){

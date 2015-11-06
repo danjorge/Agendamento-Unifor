@@ -122,6 +122,23 @@
 			<to-view-id>/pages/agendamento/agendamento.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/agendamento/agendamento.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrarSolicitacao</from-outcome>
+			<to-view-id>/pages/solicitacoes/cadastroSolicitacao.xhtml</to-view-id>
+		</navigation-case>		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/agendamento/agendamento.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisarSolicitacao</from-outcome>
+			<to-view-id>/pages/solicitacoes/pesquisarSolicitacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<!-- Agendamento Fim -->
 	
 	<!-- Manutenção início -->
