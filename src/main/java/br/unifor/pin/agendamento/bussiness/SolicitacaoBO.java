@@ -46,6 +46,10 @@ public class SolicitacaoBO {
 		solicitacaoDAO.atualizarSolicitacao(sol);
 	}
 	
+	public void excluirSolicitacao(Solicitacao sol){
+		solicitacaoDAO.excluirSolicitacao(sol);
+	}
+	
 	public void salvarRespostaSolicitacao(Solicitacao sol){
 		sol.getStatusSolicitacao().setId(6);
 		solicitacaoDAO.atualizarSolicitacao(sol);

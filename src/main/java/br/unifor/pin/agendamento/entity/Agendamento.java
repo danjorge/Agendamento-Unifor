@@ -1,7 +1,9 @@
 package br.unifor.pin.agendamento.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,21 +12,42 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
-import br.unifor.pin.agendamento.utils.BaseEntity;
+import org.primefaces.model.ScheduleEvent;
 
 @Entity
 @Table(name="TB_AGENDAMENTO")
-public class Agendamento implements Serializable, BaseEntity {
+public class Agendamento implements Serializable, ScheduleEvent {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Transient
+	private String id;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	@Column(name="id")
+	private Integer idEvent;
+	
+	private String titulo;
+	
+	@Column(name="DSC_AGENDAMENTO_EVENT")
+	private String dscAgendamentoEvent;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataInicio;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataFim;
+	
+	@Column(name="is_All_Day")
+	private boolean isAllDay;
 	
 	@OneToOne
 	@JoinColumn(name="solicitacao_id", nullable=false)
@@ -34,18 +57,70 @@ public class Agendamento implements Serializable, BaseEntity {
 	@JoinColumn(name="status_agendamento", nullable=false)
 	private Status StatusAgendamento;
 	
-	@OneToOne
-	@JoinColumn(name="agendamento_event_id", nullable=false)
-	private AgendamentoEvent agendamentoEvent;
+	@Override
+	public Object getData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return this.getTitulo();
+	}
+
+	@Override
+	public Date getStartDate() {
+		// TODO Auto-generated method stub
+		return this.getDataInicio();
+	}
+
+	@Override
+	public Date getEndDate() {
+		// TODO Auto-generated method stub
+		return this.getDataFim();
+	}
+
+	@Override
+	public boolean isAllDay() {
+		// TODO Auto-generated method stub
+		return this.isAllDay;
+	}
+
+	@Override
+	public String getStyleClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isEditable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return this.getDscAgendamentoEvent();
+	}
 	
 	public Agendamento(){}
-
-	public Integer getId() {
+	
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Integer getIdEvent() {
+		return idEvent;
+	}
+
+	public void setId(Integer idEvent) {
+		this.idEvent = idEvent;
 	}
 
 	public Solicitacao getSolicitacao() {
@@ -56,6 +131,50 @@ public class Agendamento implements Serializable, BaseEntity {
 		this.solicitacao = solicitacao;
 	}
 	
+	public Status getStatusAgendamento() {
+		return StatusAgendamento;
+	}
+
+	public void setStatusAgendamento(Status statusAgendamento) {
+		StatusAgendamento = statusAgendamento;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDscAgendamentoEvent() {
+		return dscAgendamentoEvent;
+	}
+
+	public void setDscAgendamentoEvent(String dscAgendamentoEvent) {
+		this.dscAgendamentoEvent = dscAgendamentoEvent;
+	}
+
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Date getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
+
+	public void setAllDay(boolean isAllDay) {
+		this.isAllDay = isAllDay;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,22 +199,4 @@ public class Agendamento implements Serializable, BaseEntity {
 			return false;
 		return true;
 	}
-
-	public AgendamentoEvent getAgendamentoEvent() {
-		return agendamentoEvent;
-	}
-
-	public void setAgendamentoEvent(AgendamentoEvent agendamentoEvent) {
-		this.agendamentoEvent = agendamentoEvent;
-	}
-
-	public Status getStatusAgendamento() {
-		return StatusAgendamento;
-	}
-
-	public void setStatusAgendamento(Status statusAgendamento) {
-		StatusAgendamento = statusAgendamento;
-	}
-	
-
 }

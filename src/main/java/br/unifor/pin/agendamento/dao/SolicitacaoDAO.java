@@ -36,6 +36,9 @@ public class SolicitacaoDAO {
 								                .getResultList();
 	}
 	
+	public void excluirSolicitacao(Solicitacao solicitacao){
+		entityManager.remove(solicitacao);
+	}
 	
 	public Solicitacao retornaSolicitacaoPorAssunto(Solicitacao solicitacao){
 		return (Solicitacao) entityManager.createQuery("Select s "

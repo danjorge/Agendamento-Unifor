@@ -1,5 +1,6 @@
 package br.unifor.pin.agendamento.bussiness;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Service;
 import br.unifor.pin.agendamento.dao.AgendamentoDAO;
 import br.unifor.pin.agendamento.dao.SolicitacaoDAO;
 import br.unifor.pin.agendamento.entity.Agendamento;
-import br.unifor.pin.agendamento.entity.AgendamentoEvent;
 import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.utils.MessagesUtils;
 
 @Service
 public class AgendamentoBO {
@@ -24,16 +25,21 @@ public class AgendamentoBO {
 		return agendamentoDAO.retornaListaAgendamento();
 	}
 	
-	public List<AgendamentoEvent> buscarTodosAgendamentosEvent(){
-		return agendamentoDAO.retornaListaAgendamentosEvent();
-	}
-	
 	public void salvarAgendamento(Agendamento agendamento){
+		
+		if (agendamento.getDataInicio().after(agendamento.getDataFim()) || agendamento.getDataInicio().after(new Date())){
+			MessagesUtils.error("Verificar datas.");
+			return;
+		}
 		agendamentoDAO.salvarAgendamento(agendamento);
 	}
 	
-	public void salvarAgendamentoEvent(AgendamentoEvent agendamentoEvent){
-		agendamentoDAO.salvarAgendamentoEvent(agendamentoEvent);
+	public Agendamento retornaAgendamentoPorId(Integer agendamentoId){
+		return agendamentoDAO.retornaAgendamentoPorId(agendamentoId);
+	}
+	
+	public void excluirAgendamento(Agendamento agendamento){
+		agendamentoDAO.excluirAgendamento(agendamento);
 	}
 	
 	public Usuarios retornaCoordenadorPorCurso(Usuarios usuario){

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+		<p:panel id="pnlVisualizarSolicitacao" header="Visualizar Agendamento">
+		
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		
+			<p:panelGrid styleClass="noGridBorder">
+				<p:row>
+					<p:column>	
+						<h:outputText value="Título do agendamento:" styleClass="underline"/><br/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.titulo}" styleClass="bold uppercase"/>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>
+					<hr/>
+						<h:outputText value="Descrição do Agendamento:" styleClass="underline" /><br/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dscAgendamentoEvent}" styleClass="bold uppercase" />
+					<hr/>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column colspan="6">					
+						<h:outputText value="Data de início:" styleClass="underline"/><br/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataInicio}" styleClass="bold">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+						</h:outputText>
+					</p:column>
+					<p:column>
+					
+						<h:outputText value="Data do fim:" styleClass="underline"/><br/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataFim}" styleClass="bold" >
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+						</h:outputText>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>
+					<hr/>
+						<h:outputText value="Assunto da solicitação:" styleClass="underline"/><br/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.solicitacao.descricao}" styleClass="bold uppercase"/>
+					</p:column>
+				</p:row>
+				
+				
+				<p:outputPanel rendered="#{not empty agendamentoManagedBean.agendamentoVisualizacao.solicitacao.respostaSolicitacao
+				 						   or agendamentoManagedBean.agendamentoVisualizacao.solicitacao.respostaSolicitacao != null}">
+				 <p:row>
+					<p:column>
+					<hr/>
+						<h:outputText value="Resposta da solicitação:" styleClass="underline"/><br/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.solicitacao.respostaSolicitacao}" styleClass="bold uppercase"/>
+					</p:column>
+				 </p:row>
+				</p:outputPanel>
+				
+				<p:row>
+					<p:column>
+					<hr/>
+						<h:form>
+							<p:commandButton value="Voltar" action="#{agendamentoManagedBean.voltarPrincipal()}" icon="ui-icon ui-icon-arrowreturnthick-1-w" ajax="false"/>
+						</h:form>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+	</ui:define>
+	
+	
+</ui:composition>

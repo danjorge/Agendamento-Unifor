@@ -35,13 +35,16 @@
 		 
 		            <p:outputLabel for="to" value="Até:" />
 		            <p:calendar id="to" value="#{agendamentoManagedBean.event.endDate}" timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" locale="br"/>
+		            
+		            <p:outputLabel for="allDay" value="Dia todo:" />
+            		<h:selectBooleanCheckbox id="allDay" value="#{agendamentoManagedBean.event.allDay}" />
 		            		 
 		            <p:commandButton id="addButton" value="Salvar" actionListener="#{agendamentoManagedBean.addEvent()}" 
 		            				 oncomplete="if (args &amp;&amp; !args.validationFailed) PF('agendamento').update();PF('eventDialog').hide();" />
         		</h:panelGrid>
     		</p:dialog>
 			
-			<p:commandButton id="btnVoltar" value="Voltar" action="#" ajax="false"/>
+			<p:commandButton id="btnVoltar" value="Voltar" action="#" ajax="false" icon="ui-icon ui-icon-arrowreturnthick-1-w"/>
 			
 		</h:form>
 		

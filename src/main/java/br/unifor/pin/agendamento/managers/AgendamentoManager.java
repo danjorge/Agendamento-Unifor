@@ -18,11 +18,11 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.agendamento.bussiness.AgendamentoBO;
 import br.unifor.pin.agendamento.bussiness.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Agendamento;
-import br.unifor.pin.agendamento.entity.AgendamentoEvent;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Status;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
+import br.unifor.pin.agendamento.utils.Navigation;
 
 
 @ViewScoped
@@ -43,10 +43,9 @@ public class AgendamentoManager {
 	private ScheduleEvent event = new DefaultScheduleEvent();
 	private Solicitacao sol;
 	private Agendamento agendamento;
-	private AgendamentoEvent agendamentoEvent;
+	private Agendamento agendamentoVisualizacao;
 	
 	private List<Agendamento> listaAgendamento;
-	private List<AgendamentoEvent> listaAgendamentoEvent;
 	
 	@PostConstruct
 	public void init(){
@@ -56,9 +55,9 @@ public class AgendamentoManager {
 	}
 	
 	public void carregarListas(){
-		listaAgendamentoEvent = agendamentoBO.buscarTodosAgendamentosEvent();
+		listaAgendamento = agendamentoBO.buscarTodosAgendamentos();
 		
-		for(AgendamentoEvent event : listaAgendamentoEvent){
+		for(Agendamento event : listaAgendamento){
 			this.event = (ScheduleEvent) event;
 			eventModel.addEvent(this.event);
 		}
@@ -66,27 +65,26 @@ public class AgendamentoManager {
 		
 	public void addEvent(){
 		//guarda as informações do evento em tela no banco
-		agendamentoEvent = new AgendamentoEvent();
-		agendamentoEvent.setTitulo(event.getTitle());
-		agendamentoEvent.setDscAgendamentoEvent(event.getDescription());
-		agendamentoEvent.setDataInicio(event.getStartDate());
-		agendamentoEvent.setDataFim(event.getEndDate());
+		agendamento = new Agendamento();
+		agendamento.setTitulo(event.getTitle());
+		agendamento.setDscAgendamentoEvent(event.getDescription());
+		agendamento.setDataInicio(event.getStartDate());
+		agendamento.setDataFim(event.getEndDate());
+		agendamento.setAllDay(event.isAllDay());
 		
 		//guarda as informações da solicitação e do evento em tela no banco
 		sol.getStatusSolicitacao().setId(3);
-		agendamento = new Agendamento();
 		agendamento.setSolicitacao(sol);
 		agendamento.setStatusAgendamento(new Status());
 		agendamento.getStatusAgendamento().setId(3);
-		agendamento.setAgendamentoEvent(agendamentoEvent);
 		
 		//salva o agendamento
-		agendamentoBO.salvarAgendamentoEvent(agendamentoEvent);
 		agendamentoBO.salvarAgendamento(agendamento);
 		
 		//atualiza a solicitacao
 		solicitacaoBO.atualizarSolicitacao(sol);
 		
+		//adiciona o agendamento à lista de agendamentos
 		listaAgendamento.add(agendamento);
 		
 		if(event.getId() == null) {
@@ -98,6 +96,15 @@ public class AgendamentoManager {
 		event = new DefaultScheduleEvent();
 	}
 	
+	public String visualizarAgendamento(Agendamento agendamento){
+		agendamentoVisualizacao = agendamentoBO.retornaAgendamentoPorId(agendamento.getIdEvent());
+		return Navigation.VISUALIZARAGENDAMENTO;
+	}
+	
+	public void excluirAgendamento(Agendamento agendamento){
+		agendamentoBO.excluirAgendamento(agendamento);
+	}
+	
 	public void onEventSelect(SelectEvent selectEvent){
 		event = (ScheduleEvent) selectEvent.getObject();
 	}
@@ -107,11 +114,15 @@ public class AgendamentoManager {
 		sol = (Solicitacao) sessao.recuperaObjetoSessao("solicitacao");
 	}
 	
-	
 	public Usuarios retornaCoordenador(){
 		return agendamentoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario"));
 	}
-
+	
+	public String voltarPrincipal(){
+		return Navigation.PRINCIPAL;
+	}
+	
+	//-------------------------------------------------GETTERS AND SETTERS -----------------------------------------------------
 	public List<Agendamento> getListaAgendamento() {
 		return listaAgendamento;
 	}
@@ -128,50 +139,35 @@ public class AgendamentoManager {
 		this.eventModel = eventModel;
 	}
 
-
 	public ScheduleEvent getEvent() {
 		return event;
 	}
-
 
 	public void setEvent(ScheduleEvent event) {
 		this.event = event;
 	}
 
-
 	public Solicitacao getSol() {
 		return sol;
 	}
-
 
 	public void setSol(Solicitacao sol) {
 		this.sol = sol;
 	}
 
-
 	public Agendamento getAgendamento() {
 		return agendamento;
 	}
-
 
 	public void setAgendamento(Agendamento agendamento) {
 		this.agendamento = agendamento;
 	}
 
-	public AgendamentoEvent getAgendamentoEvent() {
-		return agendamentoEvent;
+	public Agendamento getAgendamentoVisualizacao() {
+		return agendamentoVisualizacao;
 	}
 
-	public void setAgendamentoEvent(AgendamentoEvent agendamentoEvent) {
-		this.agendamentoEvent = agendamentoEvent;
+	public void setAgendamentoVisualizacao(Agendamento agendamentoVisualizacao) {
+		this.agendamentoVisualizacao = agendamentoVisualizacao;
 	}
-
-	public List<AgendamentoEvent> getListaAgendamentoEvent() {
-		return listaAgendamentoEvent;
-	}
-
-	public void setListaAgendamentoEvent(List<AgendamentoEvent> listaAgendamentoEvent) {
-		this.listaAgendamentoEvent = listaAgendamentoEvent;
-	}
-
 }

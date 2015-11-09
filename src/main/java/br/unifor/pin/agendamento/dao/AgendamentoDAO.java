@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.agendamento.entity.Agendamento;
-import br.unifor.pin.agendamento.entity.AgendamentoEvent;
 
 @Repository
 @Transactional(propagation = Propagation.REQUIRED)
@@ -25,17 +24,15 @@ public class AgendamentoDAO {
 								   				.getResultList();
 	}
 	
-	public List<AgendamentoEvent> retornaListaAgendamentosEvent(){
-		return (List<AgendamentoEvent>) entityManager.createQuery("Select agendEvent from AgendamentoEvent agendEvent")
-													 .getResultList();
+	public Agendamento retornaAgendamentoPorId(Integer agendamentoId){
+		return (Agendamento) entityManager.find(Agendamento.class, agendamentoId);
 	}
-	
 	
 	public void salvarAgendamento(Agendamento agendamento){
 		entityManager.persist(agendamento);
 	}
 	
-	public void salvarAgendamentoEvent(AgendamentoEvent agendamentoEvent){
-		entityManager.persist(agendamentoEvent);
+	public void excluirAgendamento(Agendamento agendamento){
+		entityManager.remove(agendamento);
 	}
 }

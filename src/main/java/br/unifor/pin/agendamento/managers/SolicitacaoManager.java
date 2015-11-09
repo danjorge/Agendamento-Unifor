@@ -66,6 +66,10 @@ public class SolicitacaoManager {
 		return Navigation.PRINCIPAL;
 	}
 	
+	public void excluirSolicitacao(Solicitacao solicitacao){
+		solicitacaoBO.excluirSolicitacao(solicitacao);
+	}
+	
 	public void limparSolicitacao(){
 		solicitacao.setAssunto("");
 		solicitacao.setDescricao("");

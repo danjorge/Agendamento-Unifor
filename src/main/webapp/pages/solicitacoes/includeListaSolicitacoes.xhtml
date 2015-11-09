@@ -40,7 +40,8 @@
 				
 				<p:commandLink title="Cancelar solicitação" 
 				               ajax="false" 
-				               action="#">
+				               action="#{solicitacaoManagedBean.excluirSolicitacao(solicitacao)}"
+				               update=":listaSolicitacoes">
 							   <p:graphicImage name="/img/cancel.png" width="24"/>
 				</p:commandLink>
 			</p:column>

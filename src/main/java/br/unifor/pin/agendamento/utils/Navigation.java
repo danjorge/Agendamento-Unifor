@@ -16,6 +16,7 @@ public class Navigation {
 	public static final String VISUALIZARSOLICITACAO = "visualizarSolicitacao";
 	public static final String PESQUISARSOLICITACAO = "pesquisarSolicitacao";
 	public static final String AGENDAR = "agendar";
+	public static final String VISUALIZARAGENDAMENTO = "visualizarAgendamento";
 	public static final String CADASTROUSUARIO = "manutencao";
 
 }

@@ -11,7 +11,7 @@
 					 styleClass="datatable">
 					 
 			<p:column headerText="Nº Agendamento" styleClass="text-center">
-				<h:outputText value="#{agendamento.id}" />
+				<h:outputText value="#{agendamento.idEvent}" />
 			</p:column>
 			
 			<p:column headerText="Nº Solicitação" styleClass="text-center">
@@ -30,7 +30,7 @@
 			</p:column>
 			
 			<p:column headerText="Data Agendamento" styleClass="text-center">
-				<h:outputText value="#{agendamento.agendamentoEvent.dataInicio}" >
+				<h:outputText value="#{agendamento.dataInicio}" >
 					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"/>
 				</h:outputText>
 			</p:column>
@@ -38,8 +38,14 @@
 			<p:column headerText="Ações" styleClass="text-center">
 				<p:commandLink title="Visualizar Agendamento" 
 						   ajax="false" 
-						   action="#">
+						   action="#{agendamentoManagedBean.visualizarAgendamento(agendamento)}">
 						   <p:graphicImage name="/img/visualizar.png" width="24" />
+				</p:commandLink>
+				
+				<p:commandLink title="Cancelar agendamento" 
+				               ajax="false" 
+				               action="#{agendamentoManagedBean.excluirAgendamento(agendamento)}">
+							   <p:graphicImage name="/img/cancel.png" width="24"/>
 				</p:commandLink>
 			</p:column>
 		</p:dataTable>

@@ -139,6 +139,14 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>/pages/principal/principal.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarAgendamento</from-outcome>
+			<to-view-id>/pages/agendamento/visualizarAgendamento.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<!-- Agendamento Fim -->
 	
 	<!-- Manutenção início -->
