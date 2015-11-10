@@ -19,7 +19,7 @@
 			</p:column>
 			
 			<p:column headerText="Assunto" styleClass="text-center">
-				<h:outputText value="#{agendamento.solicitacao.assunto}" />
+				<h:outputText value="#{agendamento.solicitacao.assunto.toUpperCase()}" />
 			</p:column>
 			
 			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{agendamento.solicitacao.usuario.papel.id != 1}">
@@ -44,7 +44,7 @@
 				
 				<p:commandLink title="Cancelar agendamento" 
 				               ajax="false" 
-				               action="#{agendamentoManagedBean.excluirAgendamento(agendamento)}">
+				               action="#{agendamentoManagedBean.fecharAgendamento(agendamento)}">
 							   <p:graphicImage name="/img/cancel.png" width="24"/>
 				</p:commandLink>
 			</p:column>

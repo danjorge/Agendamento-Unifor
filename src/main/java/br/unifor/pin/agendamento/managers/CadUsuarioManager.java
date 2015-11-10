@@ -52,24 +52,19 @@ public class CadUsuarioManager {
 	
 	public String salvar(){
 		usuario = new Usuarios();
-		usuario.setNome(nome);
+		usuario.setNome(nome.toUpperCase());
 		usuario.setMatricula(matricula);
 		usuario.setSenha(Encripta.encripta(senha));
 		usuario.setCursos(new ArrayList<Cursos>());
 		usuario.getCursos().add(cursos);
 		usuario.setPapel(papeis);
+		usuario.setAtivo(true);
+		
 		usuarioBO.salvar(usuario);
 		MessagesUtils.info("Usuário salvo com sucesso!");
-		listUsuario.lista();
 		
 		return Navigation.SUCESSO;
-	}
-	
-	public String preparaSalvar(){
-		this.limpaDados();
-		
-		return Navigation.SUCESSO;
-	}
+	}	
 	
 	public String voltar(){
 		limpaDados();
@@ -79,6 +74,11 @@ public class CadUsuarioManager {
 			
 	public void limpaDados(){
 		usuario = null;
+		nome = null;
+		matricula = null;
+		senha = null;
+		cursos = new Cursos();
+		papeis = new Papeis();
 	}
 
 	public String getNome() {

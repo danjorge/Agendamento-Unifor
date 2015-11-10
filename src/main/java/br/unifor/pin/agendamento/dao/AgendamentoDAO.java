@@ -32,7 +32,7 @@ public class AgendamentoDAO {
 		entityManager.persist(agendamento);
 	}
 	
-	public void excluirAgendamento(Agendamento agendamento){
-		entityManager.remove(agendamento);
+	public void atualizarAgendamento(Agendamento agendamento){
+		entityManager.merge(agendamento);
 	}
 }

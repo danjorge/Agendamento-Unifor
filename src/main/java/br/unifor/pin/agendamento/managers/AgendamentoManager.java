@@ -37,6 +37,9 @@ public class AgendamentoManager {
 	private SolicitacaoBO solicitacaoBO;
 	
 	@Autowired
+	private SolicitacaoManager solicitacaoManagedBean;
+	
+	@Autowired
 	private SessionContext sessao;
 	
 	private ScheduleModel eventModel;
@@ -49,7 +52,6 @@ public class AgendamentoManager {
 	
 	@PostConstruct
 	public void init(){
-		listaAgendamento = agendamentoBO.buscarTodosAgendamentos();
 		eventModel = new DefaultScheduleModel();
 		carregarListas();
 	}
@@ -73,10 +75,10 @@ public class AgendamentoManager {
 		agendamento.setAllDay(event.isAllDay());
 		
 		//guarda as informações da solicitação e do evento em tela no banco
-		sol.getStatusSolicitacao().setId(3);
+		sol.getStatusSolicitacao().setId(4);
 		agendamento.setSolicitacao(sol);
 		agendamento.setStatusAgendamento(new Status());
-		agendamento.getStatusAgendamento().setId(3);
+		agendamento.getStatusAgendamento().setId(4);
 		
 		//salva o agendamento
 		agendamentoBO.salvarAgendamento(agendamento);
@@ -94,6 +96,8 @@ public class AgendamentoManager {
 		}
 		
 		event = new DefaultScheduleEvent();
+		
+		solicitacaoManagedBean.carregaListas();
 	}
 	
 	public String visualizarAgendamento(Agendamento agendamento){
@@ -101,8 +105,8 @@ public class AgendamentoManager {
 		return Navigation.VISUALIZARAGENDAMENTO;
 	}
 	
-	public void excluirAgendamento(Agendamento agendamento){
-		agendamentoBO.excluirAgendamento(agendamento);
+	public void fecharAgendamento(Agendamento agendamento){
+		agendamentoBO.fecharAgendamento(agendamento);
 	}
 	
 	public void onEventSelect(SelectEvent selectEvent){

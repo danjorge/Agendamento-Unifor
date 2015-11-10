@@ -29,14 +29,13 @@
 				</p:row>
 				
 				<p:row>
-					<p:column colspan="6">					
+					<p:column>					
 						<h:outputText value="Data de início:" styleClass="underline"/><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataInicio}" styleClass="bold">
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
 						</h:outputText>
 					</p:column>
-					<p:column>
-					
+					<p:column colspan="6">					
 						<h:outputText value="Data do fim:" styleClass="underline"/><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataFim}" styleClass="bold" >
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>

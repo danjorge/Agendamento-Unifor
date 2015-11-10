@@ -38,8 +38,9 @@ public class AgendamentoBO {
 		return agendamentoDAO.retornaAgendamentoPorId(agendamentoId);
 	}
 	
-	public void excluirAgendamento(Agendamento agendamento){
-		agendamentoDAO.excluirAgendamento(agendamento);
+	public void fecharAgendamento(Agendamento agendamento){
+		agendamento.getStatusAgendamento().setId(5);
+		agendamentoDAO.atualizarAgendamento(agendamento);
 	}
 	
 	public Usuarios retornaCoordenadorPorCurso(Usuarios usuario){

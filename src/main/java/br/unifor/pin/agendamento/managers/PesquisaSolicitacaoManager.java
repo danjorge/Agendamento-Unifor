@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import br.unifor.pin.agendamento.bussiness.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Status;
+import br.unifor.pin.agendamento.utils.Navigation;
 
 
 @RequestScoped
@@ -35,6 +36,14 @@ public class PesquisaSolicitacaoManager {
 	
 	public void pesquisarSolicitacao(){
 		listaSolicitacoes = solicitacaoBO.pesquisarSolicitacao(pesquisaSolicitacao, statusSolicitacao);
+	}
+	
+	public String visualizarSolicitacao(Solicitacao solicitacao){
+		if(solicitacao.getStatusSolicitacao().getId() == 1 || solicitacao.getStatusSolicitacao().getId() == 2 || solicitacao.getStatusSolicitacao().getId() == 3){
+			return Navigation.VISUALIZARSOLICITACAO;
+		} else {
+			return Navigation.VISUALIZARAGENDAMENTO;
+		}
 	}
 	
 	public void limparPesquisa(){

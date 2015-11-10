@@ -66,8 +66,8 @@ public class SolicitacaoManager {
 		return Navigation.PRINCIPAL;
 	}
 	
-	public void excluirSolicitacao(Solicitacao solicitacao){
-		solicitacaoBO.excluirSolicitacao(solicitacao);
+	public void fecharSolicitacao(Solicitacao solicitacao){
+		solicitacaoBO.fecharSolicitacao(solicitacao);
 	}
 	
 	public void limparSolicitacao(){

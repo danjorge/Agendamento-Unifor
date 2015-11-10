@@ -36,10 +36,6 @@ public class SolicitacaoDAO {
 								                .getResultList();
 	}
 	
-	public void excluirSolicitacao(Solicitacao solicitacao){
-		entityManager.remove(solicitacao);
-	}
-	
 	public Solicitacao retornaSolicitacaoPorAssunto(Solicitacao solicitacao){
 		return (Solicitacao) entityManager.createQuery("Select s "
 													 + "from Solicitacao s "
@@ -93,8 +89,8 @@ public class SolicitacaoDAO {
 														   .getResultList();
 	}
 	
-	public List<Status> retornaStatusSolicitacao(){
-		return (List<Status>) entityManager.createQuery("Select s from Status s where s.descricao like ('%' || 'SOLICITAÇÃO' || '%')")
+	public List<Status> retornaStatus(){
+		return (List<Status>) entityManager.createQuery("Select s from Status s ")
 										   .getResultList();
 	}
 	

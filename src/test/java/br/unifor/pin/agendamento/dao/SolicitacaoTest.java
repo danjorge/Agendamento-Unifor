@@ -56,7 +56,7 @@ public class SolicitacaoTest {
 	@Test
 	public void atualizarSolicitacao(){
 		final String assunto = "Assunto Teste";
-		Solicitacao solicitacao = solicitacaoDAO.recuperaSolicitacaoPorId(1);
+		Solicitacao solicitacao = solicitacaoDAO.recuperaSolicitacaoPorId(49);
 		
 		solicitacao.setAssunto(assunto);
 		

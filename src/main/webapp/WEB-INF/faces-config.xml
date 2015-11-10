@@ -15,71 +15,21 @@
 	
 	<!-- Login Inicio -->
 	<navigation-rule>
-		<from-view-id>/login/login.xhtml</from-view-id>
+		<from-view-id>/pages/login/login.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
 			<to-view-id>/pages/principal/principal.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>fracasso</from-outcome>
-			<to-view-id>/login/login.xhtml</to-view-id>
+			<to-view-id>/pages/login/login.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cadastro</from-outcome>
-			<to-view-id>/login/cadUsuario.xhtml</to-view-id>
+			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<!-- Login Fim -->
-
-	<!-- Usuarios Inicio -->
-	<navigation-rule>
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/login/cadUsuario.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>
-		<from-view-id>/login/cadUsuario.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>voltar</from-outcome>
-			<to-view-id>/login/login.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/login/cadUsuario.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>atualiza</from-outcome>
-			<to-view-id>/pages/usuario/atualizaUsuario.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/login/cadUsuario.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/pages/usuario/atualizaUsuario.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<!-- Usuarios Fim -->
 	
 	<!-- Solicitação início -->
 	<navigation-rule>
@@ -109,7 +59,15 @@
 		<from-view-id>/pages/principal/principal.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>pesquisarSolicitacao</from-outcome>
-			<to-view-id>/pages/solicitacoes/pesquisarSolicitacao.xhtml</to-view-id>
+			<to-view-id>/pages/pesquisa/pesquisarSolicitacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/usuario/cadUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrarSolicitacao</from-outcome>
+			<to-view-id>/pages/solicitacoes/cadastroSolicitacao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<!-- Solicitação fim -->
@@ -135,7 +93,7 @@
 		<from-view-id>/pages/agendamento/agendamento.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>pesquisarSolicitacao</from-outcome>
-			<to-view-id>/pages/solicitacoes/pesquisarSolicitacao.xhtml</to-view-id>
+			<to-view-id>/pages/pesquisa/pesquisarSolicitacao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -147,13 +105,38 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>/pages/agendamento/agendamento.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>principal</from-outcome>
+			<to-view-id>/pages/principal/principal.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<!-- Agendamento Fim -->
+	
+	<!-- Pesquisa Início -->
+	<navigation-rule>
+		<from-view-id>/pages/pesquisa/pesquisarSolicitacao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarSolicitacao</from-outcome>
+			<to-view-id>/pages/solicitacoes/visualizarSolicitacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/pesquisa/pesquisarSolicitacao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarAgendamento</from-outcome>
+			<to-view-id>/pages/agendamento/visualizarAgendamento.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Pesquisa Fim -->
 	
 	<!-- Manutenção início -->
 	<navigation-rule>
 		<navigation-case>
 			<from-outcome>manutencao</from-outcome>
-			<to-view-id>/login/cadUsuario.xhtml</to-view-id>
+			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<!-- Manutenção fim -->
