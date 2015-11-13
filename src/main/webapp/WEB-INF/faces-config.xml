@@ -112,6 +112,15 @@
 			<to-view-id>/pages/principal/principal.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/agendamento/visualizarAgendamento.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>agendar</from-outcome>
+			<to-view-id>/pages/agendamento/agendamento.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<!-- Agendamento Fim -->
 	
 	<!-- Pesquisa Início -->

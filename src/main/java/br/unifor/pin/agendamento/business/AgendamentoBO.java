@@ -1,9 +1,10 @@
-package br.unifor.pin.agendamento.bussiness;
+package br.unifor.pin.agendamento.business;
 
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import br.unifor.pin.agendamento.dao.AgendamentoDAO;
@@ -13,6 +14,7 @@ import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 
 @Service
+@Controller("agendamentoBO")
 public class AgendamentoBO {
 
 	@Autowired

@@ -15,8 +15,8 @@ import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussiness.AgendamentoBO;
-import br.unifor.pin.agendamento.bussiness.SolicitacaoBO;
+import br.unifor.pin.agendamento.business.AgendamentoBO;
+import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Agendamento;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Status;
@@ -47,6 +47,8 @@ public class AgendamentoManager {
 	private Solicitacao sol;
 	private Agendamento agendamento;
 	private Agendamento agendamentoVisualizacao;
+	
+	private String viewOfSchedule;
 	
 	private List<Agendamento> listaAgendamento;
 	
@@ -102,7 +104,13 @@ public class AgendamentoManager {
 	
 	public String visualizarAgendamento(Agendamento agendamento){
 		agendamentoVisualizacao = agendamentoBO.retornaAgendamentoPorId(agendamento.getIdEvent());
+		setInitialDate(agendamento);
 		return Navigation.VISUALIZARAGENDAMENTO;
+	}
+	
+	public String irParaAgendamentos(){
+		setViewOfSchedule("agendaDay");
+		return Navigation.AGENDAR;
 	}
 	
 	public void fecharAgendamento(Agendamento agendamento){
@@ -124,6 +132,17 @@ public class AgendamentoManager {
 	
 	public String voltarPrincipal(){
 		return Navigation.PRINCIPAL;
+	}
+	
+	public Date getInitialDate(){
+		if(agendamento != null){
+			return agendamento.getDataInicio();
+		}
+		return null;
+	}
+	
+	public void setInitialDate(Agendamento agendamento){
+		this.agendamento = agendamento;
 	}
 	
 	//-------------------------------------------------GETTERS AND SETTERS -----------------------------------------------------
@@ -173,5 +192,13 @@ public class AgendamentoManager {
 
 	public void setAgendamentoVisualizacao(Agendamento agendamentoVisualizacao) {
 		this.agendamentoVisualizacao = agendamentoVisualizacao;
+	}
+
+	public String getViewOfSchedule() {
+		return viewOfSchedule;
+	}
+
+	public void setViewOfSchedule(String viewOfSchedule) {
+		this.viewOfSchedule = viewOfSchedule;
 	}
 }

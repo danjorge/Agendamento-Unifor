@@ -9,7 +9,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussiness.SolicitacaoBO;
+import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
@@ -25,6 +25,9 @@ public class SolicitacaoManager {
 	private SolicitacaoBO solicitacaoBO;
 	
 	@Autowired
+	private AgendamentoManager agendamentoManagedBean;
+	
+	@Autowired
 	private SessionContext sessao;
 	
 	private Solicitacao solicitacao;
@@ -37,11 +40,14 @@ public class SolicitacaoManager {
 	// -----------------------------------------------------------
 	private boolean exibeCampoResponderSolicitacao = false;
 	private boolean escondeBtnResponderSolicitacao = false;
-	// -----------------------------------------------------------	
+	// -----------------------------------------------------------
+	
+	private boolean edicao;
 	
 	@PostConstruct
 	public void init(){
 		solicitacao = new Solicitacao();
+		edicao = false;
 	}
 	
 	public void carregaListas(){
@@ -52,14 +58,27 @@ public class SolicitacaoManager {
 	//-------------------------------------------------------------------------------------	
 	// TELA CADASTRO SOLICITAÇÃO
 	//-------------------------------------------------------------------------------------
-	public String salvarSolicitacao(){
-		if(solicitacao.getAssunto() != null && solicitacao.getDescricao() != null){
-			solicitacaoBO.salvarSolicitacao(solicitacao);
-			MessagesUtils.info("Solicitação salva com sucesso");
-			listaSolicitacoes.add(solicitacao);
+	
+	public String headerPanelPage(){
+		if(edicao){
+			return "Edição de Solicitação";
 		} else {
-			MessagesUtils.error("Algo errado aconteceu. Preencha todos os campos e tente novamente.");
-			return Navigation.CADASTRARSOLICITACAO;
+			return "Cadastro de Solicitação";
+		}
+	}
+	
+	public String salvarSolicitacao(){
+		if(!edicao){
+			if(solicitacao.getAssunto() != null && solicitacao.getDescricao() != null){
+				solicitacaoBO.salvarSolicitacao(solicitacao);
+				MessagesUtils.info("Solicitação salva com sucesso");
+				listaSolicitacoes.add(solicitacao);
+			} else {
+				MessagesUtils.error("Algo errado aconteceu. Preencha todos os campos e tente novamente.");
+				return Navigation.CADASTRARSOLICITACAO;
+			}
+		} else {
+			solicitacaoBO.atualizarSolicitacao(solicitacao);
 		}
 		carregaListas();
 		
@@ -89,6 +108,12 @@ public class SolicitacaoManager {
 	//-------------------------------------------------------------------------------------
 	// TELA PRINCIPAL
 	//-------------------------------------------------------------------------------------
+	public String editarSolicitacao(Solicitacao sol){
+		setEdicao(true);
+		solicitacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
+		return Navigation.CADASTRARSOLICITACAO;
+	}
+	
 	public String visualizarSolicitacao(Solicitacao sol){
 		solicitacaoVisualizacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
 		sessao.setarObjetoSessao("solicitacao", solicitacaoVisualizacao);
@@ -121,6 +146,8 @@ public class SolicitacaoManager {
 	}
 	
 	public String preparaAgendamento(){
+		agendamentoManagedBean.setInitialDate(null);
+		agendamentoManagedBean.setViewOfSchedule("month");
 		return Navigation.AGENDAR;
 	}
 	//-------------------------------------------------------------------------------------	
@@ -179,4 +206,11 @@ public class SolicitacaoManager {
 		this.listaRespostasSolicitacoes = listaRespostasSolicitacoes;
 	}
 
+	public boolean isEdicao() {
+		return edicao;
+	}
+
+	public void setEdicao(boolean edicao) {
+		this.edicao = edicao;
+	}
 }

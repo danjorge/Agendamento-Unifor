@@ -9,7 +9,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussiness.UsuarioBO;
+import br.unifor.pin.agendamento.business.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
@@ -64,6 +64,7 @@ public class CadUsuarioManager {
 		MessagesUtils.info("Usuário salvo com sucesso!");
 		
 		return Navigation.SUCESSO;
+		
 	}	
 	
 	public String voltar(){

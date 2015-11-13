@@ -6,7 +6,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussiness.MenuBO;
+import br.unifor.pin.agendamento.business.MenuBO;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Navigation;
 
@@ -38,10 +38,12 @@ public class MenuManagedBean {
 	}
 	
 	public String principal(){
+		menuBO.limparSessao();
 		return Navigation.PRINCIPAL;
 	}
 	
 	public String pesquisarSolicitacao(){
+		menuBO.limparSessao();
 		return Navigation.PESQUISARSOLICITACAO;
 	}
 	

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#login#login.xhtml"
+  PATH="/pages/login/login.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#login#login.xhtml:0" NAME="item"
+   PATH="/pages/login/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#pages#principal#principal.xhtml"
+    NAME="output" PATH="/pages/principal/principal.xhtml"
+    TARGET="rules:#pages#principal#principal.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="fracasso::#pages#login#login.xhtml"
+    NAME="output1" PATH="/pages/login/login.xhtml"
+    TARGET="rules:#pages#login#login.xhtml" TITLE="fracasso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastro::#pages#usuario#cadUsuario.xhtml"
+    NAME="output2" PATH="/pages/usuario/cadUsuario.xhtml"
+    TARGET="rules:#pages#usuario#cadUsuario.xhtml" TITLE="cadastro" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,225,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principal::#pages#principal#principal.xhtml"
+    NAME="output" PATH="/pages/principal/principal.xhtml"
+    TARGET="rules:#pages#principal#principal.xhtml" TITLE="principal" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#principal#principal.xhtml"
+  PATH="/pages/principal/principal.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:0"
+   NAME="item" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarSolicitacao::#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    TITLE="cadastrarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:1"
+   NAME="item1" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizarSolicitacao::#pages#solicitacoes#visualizarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
+    TITLE="visualizarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:2"
+   NAME="item2" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pesquisarSolicitacao::#pages#pesquisa#pesquisarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml"
+    TARGET="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml"
+    TITLE="pesquisarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:3"
+   NAME="item3" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizarAgendamento::#pages#agendamento#visualizarAgendamento.xhtml"
+    NAME="output" PATH="/pages/agendamento/visualizarAgendamento.xhtml"
+    TARGET="rules:#pages#agendamento#visualizarAgendamento.xhtml"
+    TITLE="visualizarAgendamento" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#usuario#cadUsuario.xhtml"
+  PATH="/pages/usuario/cadUsuario.xhtml" SHAPE="272,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#usuario#cadUsuario.xhtml:0" NAME="item"
+   PATH="/pages/usuario/cadUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarSolicitacao::#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    TITLE="cadastrarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
+  PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml"
+  SHAPE="752,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml:0"
+   NAME="item" PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="agendar::#pages#agendamento#agendamento.xhtml" NAME="output"
+    PATH="/pages/agendamento/agendamento.xhtml"
+    TARGET="rules:#pages#agendamento#agendamento.xhtml" TITLE="agendar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#agendamento#agendamento.xhtml"
+  PATH="/pages/agendamento/agendamento.xhtml" SHAPE="272,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#agendamento#agendamento.xhtml:0"
+   NAME="item" PATH="/pages/agendamento/agendamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarSolicitacao::#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    TITLE="cadastrarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#agendamento#agendamento.xhtml:1"
+   NAME="item1" PATH="/pages/agendamento/agendamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pesquisarSolicitacao::#pages#pesquisa#pesquisarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml"
+    TARGET="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml"
+    TITLE="pesquisarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#agendamento#agendamento.xhtml:2"
+   NAME="item2" PATH="/pages/agendamento/agendamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="principal::#pages#principal#principal.xhtml"
+    NAME="output" PATH="/pages/principal/principal.xhtml"
+    TARGET="rules:#pages#principal#principal.xhtml" TITLE="principal" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml"
+  PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml" SHAPE="528,225,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml:0"
+   NAME="item" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizarSolicitacao::#pages#solicitacoes#visualizarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
+    TITLE="visualizarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml:1"
+   NAME="item1" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="visualizarAgendamento::#pages#agendamento#visualizarAgendamento.xhtml"
+    NAME="output" PATH="/pages/agendamento/visualizarAgendamento.xhtml"
+    TARGET="rules:#pages#agendamento#visualizarAgendamento.xhtml"
+    TITLE="visualizarAgendamento" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="manutencao::#pages#usuario#cadUsuario.xhtml"
+    NAME="output" PATH="/pages/usuario/cadUsuario.xhtml"
+    TARGET="rules:#pages#usuario#cadUsuario.xhtml" TITLE="manutencao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,513,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logoff::#logoff.xhtml" NAME="output"
+    PATH="/logoff.xhtml" TARGET="rules:#logoff.xhtml" TITLE="logoff" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#agendamento#visualizarAgendamento.xhtml"
+  PATH="/pages/agendamento/visualizarAgendamento.xhtml"
+  SHAPE="752,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#agendamento#visualizarAgendamento.xhtml:0"
+   NAME="item" PATH="/pages/agendamento/visualizarAgendamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="agendar::#pages#agendamento#agendamento.xhtml" NAME="output"
+    PATH="/pages/agendamento/agendamento.xhtml"
+    TARGET="rules:#pages#agendamento#agendamento.xhtml" TITLE="agendar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#logoff.xhtml" PATH="/logoff.xhtml"
+  SHAPE="240,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+  PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+  SHAPE="528,401,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

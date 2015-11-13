@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.bussiness;
+package br.unifor.pin.agendamento.business;
 
 import java.util.List;
 
@@ -92,6 +92,7 @@ public class UsuarioBO {
 		try {
 			usuario = usuarioDAO.buscaPorId(usuario.getId());
 		} catch (DAOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		usuarioDAO.excluir(usuario);

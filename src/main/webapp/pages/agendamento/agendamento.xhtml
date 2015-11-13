@@ -11,7 +11,8 @@
 		
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 			
-			<p:schedule id="calendarAgendamento" value="#{agendamentoManagedBean.eventModel}" widgetVar="agendamento" timeZone="GMT-3" locale="pt-br">
+			<p:schedule id="calendarAgendamento" value="#{agendamentoManagedBean.eventModel}" widgetVar="agendamento" timeZone="GMT-3" locale="pt-br" 
+						initialDate="#{agendamentoManagedBean.initialDate}" view="#{agendamentoManagedBean.viewOfSchedule}">
 				<p:ajax event="dateSelect" listener="#{agendamentoManagedBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
             	<p:ajax event="eventSelect" listener="#{agendamentoManagedBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
 			</p:schedule>
@@ -44,7 +45,7 @@
         		</h:panelGrid>
     		</p:dialog>
 			
-			<p:commandButton id="btnVoltar" value="Voltar" action="#{agendamentoManagedBean.voltarPrincipal()}" ajax="false" icon="ui-icon ui-icon-arrowreturnthick-1-w"/>
+			<p:commandButton id="btnVoltar" value="Voltar" action="#{agendamentoManagedBean.voltarPrincipal()}" ajax="false" immediate="true" icon="ui-icon ui-icon-arrowreturnthick-1-w"/>
 			
 		</h:form>
 		

@@ -41,6 +41,10 @@ a {
 	font-style: normal;
 }
 
+.image-button{
+	margin-right: 5px;
+}
+
 .ui-widget{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;	
 }

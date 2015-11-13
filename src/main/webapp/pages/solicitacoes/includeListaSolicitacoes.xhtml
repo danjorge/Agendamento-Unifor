@@ -35,14 +35,20 @@
 				<p:commandLink title="Visualizar Solicitação" 
 							   ajax="false" 
 							   action="#{solicitacaoManagedBean.visualizarSolicitacao(solicitacao)}">
-							   <p:graphicImage name="/img/visualizar.png" width="24" />
+							   <p:graphicImage name="/img/visualizar1.png" width="24" styleClass="image-button"/>
+				</p:commandLink>
+				
+				<p:commandLink title="Editar Solicitação"
+							   ajax="false"
+							   action="#{solicitacaoManagedBean.editarSolicitacao(solicitacao)}">
+							   <p:graphicImage name="/img/editar2.png" width="24" styleClass="image-button"/>
 				</p:commandLink>
 				
 				<p:commandLink title="Fechar solicitação" 
 				               ajax="false" 
 				               action="#{solicitacaoManagedBean.fecharSolicitacao(solicitacao)}"
 				               update=":listaSolicitacoes">
-							   <p:graphicImage name="/img/cancel.png" width="24"/>
+							   <p:graphicImage name="/img/cancel.png" width="24" styleClass="image-button"/>
 				</p:commandLink>
 			</p:column>
 		</p:dataTable>	

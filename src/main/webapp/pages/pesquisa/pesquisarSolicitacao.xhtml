@@ -66,11 +66,11 @@
 						</p:column>
 						
 						<p:column headerText="Assunto" styleClass="text-center">
-							<h:outputText value="#{solicitacao.assunto}" />
+							<h:outputText value="#{solicitacao.assunto.toUpperCase()}" />
 						</p:column>
 						
 						<p:column headerText="Descrição" styleClass="text-center">
-							<h:outputText value="#{solicitacao.descricao.subSequence(0,20)}..." />
+							<h:outputText value="#{solicitacao.descricao.toUpperCase().subSequence(0,20)}..." />
 						</p:column>
 						
 						<p:column headerText="Status da Solicitação" styleClass="text-center">

@@ -20,7 +20,7 @@
 	   <param name="maxFileSize" value="10KB" />
 	   <param name="maxBackupIndex" value="5" />
 	   <!-- For Tomcat -->
-	   <param name="file" value="${catalina.home}/logs/saa.log" />
+	   <param name="file" value="${catalina.home}/logs/agendamento.log" />
 	   <layout class="org.apache.log4j.PatternLayout">
 		<param name="ConversionPattern" 
 			value="%-5p[%d{dd/MM/yyyy HH:mm:ss}]:  %c - %m%n" />
@@ -28,7 +28,7 @@
 	</appender>
 
 	<!-- Application Loggers -->
-	<logger name="br.unifor.pin.saa">
+	<logger name="br.unifor.pin.agendamento">
 		<level value="debug" />
 	</logger>
 	<!-- 3rdparty Loggers -->

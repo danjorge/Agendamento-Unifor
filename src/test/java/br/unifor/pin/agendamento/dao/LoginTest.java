@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.unifor.pin.agendamento.bussiness.UsuarioBO;
+import br.unifor.pin.agendamento.business.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;

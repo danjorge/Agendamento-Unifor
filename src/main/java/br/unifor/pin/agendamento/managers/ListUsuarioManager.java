@@ -8,7 +8,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussiness.UsuarioBO;
+import br.unifor.pin.agendamento.business.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.utils.Navigation;
 /**

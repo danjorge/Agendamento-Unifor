@@ -33,7 +33,7 @@ public class AutorizacaoAgendamentoUniforListener implements PhaseListener {
 		session = (HttpSession) fc.getExternalContext().getSession(true);
 		Usuarios usuario = (Usuarios) session.getAttribute("usuario");
 		currentPage = fc.getViewRoot().getViewId();
-		boolean isIndexPage = (currentPage.lastIndexOf("pages/login/login.xhtml") > -1);
+		boolean isIndexPage = (currentPage.lastIndexOf("/pages/login/login.xhtml") > -1);
 		boolean isLogoffPage = (currentPage.lastIndexOf("logoff.xhtml") > -1);
 		// ------------------------------------------------------------------------------
 		// SE USUÁRIO JÁ ESTIVER LOGADO, NÃO FAZ NADA.

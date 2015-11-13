@@ -9,7 +9,7 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.unifor.pin.agendamento.bussiness.SolicitacaoBO;
+import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Status;
 import br.unifor.pin.agendamento.utils.Navigation;
