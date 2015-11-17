@@ -51,6 +51,15 @@
   <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:3"
    NAME="item3" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
+    ID="editarRespostaSolicitacao::#pages#solicitacoes#edicaoRespostaSolicitacao.xhtml"
+    NAME="output"
+    PATH="/pages/solicitacoes/edicaoRespostaSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#edicaoRespostaSolicitacao.xhtml"
+    TITLE="editarRespostaSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#principal#principal.xhtml:4"
+   NAME="item4" PATH="/pages/principal/principal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
     ID="visualizarAgendamento::#pages#agendamento#visualizarAgendamento.xhtml"
     NAME="output" PATH="/pages/agendamento/visualizarAgendamento.xhtml"
     TARGET="rules:#pages#agendamento#visualizarAgendamento.xhtml"
@@ -157,4 +166,8 @@
   NAME="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
   PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
   SHAPE="528,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#solicitacoes#edicaoRespostaSolicitacao.xhtml"
+  PATH="/pages/solicitacoes/edicaoRespostaSolicitacao.xhtml"
+  SHAPE="544,17,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

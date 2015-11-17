@@ -34,13 +34,13 @@
 			<p:column headerText="Ações" styleClass="text-center" width="12%">
 				<p:commandLink title="Visualizar Resposta" 
 						   	   ajax="false" 
-						   	   action="#{solicitacaoManagedBean.visualizarSolicitacao(respSol, false)}">
-						   	   <p:graphicImage name="/img/visualizar1.png" width="24" />
+						   	   action="#{solicitacaoManagedBean.visualizarSolicitacao(respSol)}">
+						   	   <p:graphicImage name="/img/visualizar1.png" width="24" styleClass="image-button"/>
 				</p:commandLink>
 				
 				<p:commandLink title="Editar Solicitação"
 							   ajax="false"
-							   action="#">
+							   action="#{solicitacaoManagedBean.editarSolicitacao(respSol)}">
 							   <p:graphicImage name="/img/editar2.png" width="24" styleClass="image-button"/>
 				</p:commandLink>
 				

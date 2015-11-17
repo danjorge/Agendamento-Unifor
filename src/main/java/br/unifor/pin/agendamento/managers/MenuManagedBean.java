@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.business.MenuBO;
+import br.unifor.pin.agendamento.filter.SessionContext;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Navigation;
 
@@ -21,6 +22,9 @@ public class MenuManagedBean {
 	@Autowired
 	private SegurancaTO seguranca;
 	
+	@Autowired
+	private SessionContext sessao;
+	
 	public MenuManagedBean() {}
 	
 	public String logoff(){
@@ -34,11 +38,13 @@ public class MenuManagedBean {
 	
 	public String cadastrarSolicitacao(){
 		menuBO.limparSessao();
+		sessao.setarObjetoSessao("edicao", false);
 		return Navigation.CADASTRARSOLICITACAO;
 	}
 	
 	public String principal(){
 		menuBO.limparSessao();
+		sessao.setarObjetoSessao("edicao", false);
 		return Navigation.PRINCIPAL;
 	}
 	
