@@ -11,19 +11,40 @@
 			<p:messages id="messages" showDetail="true" autoUpdate="true"
 				closable="true" />
 
-			<h:panelGrid columns="2" styleClass="panelgridlogin">
-
-				<h:outputLabel value="Login:" />
-				<p:inputText id="matricula" value="#{login.usuario.matricula}" type="text"
-					required="true" requiredMessage="Campo [MATRÍCULA] Obrigatório" />
+			<h:panelGrid styleClass="panelgridlogin noGridBorder">
+				<p:row>
+					<p:column>
+						<h:outputLabel value="Matrícula:" />
+					</p:column>
+				</p:row>
 				
-				<h:outputLabel value="Senha:" />
-				<p:password id="senha" value="#{login.usuario.senha}"
-					required="true" requiredMessage="Campo [SENHA] Obrigatório" />
+				<p:row>
+					<p:column>
+						<p:inputText id="matricula" value="#{login.usuario.matricula}" type="text"
+						 			 required="true" requiredMessage="Campo [MATRÍCULA] Obrigatório" />
+					</p:column>
+				</p:row>
 				
-				<p:commandButton value="Entrar" action="#{login.loggar}"
-					ajax="false" />
-				<p:outputLabel value=""/>
+				<p:row>
+					<p:column>
+						<h:outputLabel value="Senha:" />
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>
+						<p:password id="senha" value="#{login.usuario.senha}"
+									required="true" requiredMessage="Campo [SENHA] Obrigatório" />
+					</p:column>
+				</p:row>
+				
+				<br/>
+				<p:row>
+					<p:column>
+						<p:commandButton value="Entrar" action="#{login.loggar}"
+										 ajax="false" />
+					</p:column>
+				</p:row>
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

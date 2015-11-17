@@ -24,6 +24,13 @@ public class AgendamentoDAO {
 								   				.getResultList();
 	}
 	
+	public Agendamento retornaAgendamentoPorSolicitacao(Integer solicitacaoId){
+		return (Agendamento) entityManager.createQuery("Select agend from Agendamento agend "
+													 + "where agend.solicitacao.id = :solicitacaoId")
+													 .setParameter("solicitacaoId", solicitacaoId)
+													 .getSingleResult();
+	}
+	
 	public Agendamento retornaAgendamentoPorId(Integer agendamentoId){
 		return (Agendamento) entityManager.find(Agendamento.class, agendamentoId);
 	}

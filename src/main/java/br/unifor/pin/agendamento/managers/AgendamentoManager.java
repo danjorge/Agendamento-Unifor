@@ -19,9 +19,9 @@ import br.unifor.pin.agendamento.business.AgendamentoBO;
 import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Agendamento;
 import br.unifor.pin.agendamento.entity.Solicitacao;
-import br.unifor.pin.agendamento.entity.Status;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
+import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
 
 
@@ -68,28 +68,28 @@ public class AgendamentoManager {
 	}	
 		
 	public void addEvent(){
-		//guarda as informações do evento em tela no banco
-		agendamento = new Agendamento();
-		agendamento.setTitulo(event.getTitle());
-		agendamento.setDscAgendamentoEvent(event.getDescription());
-		agendamento.setDataInicio(event.getStartDate());
-		agendamento.setDataFim(event.getEndDate());
-		agendamento.setAllDay(event.isAllDay());
 		
-		//guarda as informações da solicitação e do evento em tela no banco
-		sol.getStatusSolicitacao().setId(4);
-		agendamento.setSolicitacao(sol);
-		agendamento.setStatusAgendamento(new Status());
-		agendamento.getStatusAgendamento().setId(4);
+		boolean edicao = (Boolean) sessao.recuperaObjetoSessao("edicao");
 		
-		//salva o agendamento
-		agendamentoBO.salvarAgendamento(agendamento);
-		
-		//atualiza a solicitacao
-		solicitacaoBO.atualizarSolicitacao(sol);
-		
-		//adiciona o agendamento à lista de agendamentos
-		listaAgendamento.add(agendamento);
+		if(!edicao){
+			//verifica se a data fim do dialog é anterior a data início
+			// ou
+			//se a data do agendamento é anterior a atual
+			if (event.getStartDate().after(event.getEndDate()) || event.getStartDate().before(new Date())){
+				MessagesUtils.error("Data final da janela é anterior a data inicial ou a data que você escolheu para o agendamento é anterior a data atual.");
+			} else {
+				//salva o agendamento
+				agendamentoBO.salvarAgendamento(event);
+				
+				//adiciona o agendamento à lista de agendamentos
+				listaAgendamento.add(agendamento);	
+			}
+			
+		} else {
+			
+			agendamentoBO.atualizarAgendamento(agendamento);
+			
+		}
 		
 		if(event.getId() == null) {
 			eventModel.addEvent(event);
@@ -101,7 +101,7 @@ public class AgendamentoManager {
 		
 		solicitacaoManagedBean.carregaListas();
 	}
-	
+		
 	public String visualizarAgendamento(Agendamento agendamento){
 		agendamentoVisualizacao = agendamentoBO.retornaAgendamentoPorId(agendamento.getIdEvent());
 		setInitialDate(agendamento);
@@ -119,6 +119,9 @@ public class AgendamentoManager {
 	
 	public void onEventSelect(SelectEvent selectEvent){
 		event = (ScheduleEvent) selectEvent.getObject();
+		agendamento = (Agendamento) event;
+		sessao.setarObjetoSessao("edicao", true);
+		
 	}
 	
 	public void onDateSelect(SelectEvent selectEvent){
@@ -130,8 +133,19 @@ public class AgendamentoManager {
 		return agendamentoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario"));
 	}
 	
-	public String voltarPrincipal(){
-		return Navigation.PRINCIPAL;
+	public String voltar(){
+		boolean voltarParaPesquisa = ( (Boolean) sessao.recuperaObjetoSessao("voltarAgendamentoPesquisa") == null 
+										? 
+										false 
+										: 
+										(Boolean) sessao.recuperaObjetoSessao("voltarAgendamentoPesquisa") );
+		
+		if(voltarParaPesquisa){
+			return Navigation.PESQUISARSOLICITACAO;
+		} else {
+			return Navigation.PRINCIPAL;		
+		}
+		
 	}
 	
 	public Date getInitialDate(){

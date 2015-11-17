@@ -70,6 +70,14 @@
 			<to-view-id>/pages/solicitacoes/cadastroSolicitacao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/principal/principal.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editarRespostaSolicitacao</from-outcome>
+			<to-view-id>/pages/solicitacoes/edicaoRespostaSolicitacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<!-- Solicitação fim -->
 	
 	<!-- Agendamento Início -->
@@ -124,6 +132,14 @@
 	<!-- Agendamento Fim -->
 	
 	<!-- Pesquisa Início -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisarSolicitacao</from-outcome>
+			<to-view-id>/pages/pesquisa/pesquisarSolicitacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/pages/pesquisa/pesquisarSolicitacao.xhtml</from-view-id>
 		<navigation-case>

@@ -60,14 +60,20 @@ public class SolicitacaoManager {
 	//-------------------------------------------------------------------------------------
 	
 	public String headerPanelPage(){
+		
+		edicao = ( (Boolean) sessao.recuperaObjetoSessao("edicao") == null ? false : (Boolean) sessao.recuperaObjetoSessao("edicao") );
+		
 		if(edicao){
 			return "Edição de Solicitação";
 		} else {
+			setSolicitacao(null);
 			return "Cadastro de Solicitação";
 		}
 	}
 	
 	public String salvarSolicitacao(){
+		edicao = (Boolean) sessao.recuperaObjetoSessao("edicao");
+		
 		if(!edicao){
 			if(solicitacao.getAssunto() != null && solicitacao.getDescricao() != null){
 				solicitacaoBO.salvarSolicitacao(solicitacao);
@@ -83,10 +89,6 @@ public class SolicitacaoManager {
 		carregaListas();
 		
 		return Navigation.PRINCIPAL;
-	}
-	
-	public void fecharSolicitacao(Solicitacao solicitacao){
-		solicitacaoBO.fecharSolicitacao(solicitacao);
 	}
 	
 	public void limparSolicitacao(){
@@ -108,16 +110,21 @@ public class SolicitacaoManager {
 	//-------------------------------------------------------------------------------------
 	// TELA PRINCIPAL
 	//-------------------------------------------------------------------------------------
-	public String editarSolicitacao(Solicitacao sol){
-		setEdicao(true);
-		solicitacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
-		return Navigation.CADASTRARSOLICITACAO;
-	}
-	
 	public String visualizarSolicitacao(Solicitacao sol){
 		solicitacaoVisualizacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
 		sessao.setarObjetoSessao("solicitacao", solicitacaoVisualizacao);
 		return Navigation.VISUALIZARSOLICITACAO;
+	}
+	
+	public String editarSolicitacao(Solicitacao sol){
+		boolean edicaoRespostaSolicitacao = (sol.getRespostaSolicitacao() != null);
+		sessao.setarObjetoSessao("edicao", true);
+		solicitacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
+		return (edicaoRespostaSolicitacao ? Navigation.EDITARRESPOSTASOLICITACAO : Navigation.CADASTRARSOLICITACAO);
+	}	
+	
+	public void fecharSolicitacao(Solicitacao solicitacao){
+		solicitacaoBO.fecharSolicitacao(solicitacao);
 	}
 	//-------------------------------------------------------------------------------------
 	
@@ -130,9 +137,22 @@ public class SolicitacaoManager {
 	}
 	
 	public String voltar(){
-		setExibeCampoResponderSolicitacao(false);
-		setEscondeBtnResponderSolicitacao(false);
-		return Navigation.PRINCIPAL;
+		if(!edicao){
+			setExibeCampoResponderSolicitacao(false);
+			setEscondeBtnResponderSolicitacao(false);
+		}
+		
+		boolean voltarParaPesquisa = ((Boolean) sessao.recuperaObjetoSessao("voltarSolicitacaoPesquisa") == null 
+										? 
+										false 
+										: 
+										(Boolean) sessao.recuperaObjetoSessao("voltarSolicitacaoPesquisa"));
+		
+		if(voltarParaPesquisa){
+			return Navigation.PESQUISARSOLICITACAO;			
+		} else {
+			return Navigation.PRINCIPAL;			
+		}
 	}
 	
 	public String salvarRespostaSolicitacao(){
