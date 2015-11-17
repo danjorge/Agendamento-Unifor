@@ -58,6 +58,10 @@ public class AgendamentoBO {
 		agendamentoDAO.atualizarAgendamento(agendamento);
 	}
 	
+	public Agendamento retornaAgendamentoPorSolicitacao(Integer solicitacaoId){
+		return agendamentoDAO.retornaAgendamentoPorSolicitacao(solicitacaoId);
+	}
+	
 	public Agendamento retornaAgendamentoPorId(Integer agendamentoId){
 		return agendamentoDAO.retornaAgendamentoPorId(agendamentoId);
 	}

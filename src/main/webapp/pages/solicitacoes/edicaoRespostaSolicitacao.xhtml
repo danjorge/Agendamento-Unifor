@@ -14,9 +14,9 @@
 								 rows="10" 
 								 styleClass="uppercase" 
 								 required="true"
-								 requiredMessage="Campo [RESPOSTA] é obrigatório."/>
-				<p:commandButton value="Salvar Edição" action="#{solicitacaoManagedBean.salvarSolicitacao()}"/>
-				<p:commandButton value="Voltar"/>
+								 requiredMessage="Campo [RESPOSTA] é obrigatório."/><br/>
+				<p:commandButton value="Salvar Edição" action="#{solicitacaoManagedBean.salvarSolicitacao()}" ajax="false"/>
+				<p:commandButton value="Voltar" action="#{solicitacaoManagedBean.voltar()}" ajax="false"/>
 			</h:form>
 		</p:panel>
 	</ui:define>

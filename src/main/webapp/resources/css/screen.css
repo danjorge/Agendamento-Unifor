@@ -14,10 +14,39 @@ a {
 	height: 120px;
 	border-bottom: 3px solid #c0c0c0;
 	background: #1f2c3c;
-	
 	color: #f0f0f0;
 	margin: 0;
 	padding: 0;
+}
+
+#content-login{
+	min-height: 320px;
+	font-size: 120%;
+	width: 100%;
+	color: #FFF;
+	background: #1f2c3c;
+	margin-left: 0 auto;
+	margin-right: 20px !important;
+}
+
+#footer {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	height: 60px;
+	border-top: 1px solid #c0c0c0;
+	clear: both;
+}
+
+#footer-login {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	height: 60px;
+	color: #FFF;
+	background: #1f2c3c;
+	border-top: 1px solid #c0c0c0;
+	clear: both;
 }
 
 #header h1 {
@@ -139,6 +168,12 @@ a {
 	padding: 8px;
 }
 
+#container-login {
+	padding: 8px;
+	color: #FFF;
+	background: #1f2c3c;
+}
+
 #content {
 	min-height: 320px;
 	font-size: 120%;
@@ -147,16 +182,17 @@ a {
 	margin-right: 20px !important;
 }
 
-#content h2 {
-	text-align: center
+#content-login{
+	min-height: 320px;
+	font-size: 120%;
+	width: 100%;
+	background: 
+	margin-left: 0 auto;
+	margin-right: 20px !important;
 }
 
-#footer {
-	text-align: center;
-	padding: 8px;
-	margin: 8px;
-	border-top: 1px solid #c0c0c0;
-	clear: both;
+#content h2 {
+	text-align: center
 }
 
 .panel {
@@ -190,8 +226,9 @@ a {
 }
 
 .panelgridlogin{
-	margin-left: 530px;
-	margin-top: 90px;
+	margin: 0 auto;
+	margin-top: 150px; 
+	text-align: center;
 }
 
 .panelgrid input[type=text], .panelgrid input[type=password] {
@@ -315,5 +352,6 @@ h4.required{
 .width10{width: 10% !important;}
 .div-center {margin: 0 auto;}
 .vertical-line{border-left: 1px solid #dfdfdf;}
+.center {float: none; margin-left: auto; margin-right: auto;}
 /*-----------------------------------------------------------------------------*/
 
