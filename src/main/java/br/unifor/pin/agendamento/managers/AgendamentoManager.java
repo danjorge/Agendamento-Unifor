@@ -133,8 +133,19 @@ public class AgendamentoManager {
 		return agendamentoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario"));
 	}
 	
-	public String voltarPrincipal(){
-		return Navigation.PRINCIPAL;
+	public String voltar(){
+		boolean voltarParaPesquisa = ( (Boolean) sessao.recuperaObjetoSessao("voltarAgendamentoPesquisa") == null 
+										? 
+										false 
+										: 
+										(Boolean) sessao.recuperaObjetoSessao("voltarAgendamentoPesquisa") );
+		
+		if(voltarParaPesquisa){
+			return Navigation.PESQUISARSOLICITACAO;
+		} else {
+			return Navigation.PRINCIPAL;		
+		}
+		
 	}
 	
 	public Date getInitialDate(){

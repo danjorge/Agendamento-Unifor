@@ -61,7 +61,7 @@ public class SolicitacaoManager {
 	
 	public String headerPanelPage(){
 		
-		edicao = (Boolean) sessao.recuperaObjetoSessao("edicao");
+		edicao = ( (Boolean) sessao.recuperaObjetoSessao("edicao") == null ? false : (Boolean) sessao.recuperaObjetoSessao("edicao") );
 		
 		if(edicao){
 			return "Edição de Solicitação";
@@ -141,7 +141,18 @@ public class SolicitacaoManager {
 			setExibeCampoResponderSolicitacao(false);
 			setEscondeBtnResponderSolicitacao(false);
 		}
-		return Navigation.PRINCIPAL;
+		
+		boolean voltarParaPesquisa = ((Boolean) sessao.recuperaObjetoSessao("voltarSolicitacaoPesquisa") == null 
+										? 
+										false 
+										: 
+										(Boolean) sessao.recuperaObjetoSessao("voltarSolicitacaoPesquisa"));
+		
+		if(voltarParaPesquisa){
+			return Navigation.PESQUISARSOLICITACAO;			
+		} else {
+			return Navigation.PRINCIPAL;			
+		}
 	}
 	
 	public String salvarRespostaSolicitacao(){

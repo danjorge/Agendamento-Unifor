@@ -16,7 +16,7 @@
 						<p:row>
 							<p:column>
 								<h:outputText value="Nº Solicitação: " /><br/>
-								<p:inputText value="#{pesquisaSolicitacaoManagedBean.pesquisaSolicitacao.id}" />
+								<p:inputText id="codSolicitacao" value="#{pesquisaSolicitacaoManagedBean.pesquisaSolicitacao.id}" />
 							</p:column>
 						</p:row>
 						<p:row>
@@ -53,12 +53,12 @@
 					<p:dataTable id="tbPesquisaSolicitacao" emptyMessage="Não foram encontradas SOLICITAÇÕES." value="#{pesquisaSolicitacaoManagedBean.listaSolicitacoes}"
 								 var="solicitacao">
 					
-						<p:outputPanel>
-							<f:facet name="header">
+						<f:facet name="header">	
+							<p:outputPanel styleClass="text-left width50">
 								<h:outputText value="Nº de solicitações encontradas: " />
 								<h:outputText value="#{pesquisaSolicitacaoManagedBean.listaSolicitacoes.size() == null ? 0 : pesquisaSolicitacaoManagedBean.listaSolicitacoes.size()}" />
-							</f:facet>
-						</p:outputPanel>
+							</p:outputPanel>
+						</f:facet>
 						
 						
 						<p:column headerText="Nº Solicitação" styleClass="text-center">

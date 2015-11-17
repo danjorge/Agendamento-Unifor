@@ -49,7 +49,6 @@ public class MenuManagedBean {
 	}
 	
 	public String pesquisarSolicitacao(){
-		menuBO.limparSessao();
 		return Navigation.PESQUISARSOLICITACAO;
 	}
 	

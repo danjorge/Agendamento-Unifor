@@ -170,4 +170,13 @@
   NAME="rules:#pages#solicitacoes#edicaoRespostaSolicitacao.xhtml"
   PATH="/pages/solicitacoes/edicaoRespostaSolicitacao.xhtml"
   SHAPE="544,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,608,53,42" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pesquisarSolicitacao::#pages#pesquisa#pesquisarSolicitacao.xhtml"
+    NAME="output" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml"
+    TARGET="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml"
+    TITLE="pesquisarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
