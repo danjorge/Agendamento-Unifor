@@ -51,7 +51,7 @@ public class SolicitacaoDAO {
 														   + "inner join fetch s.usuario u "
 														   + "inner join fetch u.cursos c "
 														   + "where c.id = :cursoId "
-														   + "and s.statusSolicitacao.id = 6 "
+														   + "and s.statusSolicitacao.id = 2 "
 														   + "and u.id = :usuarioId")
 												.setParameter("cursoId", usuario.getCursos().get(0).getId())
 												.setParameter("usuarioId", usuario.getId())
