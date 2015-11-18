@@ -14,7 +14,7 @@
 				<h:outputText value="#{respSol.id}" />
 			</p:column>
 			
-			<p:column headerText="Assunto" styleClass="text-center" width="10%">
+			<p:column headerText="Assunto" styleClass="text-center" width="40%">
 				<h:outputText value="#{respSol.assunto.toUpperCase()}" />
 			</p:column>
 			
@@ -22,8 +22,7 @@
 				<h:outputText value="#{respSol.statusSolicitacao.descricao}" />
 			</p:column>
 	
-			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id != 1}" 
-					  width="15%">
+			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id != 1}">
 				<h:outputText value="#{solicitacaoManagedBean.retornaCoordenador().nome}" />
 			</p:column>
 			
@@ -40,13 +39,15 @@
 				
 				<p:commandLink title="Editar Solicitação"
 							   ajax="false"
-							   action="#{solicitacaoManagedBean.editarSolicitacao(respSol)}">
+							   action="#{solicitacaoManagedBean.editarSolicitacao(respSol)}"
+							   rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}">
 							   <p:graphicImage name="/img/editar2.png" width="24" styleClass="image-button"/>
 				</p:commandLink>
 				
 				<p:commandLink title="Fechar Solicitacao" 
 				               ajax="false" 
-				               action="#{solicitacaoManagedBean.fecharSolicitacao(respSol)}">
+				               action="#{solicitacaoManagedBean.fecharSolicitacao(respSol)}" 
+				               rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}">
 							   <p:graphicImage name="/img/cancel.png" width="24"/>
 				</p:commandLink>
 			</p:column>

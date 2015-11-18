@@ -30,10 +30,9 @@ public class SolicitacaoDAO {
 														   + "inner join fetch u.cursos c " 
 														   + "where c.id = :cursoId "
 														   + "and s.statusSolicitacao.id = 1 "
-														   + "and u.id = :usuarioId")
-												.setParameter("cursoId", usuario.getCursos().get(0).getId())
-												.setParameter("usuarioId", usuario.getId())
-								                .getResultList();
+														   + (usuario.getId() == 3 ? " and u.id = " + usuario.getId() : ""))
+														   .setParameter("cursoId", usuario.getCursos().get(0).getId())
+														   .getResultList();
 	}
 	
 	public Solicitacao retornaSolicitacaoPorAssunto(Solicitacao solicitacao){
@@ -52,10 +51,9 @@ public class SolicitacaoDAO {
 														   + "inner join fetch u.cursos c "
 														   + "where c.id = :cursoId "
 														   + "and s.statusSolicitacao.id = 2 "
-														   + "and u.id = :usuarioId")
-												.setParameter("cursoId", usuario.getCursos().get(0).getId())
-												.setParameter("usuarioId", usuario.getId())
-												.getResultList();
+														   + (usuario.getId() == 3 ? " and u.id = " + usuario.getId() : ""))
+														   .setParameter("cursoId", usuario.getCursos().get(0).getId())
+														   .getResultList();
 	}
 	
 	

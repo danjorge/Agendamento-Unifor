@@ -43,7 +43,7 @@ public class AgendamentoManager {
 	private SessionContext sessao;
 	
 	private ScheduleModel eventModel;
-	private ScheduleEvent event = new DefaultScheduleEvent();
+	private ScheduleEvent event;
 	private Solicitacao sol;
 	private Agendamento agendamento;
 	private Agendamento agendamentoVisualizacao;
@@ -54,12 +54,12 @@ public class AgendamentoManager {
 	
 	@PostConstruct
 	public void init(){
+		event = new DefaultScheduleEvent();
 		eventModel = new DefaultScheduleModel();
-		carregarListas();
 	}
 	
 	public void carregarListas(){
-		listaAgendamento = agendamentoBO.buscarTodosAgendamentos();
+		listaAgendamento = agendamentoBO.buscarAgendamentosPorCurso();
 		
 		for(Agendamento event : listaAgendamento){
 			this.event = (ScheduleEvent) event;
@@ -79,7 +79,7 @@ public class AgendamentoManager {
 				MessagesUtils.error("Data final da janela é anterior a data inicial ou a data que você escolheu para o agendamento é anterior a data atual.");
 			} else {
 				//salva o agendamento
-				agendamentoBO.salvarAgendamento(event);
+				agendamento = agendamentoBO.salvarAgendamento(event);
 				
 				//adiciona o agendamento à lista de agendamentos
 				listaAgendamento.add(agendamento);	
@@ -99,7 +99,7 @@ public class AgendamentoManager {
 		
 		event = new DefaultScheduleEvent();
 		
-		solicitacaoManagedBean.carregaListas();
+		solicitacaoManagedBean.carregarListas();
 	}
 		
 	public String visualizarAgendamento(Agendamento agendamento){
@@ -119,7 +119,7 @@ public class AgendamentoManager {
 	
 	public void onEventSelect(SelectEvent selectEvent){
 		event = (ScheduleEvent) selectEvent.getObject();
-		agendamento = (Agendamento) event;
+		//agendamento = (Agendamento) event;
 		sessao.setarObjetoSessao("edicao", true);
 		
 	}

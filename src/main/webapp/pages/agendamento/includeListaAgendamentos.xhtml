@@ -22,11 +22,12 @@
 				<h:outputText value="#{agendamento.solicitacao.assunto.toUpperCase()}" />
 			</p:column>
 			
-			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{agendamento.solicitacao.usuario.papel.id != 1}">
+			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id != 1}">
 				<h:outputText value="#{agendamentoManagedBean.retornaCoordenador().nome}" />
 			</p:column>
 			
-			<p:column headerText="Aluno" styleClass="text-center" rendered="#{agendamento.solicitacao.usuario.papel.id == 1}">
+			<p:column headerText="Aluno" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id == 1}">
+				<h:outputText value="#{agendamento.solicitacao.usuario.nome}" />
 			</p:column>
 			
 			<p:column headerText="Data Agendamento" styleClass="text-center">
@@ -44,7 +45,8 @@
 				
 				<p:commandLink title="Cancelar agendamento" 
 				               ajax="false" 
-				               action="#{agendamentoManagedBean.fecharAgendamento(agendamento)}">
+				               action="#{agendamentoManagedBean.fecharAgendamento(agendamento)}"
+				               rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}">
 							   <p:graphicImage name="/img/cancel.png" width="24"/>
 				</p:commandLink>
 			</p:column>

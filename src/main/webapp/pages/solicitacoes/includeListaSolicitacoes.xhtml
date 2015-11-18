@@ -47,7 +47,8 @@
 				<p:commandLink title="Fechar solicitação" 
 				               ajax="false" 
 				               action="#{solicitacaoManagedBean.fecharSolicitacao(solicitacao)}"
-				               update=":listaSolicitacoes">
+				               update=":listaSolicitacoes"
+				               rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}">
 							   <p:graphicImage name="/img/cancel.png" width="24" styleClass="image-button"/>
 				</p:commandLink>
 			</p:column>

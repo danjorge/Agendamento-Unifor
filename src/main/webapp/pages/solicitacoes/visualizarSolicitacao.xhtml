@@ -43,7 +43,8 @@
 									 value="Responder Solicitação" 
 									 rendered="#{solicitacaoManagedBean.escondeBtnResponderSolicitacao 
 									 		     and (solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao == null
-									 		     or empty solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao)}"
+									 		     or empty solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao)
+									 		     and menuManagedBean.seguranca.usuario.papel.id != 3}"
 									 action="#{solicitacaoManagedBean.salvarRespostaSolicitacao()}"
 									 ajax="false"/>
 									 
@@ -52,12 +53,14 @@
 									 actionListener="#{solicitacaoManagedBean.preparaCampoResponderSolicitacao()}" 
 									 rendered="#{!solicitacaoManagedBean.escondeBtnResponderSolicitacao 
 									 			 and (solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao == null
-									 			 or empty solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao)}"
+									 			 or empty solicitacaoManagedBean.solicitacaoVisualizacao.respostaSolicitacao)
+									 			 and menuManagedBean.seguranca.usuario.papel.id != 3}"
 									 update=":pnlVisualizarSolicitacao"/>
 									 
 					<p:commandButton id="btnAgendarVS" icon="ui-icon-clock"
 									 value="Agendar Atendimento" 
-									 action="#{solicitacaoManagedBean.preparaAgendamento()}" 
+									 action="#{solicitacaoManagedBean.preparaAgendamento()}"
+									 rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}" 
 									 ajax="false"/>
 									 
 					<p:commandButton id="btnVoltarVS" icon="ui-icon-circle-arrow-w" 

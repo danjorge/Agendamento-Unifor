@@ -14,6 +14,7 @@ import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Status;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
+import br.unifor.pin.agendamento.to.SegurancaTO;
 
 @Service
 @Controller("agendamentoBO")
@@ -28,11 +29,14 @@ public class AgendamentoBO {
 	@Autowired
 	private SessionContext sessao;
 	
-	public List<Agendamento> buscarTodosAgendamentos(){
-		return agendamentoDAO.retornaListaAgendamento();
+	@Autowired
+	private SegurancaTO seguranca;
+	
+	public List<Agendamento> buscarAgendamentosPorCurso(){
+		return agendamentoDAO.retornaListaAgendamentoPorCurso(seguranca.getUsuario());
 	}
 	
-	public void salvarAgendamento(ScheduleEvent event){
+	public Agendamento salvarAgendamento(ScheduleEvent event){
 		//guarda as informações do evento em tela no banco
 		Agendamento agendamento = new Agendamento();
 		agendamento.setTitulo(event.getTitle());
@@ -48,10 +52,13 @@ public class AgendamentoBO {
 		agendamento.setStatusAgendamento(new Status());
 		agendamento.getStatusAgendamento().setId(4);
 		
-		agendamentoDAO.salvarAgendamento(agendamento);
-		
 		//atualiza a solicitacao
 		solicitacaoDAO.atualizarSolicitacao(sol);
+		
+		agendamentoDAO.salvarAgendamento(agendamento);
+		
+		return agendamento;
+		
 	}
 	
 	public void atualizarAgendamento(Agendamento agendamento){

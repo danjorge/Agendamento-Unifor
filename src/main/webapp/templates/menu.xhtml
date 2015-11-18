@@ -15,18 +15,18 @@
 	        	<li class="dropdown">
 	          		<a onmouseover="this.click();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MENU <span class="caret"></span></a>
 	          		<ul class="dropdown-menu">
-	            		<li><h:commandLink value="Cadastrar Solicitação" action="#{menuManagedBean.cadastrarSolicitacao()}" ajax="false" /></li>
+	            		<li><h:commandLink value="Cadastrar Solicitação" action="#{menuManagedBean.cadastrarSolicitacao()}" ajax="false" rendered="#{menuManagedBean.seguranca.usuario.papel.id != 1}"/></li>
 	            		<li><h:commandLink value="Pesquisar Solicitação" action="#{menuManagedBean.pesquisarSolicitacao()}" ajax="false" /></li>
 	            		<li role="separator" class="divider"></li>
 	            		<li><h:commandLink value="Principal" action="#{menuManagedBean.principal()}" ajax="false"/></li>
 	          		</ul>
 	        	</li>
 	       	</h:panelGroup>
-	       	<h:panelGroup>
+	       	<h:panelGroup rendered="#{menuManagedBean.seguranca.usuario.papel.id == 2}">
 	       		<li class="dropdown">
 	          		<a href="#" onmouseover="this.click();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MANUTENÇÃO<span class="caret"></span></a>
 	          		<ul class="dropdown-menu">
-	          			<li><h:commandLink value="Manutenção" action="#{menuManagedBean.manutencao()}" ajax="false"/> </li>
+	          			<li><h:commandLink value="Cadastrar Usuário" action="#{menuManagedBean.cadastrarUsuario()}" ajax="false"/> </li>
 	          		</ul>
 	        	</li>
 	       	</h:panelGroup>

@@ -52,7 +52,7 @@ public class MenuManagedBean {
 		return Navigation.PESQUISARSOLICITACAO;
 	}
 	
-	public String manutencao(){
+	public String cadastrarUsuario(){
 		return Navigation.CADASTROUSUARIO;
 	}
 

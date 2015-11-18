@@ -32,7 +32,7 @@ public class AutorizacaoAgendamentoUniforListener implements PhaseListener {
 		fc = event.getFacesContext();
 		session = (HttpSession) fc.getExternalContext().getSession(true);
 		Usuarios usuario = (Usuarios) session.getAttribute("usuario");
-		currentPage = fc.getViewRoot().getViewId();
+		currentPage = fc.getExternalContext().getRequestServletPath();
 		boolean isIndexPage = (currentPage.lastIndexOf("/pages/login/login.xhtml") > -1);
 		boolean isLogoffPage = (currentPage.lastIndexOf("logoff.xhtml") > -1);
 		// ------------------------------------------------------------------------------
@@ -49,8 +49,8 @@ public class AutorizacaoAgendamentoUniforListener implements PhaseListener {
 		
 		// SE HOUVER TENTATIVA DE ACESSO DIRETO PELA URL (ACESSO INCORRETO):
 		else if (usuario == null && !isIndexPage) { 
-			session.setAttribute("logoffTitle", "Acesso negado!");
-			session.setAttribute("logoffMsg", "Este sistema não permite acesso direto pela URL.<br/><br/>Você será redirecionado para a página de Login.");
+			session.setAttribute("logoffTitle", "Sessão Finalizada!");
+			session.setAttribute("logoffMsg", "Você será redirecionado para a página de Login.");
 			try {
 				fc.getExternalContext().redirect(fc.getExternalContext().getRequestContextPath().toString()  + "/logoff.xhtml");
 			} catch (IOException e) {

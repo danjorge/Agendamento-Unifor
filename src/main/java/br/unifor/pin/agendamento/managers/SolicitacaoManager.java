@@ -50,7 +50,7 @@ public class SolicitacaoManager {
 		edicao = false;
 	}
 	
-	public void carregaListas(){
+	public void carregarListas(){
 		listaSolicitacoes = solicitacaoBO.buscarSolcitacoesPorCurso();
 		listaRespostasSolicitacoes = solicitacaoBO.buscarRespostasSolicitacoesPorCurso();
 	}
@@ -86,7 +86,7 @@ public class SolicitacaoManager {
 		} else {
 			solicitacaoBO.atualizarSolicitacao(solicitacao);
 		}
-		carregaListas();
+		carregarListas();
 		
 		return Navigation.PRINCIPAL;
 	}
@@ -160,7 +160,7 @@ public class SolicitacaoManager {
 		MessagesUtils.info("Resposta salva com sucesso.");
 		listaRespostasSolicitacoes.add(solicitacaoVisualizacao);
 		solicitacaoVisualizacao.setRespostaSolicitacao(null);
-		carregaListas();
+		carregarListas();
 		
 		return Navigation.PRINCIPAL;
 	}

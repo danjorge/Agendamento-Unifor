@@ -34,7 +34,10 @@ public class LoginManager {
 	private SessionContext sessao;
 	
 	@Autowired
-	private SolicitacaoManager solicitacaoManager;
+	private SolicitacaoManager solicitacaoManagedBean;
+	
+	@Autowired
+	private AgendamentoManager agendamentoManagedBean;
 	
 	private Usuarios usuario = new Usuarios();
 	private boolean existsEmail;
@@ -47,7 +50,8 @@ public class LoginManager {
 		if (usuario != null) {
 			seguranca.setUsuario(usuario);
 			existsEmail = true;
-			solicitacaoManager.carregaListas();
+			solicitacaoManagedBean.carregarListas();
+			agendamentoManagedBean.carregarListas();
 			MessagesUtils.info("Bem vindo "+usuario.getNome());
 			return Navigation.SUCESSO;
 		} else {
@@ -91,12 +95,12 @@ public class LoginManager {
 		this.existsEmail = existsEmail;
 	}
 
-	public SolicitacaoManager getSolicitacaoManager() {
-		return solicitacaoManager;
+	public SolicitacaoManager getSolicitacaoManagedBean() {
+		return solicitacaoManagedBean;
 	}
 
-	public void setSolicitacaoManager(SolicitacaoManager solicitacaoManager) {
-		this.solicitacaoManager = solicitacaoManager;
+	public void setSolicitacaoManagedBean(SolicitacaoManager solicitacaoManagedBean) {
+		this.solicitacaoManagedBean = solicitacaoManagedBean;
 	}
 
 }
