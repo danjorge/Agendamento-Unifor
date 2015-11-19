@@ -237,6 +237,10 @@ a {
 	width: 191px;
 }
 
+.ui-panelgrid-cell-agendamento{
+	width: 50%
+}
+
 .ui-dialog-content input {
 	width: 180px !important;
 }

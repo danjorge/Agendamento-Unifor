@@ -12,7 +12,7 @@
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 			
 			<p:schedule id="calendarAgendamento" value="#{agendamentoManagedBean.eventModel}" widgetVar="agendamento" timeZone="GMT-3" locale="pt-br" 
-						initialDate="#{agendamentoManagedBean.initialDate}" view="#{agendamentoManagedBean.viewOfSchedule}">
+						initialDate="#{agendamentoManagedBean.initialDate}" view="#{agendamentoManagedBean.viewOfSchedule}" tooltip="true">
 				<p:ajax event="dateSelect" listener="#{agendamentoManagedBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
             	<p:ajax event="eventSelect" listener="#{agendamentoManagedBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
 			</p:schedule>

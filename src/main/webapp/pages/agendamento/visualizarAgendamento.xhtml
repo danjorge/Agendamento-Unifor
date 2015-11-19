@@ -13,14 +13,14 @@
 		
 			<p:panelGrid styleClass="noGridBorder">
 				<p:row>
-					<p:column>	
+					<p:column colspan="2">	
 						<h:outputText value="Título do agendamento:" styleClass="underline"/><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.titulo}" styleClass="bold uppercase"/>
 					</p:column>
 				</p:row>
 				
 				<p:row>
-					<p:column>
+					<p:column colspan="2">
 					<hr/>
 						<h:outputText value="Descrição do Agendamento:" styleClass="underline" /><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dscAgendamentoEvent}" styleClass="bold uppercase" />
@@ -29,13 +29,14 @@
 				</p:row>
 				
 				<p:row>
-					<p:column>					
+					<p:column styleClass="ui-panelgrid-cell-agendamento">
 						<h:outputText value="Data de início:" styleClass="underline"/><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataInicio}" styleClass="bold">
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
 						</h:outputText>
 					</p:column>
-					<p:column>				
+					
+					<p:column styleClass="ui-panelgrid-cell-agendamento">
 						<h:outputText value="Data do fim:" styleClass="underline"/><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataFim}" styleClass="bold" >
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
@@ -44,7 +45,7 @@
 				</p:row>
 				
 				<p:row>
-					<p:column>
+					<p:column colspan="2">
 					<hr/>
 						<h:outputText value="Assunto da solicitação:" styleClass="underline"/><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.solicitacao.descricao}" styleClass="bold uppercase"/>
@@ -55,7 +56,7 @@
 				<p:outputPanel rendered="#{not empty agendamentoManagedBean.agendamentoVisualizacao.solicitacao.respostaSolicitacao
 				 						   or agendamentoManagedBean.agendamentoVisualizacao.solicitacao.respostaSolicitacao != null}">
 				 <p:row>
-					<p:column>
+					<p:column colspan="2">
 					<hr/>
 						<h:outputText value="Resposta da solicitação:" styleClass="underline"/><br/>
 						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.solicitacao.respostaSolicitacao}" styleClass="bold uppercase"/>

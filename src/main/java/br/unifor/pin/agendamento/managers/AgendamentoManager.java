@@ -118,7 +118,7 @@ public class AgendamentoManager {
 	}
 	
 	public void onEventSelect(SelectEvent selectEvent){
-		event = (ScheduleEvent) selectEvent.getObject();
+		this.event = (ScheduleEvent) selectEvent.getObject();
 		//agendamento = (Agendamento) event;
 		sessao.setarObjetoSessao("edicao", true);
 		
