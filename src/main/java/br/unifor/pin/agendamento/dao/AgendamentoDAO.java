@@ -25,6 +25,7 @@ public class AgendamentoDAO {
 								   				.getResultList();
 	}
 	
+
 	public List<Agendamento> retornaListaAgendamentoPorCurso(Usuarios usuario){
 		return (List<Agendamento>) entityManager.createQuery("Select agend from Agendamento agend "
 														   + "inner join fetch agend.solicitacao s "
@@ -35,7 +36,7 @@ public class AgendamentoDAO {
 														   .setParameter("cursoId", usuario.getCursos().get(0).getId())
 														   .getResultList();
 	}
-	
+
 	public Agendamento retornaAgendamentoPorSolicitacao(Integer solicitacaoId){
 		return (Agendamento) entityManager.createQuery("Select agend from Agendamento agend "
 													 + "where agend.solicitacao.id = :solicitacaoId")
