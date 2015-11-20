@@ -75,8 +75,8 @@ public class SolicitacaoDAO {
 														   + "inner join fetch s.statusSolicitacao st "
 														   + "where "
 														   + (sol.getId() != null ? "s.id = " +sol.getId() : "")
-														   + " and :assuntoAux is null or upper(s.assunto) like upper('%' || :assunto || '%') "
-														   + "and :statusSolicitacaoIdAux is null or s.statusSolicitacao.id = :statusSolicitacaoId "
+														   + " and :assuntoAux is NULL or upper(s.assunto) like upper('%' || :assunto || '%') "
+														   + "and :statusSolicitacaoIdAux is NULL or s.statusSolicitacao.id = :statusSolicitacaoId "
 														   + "order by s.id")
 														   .setParameter("assuntoAux", sol.getAssunto())
 														   .setParameter("assunto", sol.getAssunto())
