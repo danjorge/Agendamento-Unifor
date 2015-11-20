@@ -4,6 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/templates/template.xhtml">
 	
 	<ui:define name="content">
@@ -35,7 +36,7 @@
 		            <p:calendar id="from" value="#{agendamentoManagedBean.event.startDate}" timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" locale="br"/>
 		 
 		            <p:outputLabel for="to" value="Até:" />
-		            <p:calendar id="to" value="#{agendamentoManagedBean.event.endDate}" timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" locale="br" />
+		            <p:calendar id="to" binding="#{agendamentoManagedBean.calendar}" value="#{agendamentoManagedBean.event.endDate}" timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" locale="br" />
 		            
 		            <p:outputLabel for="allDay" value="Dia todo:" />
             		<h:selectBooleanCheckbox id="allDay" value="#{agendamentoManagedBean.event.allDay}" />

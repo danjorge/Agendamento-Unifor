@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.primefaces.component.calendar.Calendar;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
@@ -42,6 +43,8 @@ public class AgendamentoManager {
 	@Autowired
 	private SessionContext sessao;
 	
+	private Calendar calendar;
+	
 	private ScheduleModel eventModel;
 	private ScheduleEvent event;
 	private Solicitacao sol;
@@ -62,7 +65,7 @@ public class AgendamentoManager {
 		listaAgendamento = agendamentoBO.buscarAgendamentosPorCurso();
 		
 		for(Agendamento event : listaAgendamento){
-			this.event = (ScheduleEvent) event;
+			this.event = event;
 			eventModel.addEvent(this.event);
 		}
 	}	
@@ -119,13 +122,13 @@ public class AgendamentoManager {
 	
 	public void onEventSelect(SelectEvent selectEvent){
 		this.event = (ScheduleEvent) selectEvent.getObject();
-		//agendamento = (Agendamento) event;
+		calendar.setValue(agendamento.getDataFim());
 		sessao.setarObjetoSessao("edicao", true);
-		
 	}
 	
 	public void onDateSelect(SelectEvent selectEvent){
 		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+		event.isEditable();
 		sol = (Solicitacao) sessao.recuperaObjetoSessao("solicitacao");
 	}
 	
@@ -150,7 +153,7 @@ public class AgendamentoManager {
 	
 	public Date getInitialDate(){
 		if(agendamento != null){
-			return agendamento.getDataInicio();
+			return agendamento.getStartDate();
 		}
 		return null;
 	}
@@ -214,5 +217,21 @@ public class AgendamentoManager {
 
 	public void setViewOfSchedule(String viewOfSchedule) {
 		this.viewOfSchedule = viewOfSchedule;
+	}
+
+	public SessionContext getSessao() {
+		return sessao;
+	}
+
+	public void setSessao(SessionContext sessao) {
+		this.sessao = sessao;
+	}
+
+	public Calendar getCalendar() {
+		return calendar;
+	}
+
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
 	}
 }

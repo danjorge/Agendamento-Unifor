@@ -15,7 +15,7 @@
 				<p:row>
 					<p:column colspan="2">	
 						<h:outputText value="Título do agendamento:" styleClass="underline"/><br/>
-						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.titulo}" styleClass="bold uppercase"/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.title}" styleClass="bold uppercase"/>
 					</p:column>
 				</p:row>
 				
@@ -23,7 +23,7 @@
 					<p:column colspan="2">
 					<hr/>
 						<h:outputText value="Descrição do Agendamento:" styleClass="underline" /><br/>
-						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dscAgendamentoEvent}" styleClass="bold uppercase" />
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.description}" styleClass="bold uppercase" />
 					<hr/>
 					</p:column>
 				</p:row>
@@ -31,14 +31,14 @@
 				<p:row>
 					<p:column styleClass="ui-panelgrid-cell-agendamento">
 						<h:outputText value="Data de início:" styleClass="underline"/><br/>
-						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataInicio}" styleClass="bold">
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.startDate}" styleClass="bold">
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
 						</h:outputText>
 					</p:column>
 					
 					<p:column styleClass="ui-panelgrid-cell-agendamento">
 						<h:outputText value="Data do fim:" styleClass="underline"/><br/>
-						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataFim}" styleClass="bold" >
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.endDate}" styleClass="bold" >
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
 						</h:outputText>
 					</p:column>
@@ -78,8 +78,6 @@
 											 icon="ui-icon ui-icon-arrowthick-1-e" 
 											 ajax="false"
 											 rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}"/>
-							<p:commandButton value="Voltar" action="#{agendamentoManagedBean.voltar()}" icon="ui-icon ui-icon-arrowreturnthick-1-w" ajax="false"/>
-							<p:commandButton value="Ir para agendamentos" action="#{agendamentoManagedBean.irParaAgendamentos()}" ajax="false"/>
 						</h:form>
 					</p:column>
 				</p:row>

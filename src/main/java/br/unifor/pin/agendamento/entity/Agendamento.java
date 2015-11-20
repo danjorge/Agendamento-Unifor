@@ -20,7 +20,7 @@ import org.primefaces.model.ScheduleEvent;
 
 @Entity
 @Table(name="TB_AGENDAMENTO")
-public class Agendamento implements Serializable, ScheduleEvent {
+public class Agendamento implements Serializable, ScheduleEvent{
 
 	/**
 	 * 
@@ -68,11 +68,19 @@ public class Agendamento implements Serializable, ScheduleEvent {
 		// TODO Auto-generated method stub
 		return this.getTitulo();
 	}
+	
+	public void setTitle(String title){
+		titulo = title;
+	}
 
 	@Override
 	public Date getStartDate() {
 		// TODO Auto-generated method stub
 		return this.getDataInicio();
+	}
+	
+	public void setStartDate(Date startDate) {
+		dataInicio = startDate;
 	}
 
 	@Override
@@ -80,13 +88,17 @@ public class Agendamento implements Serializable, ScheduleEvent {
 		// TODO Auto-generated method stub
 		return this.getDataFim();
 	}
+	
+	public void setEndDate(Date endDate){
+		dataFim = endDate;
+	}
 
 	@Override
 	public boolean isAllDay() {
 		// TODO Auto-generated method stub
 		return this.isAllDay;
 	}
-
+	
 	@Override
 	public String getStyleClass() {
 		// TODO Auto-generated method stub
@@ -96,13 +108,17 @@ public class Agendamento implements Serializable, ScheduleEvent {
 	@Override
 	public boolean isEditable() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return this.getDscAgendamentoEvent();
+	}
+	
+	public void setDescription(String description){
+		dscAgendamentoEvent = description;
 	}
 	
 	public Agendamento(){}
