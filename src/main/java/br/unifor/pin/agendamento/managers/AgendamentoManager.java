@@ -69,7 +69,7 @@ public class AgendamentoManager {
 		
 	public void addEvent(){
 		
-		boolean edicao = (Boolean) sessao.recuperaObjetoSessao("edicao");
+		boolean edicao = ((Boolean) sessao.recuperaObjetoSessao("edicao") == null ? false : (Boolean) sessao.recuperaObjetoSessao("edicao"));
 		
 		if(!edicao){
 			//verifica se a data fim do dialog é anterior a data início
@@ -83,22 +83,19 @@ public class AgendamentoManager {
 				
 				//adiciona o agendamento à lista de agendamentos
 				listaAgendamento.add(agendamento);	
+				
+				eventModel.addEvent(event);
+				event = new DefaultScheduleEvent();
+
 			}
 			
 		} else {
 			
 			agendamentoBO.atualizarAgendamento(agendamento);
-			
-		}
-		
-		if(event.getId() == null) {
-			eventModel.addEvent(event);
-		} else {
 			eventModel.updateEvent(event);
-		}
-		
-		event = new DefaultScheduleEvent();
-		
+			event = new DefaultScheduleEvent();
+			
+		}		
 		solicitacaoManagedBean.carregarListas();
 	}
 		

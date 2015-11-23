@@ -31,15 +31,15 @@
 				<p:row>
 					<p:column styleClass="ui-panelgrid-cell-agendamento">
 						<h:outputText value="Data de início:" styleClass="underline"/><br/>
-						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.startDate}" styleClass="bold">
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataInicio}" styleClass="bold">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"/>
 						</h:outputText>
 					</p:column>
 					
 					<p:column styleClass="ui-panelgrid-cell-agendamento">
 						<h:outputText value="Data do fim:" styleClass="underline"/><br/>
-						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.endDate}" styleClass="bold" >
-							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+						<h:outputText value="#{agendamentoManagedBean.agendamentoVisualizacao.dataFim}" styleClass="bold" >
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"/>
 						</h:outputText>
 					</p:column>
 				</p:row>
