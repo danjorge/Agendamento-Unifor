@@ -46,6 +46,7 @@ public class MenuManagedBean {
 	}
 	
 	public String principal(){
+		solicitacaoManagedBean.retornaCoordenador();
 		sessao.setarObjetoSessao("edicao", false);
 		return Navigation.PRINCIPAL;
 	}

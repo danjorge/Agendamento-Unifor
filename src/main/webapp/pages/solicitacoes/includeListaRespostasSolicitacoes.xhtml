@@ -23,7 +23,7 @@
 			</p:column>
 	
 			<p:column headerText="Coordenador" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id != 1}">
-				<h:outputText value="#{solicitacaoManagedBean.retornaCoordenador().nome}" />
+				<h:outputText value="#{solicitacaoManagedBean.usuario.nome}" />
 			</p:column>
 			
 			<p:column headerText="Aluno" styleClass="text-center" rendered="#{menuManagedBean.seguranca.usuario.papel.id == 1}">

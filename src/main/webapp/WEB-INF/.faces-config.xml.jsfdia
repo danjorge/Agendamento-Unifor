@@ -120,13 +120,21 @@
   <PROCESS-ITEM ID="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml:0"
    NAME="item" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
+    ID="cadastrarSolicitacao::#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    NAME="output" PATH="/pages/solicitacoes/cadastroSolicitacao.xhtml"
+    TARGET="rules:#pages#solicitacoes#cadastroSolicitacao.xhtml"
+    TITLE="cadastrarSolicitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml:1"
+   NAME="item1" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
     ID="visualizarSolicitacao::#pages#solicitacoes#visualizarSolicitacao.xhtml"
     NAME="output" PATH="/pages/solicitacoes/visualizarSolicitacao.xhtml"
     TARGET="rules:#pages#solicitacoes#visualizarSolicitacao.xhtml"
     TITLE="visualizarSolicitacao" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml:1"
-   NAME="item1" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml" model-entity="JSFProcessItem">
+  <PROCESS-ITEM ID="rules:#pages#pesquisa#pesquisarSolicitacao.xhtml:2"
+   NAME="item2" PATH="/pages/pesquisa/pesquisarSolicitacao.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="visualizarAgendamento::#pages#agendamento#visualizarAgendamento.xhtml"
     NAME="output" PATH="/pages/agendamento/visualizarAgendamento.xhtml"
