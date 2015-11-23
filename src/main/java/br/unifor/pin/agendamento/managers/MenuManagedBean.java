@@ -23,6 +23,9 @@ public class MenuManagedBean {
 	private SegurancaTO seguranca;
 	
 	@Autowired
+	private SolicitacaoManager solicitacaoManagedBean;
+	
+	@Autowired
 	private SessionContext sessao;
 	
 	public MenuManagedBean() {}
@@ -37,13 +40,12 @@ public class MenuManagedBean {
 	}
 	
 	public String cadastrarSolicitacao(){
-		menuBO.limparSessao();
+		solicitacaoManagedBean.retornaCoordenador();
 		sessao.setarObjetoSessao("edicao", false);
 		return Navigation.CADASTRARSOLICITACAO;
 	}
 	
 	public String principal(){
-		menuBO.limparSessao();
 		sessao.setarObjetoSessao("edicao", false);
 		return Navigation.PRINCIPAL;
 	}

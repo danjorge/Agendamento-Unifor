@@ -108,7 +108,7 @@ public class Agendamento implements Serializable, ScheduleEvent{
 	@Override
 	public boolean isEditable() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override

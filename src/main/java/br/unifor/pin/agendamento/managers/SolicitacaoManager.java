@@ -30,6 +30,8 @@ public class SolicitacaoManager {
 	@Autowired
 	private SessionContext sessao;
 	
+	private Usuarios usuario;
+	
 	private Solicitacao solicitacao;
 	private Solicitacao solicitacaoVisualizacao;
 	private List<Solicitacao> listaSolicitacoes;
@@ -66,7 +68,7 @@ public class SolicitacaoManager {
 		if(edicao){
 			return "Edição de Solicitação";
 		} else {
-			setSolicitacao(null);
+			setSolicitacao(new Solicitacao());
 			return "Cadastro de Solicitação";
 		}
 	}
@@ -98,7 +100,7 @@ public class SolicitacaoManager {
 	
 	public Usuarios retornaCoordenador(){
 		if(sessao != null){
-			Usuarios usuario = solicitacaoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario")); 
+			usuario = solicitacaoBO.retornaCoordenadorPorCurso((Usuarios) sessao.recuperaObjetoSessao("usuario")); 
 			if(usuario != null){
 				return usuario;
 			}
@@ -232,5 +234,13 @@ public class SolicitacaoManager {
 
 	public void setEdicao(boolean edicao) {
 		this.edicao = edicao;
+	}
+
+	public Usuarios getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuarios usuario) {
+		this.usuario = usuario;
 	}
 }

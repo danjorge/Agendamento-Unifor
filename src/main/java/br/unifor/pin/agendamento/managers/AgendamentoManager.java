@@ -7,7 +7,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.primefaces.component.calendar.Calendar;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
@@ -42,8 +41,6 @@ public class AgendamentoManager {
 	
 	@Autowired
 	private SessionContext sessao;
-	
-	private Calendar calendar;
 	
 	private ScheduleModel eventModel;
 	private ScheduleEvent event;
@@ -122,7 +119,6 @@ public class AgendamentoManager {
 	
 	public void onEventSelect(SelectEvent selectEvent){
 		this.event = (ScheduleEvent) selectEvent.getObject();
-		calendar.setValue(agendamento.getDataFim());
 		sessao.setarObjetoSessao("edicao", true);
 	}
 	
@@ -225,13 +221,5 @@ public class AgendamentoManager {
 
 	public void setSessao(SessionContext sessao) {
 		this.sessao = sessao;
-	}
-
-	public Calendar getCalendar() {
-		return calendar;
-	}
-
-	public void setCalendar(Calendar calendar) {
-		this.calendar = calendar;
 	}
 }

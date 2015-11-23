@@ -8,12 +8,13 @@
 	
 	<ui:define name="content">
 		<p:panel id="pnlCadastroSolicitacao" header="#{solicitacaoManagedBean.headerPanelPage()}">
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 			<h:form>
 				<p:panelGrid style="width: 100%">
 					<p:row>
 						<p:column>
 							<h:outputText value="Coordenador: " />
-							<h:outputText value="#{solicitacaoManagedBean.retornaCoordenador().nome}" styleClass="italic bold"/>
+							<h:outputText value="#{solicitacaoManagedBean.usuario.nome}" styleClass="italic bold"/>
 						</p:column>
 					</p:row>
 					
@@ -33,8 +34,8 @@
 					
 					<p:row>
 						<p:column>
-							<p:commandButton id="btnSalvarSolicitacao" styleClass="width10" value="Salvar" action="#{solicitacaoManagedBean.salvarSolicitacao}"/>
-							<p:commandButton id="btnLimparSolicitacao" styleClass="width10" value="Limpar" action="#{solicitacaoManagedBean.limparSolicitacao}"/>
+							<p:commandButton id="btnSalvarSolicitacao" styleClass="width10" value="Salvar" action="#{solicitacaoManagedBean.salvarSolicitacao}" ajax="false"/>
+							<p:commandButton id="btnLimparSolicitacao" styleClass="width10" value="Limpar" action="#{solicitacaoManagedBean.limparSolicitacao}" update=":pnlCadastroSolicitacao"/>
 						</p:column>
 					</p:row>
 				</p:panelGrid>
