@@ -51,6 +51,7 @@ public class LoginManager {
 			seguranca.setUsuario(usuario);
 			existsEmail = true;
 			solicitacaoManagedBean.carregarListas();
+			solicitacaoManagedBean.retornaCoordenador();
 			agendamentoManagedBean.carregarListas();
 			MessagesUtils.info("Bem vindo "+usuario.getNome());
 			return Navigation.SUCESSO;

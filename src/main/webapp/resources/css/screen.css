@@ -170,8 +170,8 @@ a {
 
 #container-login {
 	padding: 8px;
-	color: #FFF;
-	background: #1f2c3c;
+	/* color: #FFF; */
+	background: #FFF;
 }
 
 #content {
