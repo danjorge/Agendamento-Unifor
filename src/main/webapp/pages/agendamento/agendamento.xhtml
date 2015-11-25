@@ -9,9 +9,9 @@
 	
 	<ui:define name="content">
 	
-		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-			
 		<h:form>
+			
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 			
 			<p:schedule id="calendarAgendamento" value="#{agendamentoManagedBean.eventModel}" widgetVar="agendamento" timeZone="GMT-3" locale="pt-br" 
 						initialDate="#{agendamentoManagedBean.initialDate}" view="#{agendamentoManagedBean.viewOfSchedule}" tooltip="true">

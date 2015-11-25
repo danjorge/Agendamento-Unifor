@@ -121,7 +121,6 @@ public class AgendamentoManager {
 	
 	public void onDateSelect(SelectEvent selectEvent){
 		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
-		event.isEditable();
 		sol = (Solicitacao) sessao.recuperaObjetoSessao("solicitacao");
 	}
 	
