@@ -19,6 +19,10 @@ a {
 	padding: 0;
 }
 
+.header-font {
+	font-family: cursive !important;
+}
+
 #content-login{
 	min-height: 320px;
 	font-size: 120%;
