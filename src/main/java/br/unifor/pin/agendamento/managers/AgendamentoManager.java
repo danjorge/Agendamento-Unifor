@@ -84,6 +84,8 @@ public class AgendamentoManager {
 				//adiciona o agendamento à lista de agendamentos
 				listaAgendamento.add(agendamento);	
 				
+				MessagesUtils.info("Agendamento cadastrado com sucesso!");
+				
 				eventModel.addEvent(event);
 				event = new DefaultScheduleEvent();
 
@@ -92,6 +94,7 @@ public class AgendamentoManager {
 		} else {
 			
 			agendamentoBO.atualizarAgendamento(agendamento);
+			MessagesUtils.info("Agendamento atualizado com sucesso!");
 			eventModel.updateEvent(event);
 			event = new DefaultScheduleEvent();
 			
@@ -107,6 +110,7 @@ public class AgendamentoManager {
 	
 	public String irParaAgendamentos(){
 		setViewOfSchedule("agendaDay");
+		sessao.limparSessao();
 		return Navigation.AGENDAR;
 	}
 	

@@ -57,7 +57,7 @@ public class SolicitacaoBO {
 	}
 	
 	public List<Solicitacao> pesquisarSolicitacao(Solicitacao sol, Status statusSolicitacao){
-		sol.setId(sol.getId() == 0 ? null : sol.getId());
+		//sol.setId(sol.getId() == 0 ? null : sol.getId());
 		sol.setStatusSolicitacao(new Status());
 		sol.getStatusSolicitacao().setId(statusSolicitacao != null ? statusSolicitacao.getId() : null);
 		return solicitacaoDAO.retornaPesquisaSolicitacao(sol);

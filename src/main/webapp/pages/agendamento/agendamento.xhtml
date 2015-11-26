@@ -43,7 +43,7 @@
             		<h:selectBooleanCheckbox id="allDay" value="#{agendamentoManagedBean.event.allDay}" />
 		            		 
 		            <p:commandButton id="addButton" value="Salvar" actionListener="#{agendamentoManagedBean.addEvent()}" 
-		            				 oncomplete="if (args &amp;&amp; !args.validationFailed) PF('agendamento').update();PF('eventDialog').hide();" />
+		            				 oncomplete="if (args &amp;&amp; !args.validationFailed) PF('agendamento').update();PF('eventDialog').hide();" update="messages"/>
         		</h:panelGrid>
     		</p:dialog>
 			

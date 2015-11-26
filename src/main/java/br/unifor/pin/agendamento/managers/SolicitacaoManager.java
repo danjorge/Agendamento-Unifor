@@ -87,6 +87,7 @@ public class SolicitacaoManager {
 			}
 		} else {
 			solicitacaoBO.atualizarSolicitacao(solicitacao);
+			sessao.limparSessao();
 		}
 		carregarListas();
 		
@@ -159,6 +160,7 @@ public class SolicitacaoManager {
 	
 	public String salvarRespostaSolicitacao(){
 		solicitacaoBO.salvarRespostaSolicitacao(solicitacaoVisualizacao);
+		setExibeCampoResponderSolicitacao(false);
 		MessagesUtils.info("Resposta salva com sucesso.");
 		listaRespostasSolicitacoes.add(solicitacaoVisualizacao);
 		solicitacaoVisualizacao.setRespostaSolicitacao(null);
