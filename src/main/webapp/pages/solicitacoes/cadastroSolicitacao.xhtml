@@ -7,7 +7,7 @@
 	template="/templates/template.xhtml">
 	
 	<ui:define name="content">
-		<p:panel id="pnlCadastroSolicitacao" header="#{solicitacaoManagedBean.headerPanelPage()}">
+		<p:panel id="pnlCadastroSolicitacao" header="#{solicitacaoManagedBean.headerPanelPage()}" styleClass="noGridBorder">
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 			<h:form>
 				<p:panelGrid style="width: 100%">
@@ -28,7 +28,8 @@
 					<p:row>
 						<p:column>	
 							<h:outputText value="Descrição da solicitação:" /><br/>
-							<p:inputTextarea value="#{solicitacaoManagedBean.solicitacao.descricao}" cols="100" rows="20"/>
+							<p:inputTextarea value="#{solicitacaoManagedBean.solicitacao.descricao}" cols="100" rows="20" maxlength="255" styleClass="textarea"/><br/>
+							<span class="textarea_feedback"></span>
 						</p:column>
 					</p:row>
 					

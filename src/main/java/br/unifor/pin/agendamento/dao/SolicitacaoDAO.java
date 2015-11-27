@@ -35,7 +35,7 @@ public class SolicitacaoDAO {
 														   + "inner join fetch u.cursos c " 
 														   + "where c.id = :cursoId "
 														   + "and s.statusSolicitacao.id = 1 "
-														   + (usuario.getId() == 3 ? " and u.id = " + usuario.getId() : ""))
+														   + (usuario.getPapel().getId() == 3 ? " and u.id = " + usuario.getId() : ""))
 														   .setParameter("cursoId", usuario.getCursos().get(0).getId())
 														   .getResultList();
 	}
@@ -55,8 +55,8 @@ public class SolicitacaoDAO {
 														   + "inner join fetch s.usuario u "
 														   + "inner join fetch u.cursos c "
 														   + "where c.id = :cursoId "
-														   + "and s.statusSolicitacao.id = 2 "
-														   + (usuario.getId() == 3 ? " and u.id = " + usuario.getId() : ""))
+														   + "and s.statusSolicitacao.id in (2,3) "
+														   + (usuario.getPapel().getId() == 3 ? " and u.id = " + usuario.getId() : ""))
 														   .setParameter("cursoId", usuario.getCursos().get(0).getId())
 														   .getResultList();
 	}

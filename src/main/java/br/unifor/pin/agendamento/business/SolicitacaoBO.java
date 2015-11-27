@@ -38,7 +38,7 @@ public class SolicitacaoBO {
 	public void salvarSolicitacao(Solicitacao sol){
 		sol.setUsuario((Usuarios) sessao.recuperaObjetoSessao("usuario"));
 		sol.setStatusSolicitacao(new Status());
-		sol.getStatusSolicitacao().setId(1);//ID de SOLICITAÇÃO CADASTRADA
+		sol.getStatusSolicitacao().setId(1);// 1 - ID de SOLICITAÇÃO CADASTRADA
 		solicitacaoDAO.salvarSolicitacao(sol);
 	}
 	
@@ -47,12 +47,12 @@ public class SolicitacaoBO {
 	}
 	
 	public void fecharSolicitacao(Solicitacao sol){
-		sol.getStatusSolicitacao().setId(3);//ID de SOLICITAÇÃO FECHADA
+		sol.getStatusSolicitacao().setId(4);// 4 - ID de SOLICITAÇÃO FECHADA
 		solicitacaoDAO.atualizarSolicitacao(sol);
 	}
 	
 	public void salvarRespostaSolicitacao(Solicitacao sol){
-		sol.getStatusSolicitacao().setId(2);//ID de SOLICITAÇÃO RESPONDIDA
+		sol.getStatusSolicitacao().setId(seguranca.getUsuario().getPapel().getId() == 1 ? 2 : 3);// 2 - ID de SOLICITAÇÃO RESPONDIDA PELO COORDENADOR / 3 - SOLICITAÇÃO RESPONDIDA PELO ALUNO
 		solicitacaoDAO.atualizarSolicitacao(sol);
 	}
 	

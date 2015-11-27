@@ -40,7 +40,7 @@
 				<p:commandLink title="Editar Solicitação"
 							   ajax="false"
 							   action="#{solicitacaoManagedBean.editarSolicitacao(respSol)}"
-							   rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}">
+							   rendered="#{menuManagedBean.seguranca.usuario.papel.id == 3 ? (solicitacaoManagedBean.solicitacao.segundaRespostaSolicitacao != null ? 'true' : 'false') : 'true'}">
 							   <p:graphicImage name="/img/editar2.png" width="24" styleClass="image-button"/>
 				</p:commandLink>
 				

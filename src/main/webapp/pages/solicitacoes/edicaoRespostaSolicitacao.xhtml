@@ -14,7 +14,21 @@
 								 rows="10" 
 								 styleClass="uppercase" 
 								 required="true"
-								 requiredMessage="Campo [RESPOSTA] é obrigatório."/><br/>
+								 requiredMessage="Campo [RESPOSTA] é obrigatório."
+								 rendered="#{menuManagedBean.seguranca.usuario.papel.id != 3}"
+								 style="textarea"/><br/>
+								 
+				<p:inputTextarea value="#{solicitacaoManagedBean.solicitacao.segundaRespostaSolicitacao}"
+								 cols="100"
+								 rows="10"
+								 styleClass="uppercase" 
+								 required="true"
+								 requiredMessage="Campo [RESPOSTA] é obrigatório."
+								 rendered="#{menuManagedBean.seguranca.usuario.papel.id != 1}"
+								 style="textarea"/><br/>
+								 
+				<span class="textarea_feedback"></span><br/>
+				
 				<p:commandButton value="Salvar Edição" action="#{solicitacaoManagedBean.salvarSolicitacao()}" ajax="false"/>
 				<p:commandButton value="Voltar" action="#{solicitacaoManagedBean.voltar()}" ajax="false"/>
 			</h:form>

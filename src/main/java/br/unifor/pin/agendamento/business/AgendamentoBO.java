@@ -47,10 +47,10 @@ public class AgendamentoBO {
 		
 		//guarda as informações da solicitação e do evento em tela no banco
 		Solicitacao sol = (Solicitacao) sessao.recuperaObjetoSessao("solicitacao");
-		sol.getStatusSolicitacao().setId(4);
+		sol.getStatusSolicitacao().setId(5); // 5 - ID de AGENDAMENTO CADASTRADO
 		agendamento.setSolicitacao(sol);
 		agendamento.setStatusAgendamento(new Status());
-		agendamento.getStatusAgendamento().setId(4);
+		agendamento.getStatusAgendamento().setId(5); // 5 - ID de AGENDAMENTO CADASTRADO
 		
 		//atualiza a solicitacao
 		solicitacaoDAO.atualizarSolicitacao(sol);
@@ -74,7 +74,7 @@ public class AgendamentoBO {
 	}
 	
 	public void fecharAgendamento(Agendamento agendamento){
-		agendamento.getStatusAgendamento().setId(5);
+		agendamento.getStatusAgendamento().setId(6);
 		agendamentoDAO.atualizarAgendamento(agendamento);
 	}
 	

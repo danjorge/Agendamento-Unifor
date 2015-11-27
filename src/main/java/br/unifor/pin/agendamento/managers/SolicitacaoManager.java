@@ -42,6 +42,8 @@ public class SolicitacaoManager {
 	// -----------------------------------------------------------
 	private boolean exibeCampoResponderSolicitacao = false;
 	private boolean escondeBtnResponderSolicitacao = false;
+	private boolean exibeCampoAlunoResponderSolicitacao = false;
+	private boolean escondeBtnRespostaSolicitacaoAluno = false; 
 	// -----------------------------------------------------------
 	
 	private boolean edicao;
@@ -169,6 +171,27 @@ public class SolicitacaoManager {
 		return Navigation.PRINCIPAL;
 	}
 	
+	public void preparaCampoRespostaSolicitacaoAluno(){
+		setExibeCampoAlunoResponderSolicitacao(true);
+		setEscondeBtnRespostaSolicitacaoAluno(true);
+	}
+	
+	public String salvarRespostaAlunoSolicitacao(){
+		if(solicitacaoVisualizacao.getSegundaRespostaSolicitacao() == null){
+			solicitacaoBO.salvarRespostaSolicitacao(solicitacaoVisualizacao);
+			setExibeCampoAlunoResponderSolicitacao(false);
+			MessagesUtils.info("Resposta salva com sucesso");
+			solicitacaoVisualizacao.setSegundaRespostaSolicitacao(null);
+			carregarListas();
+		} else {
+			MessagesUtils.error("Já existe uma resposta do Aluno para a solicitação.");
+			setExibeCampoAlunoResponderSolicitacao(false);
+			return Navigation.VISUALIZARSOLICITACAO;
+		}
+		
+		return Navigation.PRINCIPAL;
+	}
+	
 	public String preparaAgendamento(){
 		agendamentoManagedBean.setInitialDate(null);
 		agendamentoManagedBean.setViewOfSchedule("month");
@@ -204,6 +227,15 @@ public class SolicitacaoManager {
 		this.escondeBtnResponderSolicitacao = escondeBtnResponderSolicitacao;
 	}
 
+	public boolean isEscondeBtnRespostaSolicitacaoAluno() {
+		return escondeBtnRespostaSolicitacaoAluno;
+	}
+
+	public void setEscondeBtnRespostaSolicitacaoAluno(
+			boolean escondeBtnRespostaSolicitacaoAluno) {
+		this.escondeBtnRespostaSolicitacaoAluno = escondeBtnRespostaSolicitacaoAluno;
+	}
+
 	public boolean isExibeCampoResponderSolicitacao() {
 		return exibeCampoResponderSolicitacao;
 	}
@@ -211,6 +243,15 @@ public class SolicitacaoManager {
 	public void setExibeCampoResponderSolicitacao(
 			boolean exibeCampoResponderSolicitacao) {
 		this.exibeCampoResponderSolicitacao = exibeCampoResponderSolicitacao;
+	}
+
+	public boolean isExibeCampoAlunoResponderSolicitacao() {
+		return exibeCampoAlunoResponderSolicitacao;
+	}
+
+	public void setExibeCampoAlunoResponderSolicitacao(
+			boolean exibeCampoAlunoResponderSolicitacao) {
+		this.exibeCampoAlunoResponderSolicitacao = exibeCampoAlunoResponderSolicitacao;
 	}
 
 	public Solicitacao getSolicitacaoVisualizacao() {

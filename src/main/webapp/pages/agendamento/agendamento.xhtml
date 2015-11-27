@@ -9,7 +9,7 @@
 	
 	<ui:define name="content">
 	
-		<h:form>
+		<h:form id="formAgendamento">
 			
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 			
@@ -43,7 +43,7 @@
             		<h:selectBooleanCheckbox id="allDay" value="#{agendamentoManagedBean.event.allDay}" />
 		            		 
 		            <p:commandButton id="addButton" value="Salvar" actionListener="#{agendamentoManagedBean.addEvent()}" 
-		            				 oncomplete="if (args &amp;&amp; !args.validationFailed) PF('agendamento').update();PF('eventDialog').hide();" update="messages"/>
+		            				 oncomplete="if (args &amp;&amp; !args.validationFailed) PF('agendamento').update();PF('eventDialog').hide();" update="formAgendamento"/>
         		</h:panelGrid>
     		</p:dialog>
 			
