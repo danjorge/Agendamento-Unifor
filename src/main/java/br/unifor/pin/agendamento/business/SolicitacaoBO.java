@@ -46,6 +46,10 @@ public class SolicitacaoBO {
 		solicitacaoDAO.atualizarSolicitacao(sol);
 	}
 	
+	public Solicitacao retornaSolicitacaoPorId(Solicitacao sol){
+		return (Solicitacao) solicitacaoDAO.retornaSolicitacaoPorId(sol.getId());
+	}
+	
 	public void fecharSolicitacao(Solicitacao sol){
 		sol.getStatusSolicitacao().setId(4);// 4 - ID de SOLICITAÇÃO FECHADA
 		solicitacaoDAO.atualizarSolicitacao(sol);

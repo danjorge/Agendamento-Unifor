@@ -118,6 +118,7 @@ public class SolicitacaoManager {
 	public String visualizarSolicitacao(Solicitacao sol){
 		solicitacaoVisualizacao = solicitacaoBO.recuperaSolicitacaoPorId(sol.getId());
 		sessao.setarObjetoSessao("solicitacao", solicitacaoVisualizacao);
+		sessao.setarObjetoSessao("solicitacaoBanco", sol);
 		return Navigation.VISUALIZARSOLICITACAO;
 	}
 	
@@ -177,18 +178,23 @@ public class SolicitacaoManager {
 	}
 	
 	public String salvarRespostaAlunoSolicitacao(){
-		if(solicitacaoVisualizacao.getSegundaRespostaSolicitacao() == null){
-			solicitacaoBO.salvarRespostaSolicitacao(solicitacaoVisualizacao);
-			setExibeCampoAlunoResponderSolicitacao(false);
-			MessagesUtils.info("Resposta salva com sucesso");
-			solicitacaoVisualizacao.setSegundaRespostaSolicitacao(null);
-			carregarListas();
-		} else {
-			MessagesUtils.error("Já existe uma resposta do Aluno para a solicitação.");
-			setExibeCampoAlunoResponderSolicitacao(false);
-			return Navigation.VISUALIZARSOLICITACAO;
+		Solicitacao solicitacao = (Solicitacao) sessao.recuperaObjetoSessao("solicitacaoBanco");
+		for(Solicitacao sol : listaRespostasSolicitacoes){
+			if(sol == solicitacao){
+				if(sol.getSegundaRespostaSolicitacao() != null){
+					MessagesUtils.error("Já existe uma resposta do Aluno para a solicitação.");
+					setExibeCampoAlunoResponderSolicitacao(false);				
+					return Navigation.VISUALIZARSOLICITACAO;
+				} else {
+					solicitacaoBO.salvarRespostaSolicitacao(solicitacaoVisualizacao);
+					setExibeCampoAlunoResponderSolicitacao(false);
+					MessagesUtils.info("Resposta salva com sucesso");
+					solicitacaoVisualizacao.setSegundaRespostaSolicitacao(null);
+					carregarListas();
+					return Navigation.PRINCIPAL;				
+				}
+			}
 		}
-		
 		return Navigation.PRINCIPAL;
 	}
 	

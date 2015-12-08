@@ -40,6 +40,10 @@ public class SolicitacaoDAO {
 														   .getResultList();
 	}
 	
+	public Solicitacao retornaSolicitacaoPorId(Integer solId){
+		return (Solicitacao) entityManager.find(Solicitacao.class, solId);
+	}
+	
 	public Solicitacao retornaSolicitacaoPorAssunto(Solicitacao solicitacao){
 		return (Solicitacao) entityManager.createQuery("Select s "
 													 + "from Solicitacao s "
