@@ -38,8 +38,8 @@ public class Papeis implements Serializable, BaseEntity {
 	@Column(nullable = false, unique = true)
 	private String nome;
 
-	@OneToMany(mappedBy="papel")
-	private List<Usuarios> usuarios;
+	/*@OneToMany(mappedBy="papel")
+	private List<Usuarios> usuarios;*/
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "configuracoes", 
@@ -77,13 +77,13 @@ public class Papeis implements Serializable, BaseEntity {
 		this.nome = nome;
 	}
 	
-	public List<Usuarios> getUsuarios() {
+	/*public List<Usuarios> getUsuarios() {
 		return usuarios;
 	}
 
 	public void setUsuarios(List<Usuarios> usuarios) {
 		this.usuarios = usuarios;
-	}
+	}*/
 
 	/**
 	 * @return the permissoes

@@ -3,6 +3,7 @@ package br.unifor.pin.agendamento.business;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import br.unifor.pin.agendamento.dao.SolicitacaoDAO;
@@ -12,7 +13,7 @@ import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 
-
+@Component
 @Service
 public class SolicitacaoBO {
 	
@@ -46,8 +47,8 @@ public class SolicitacaoBO {
 		solicitacaoDAO.atualizarSolicitacao(sol);
 	}
 	
-	public Solicitacao retornaSolicitacaoPorId(Solicitacao sol){
-		return (Solicitacao) solicitacaoDAO.retornaSolicitacaoPorId(sol.getId());
+	public Solicitacao retornaSolicitacaoPorId(Integer solicitacaoId){
+		return (Solicitacao) solicitacaoDAO.retornaSolicitacaoPorId(solicitacaoId);
 	}
 	
 	public void fecharSolicitacao(Solicitacao sol){

@@ -4,7 +4,6 @@
 package br.unifor.pin.agendamento.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -42,8 +40,8 @@ public class Permissoes implements Serializable, BaseEntity {
 	@Column(unique=true, nullable=false)
 	private String permissao;
 	
-	@ManyToMany(mappedBy="permissoes")
-	private List<Papeis> papeis;
+	/*@ManyToMany(mappedBy="permissoes")
+	private List<Papeis> papeis;*/
 	
 	/**
 	 * @return the id
@@ -104,16 +102,16 @@ public class Permissoes implements Serializable, BaseEntity {
 	/**
 	 * @return the papeis
 	 */
-	public List<Papeis> getPapeis() {
+	/*public List<Papeis> getPapeis() {
 		return papeis;
 	}
 
-	/**
+	*//**
 	 * @param papeis the papeis to set
-	 */
+	 *//*
 	public void setPapeis(List<Papeis> papeis) {
 		this.papeis = papeis;
-	}
+	}*/
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

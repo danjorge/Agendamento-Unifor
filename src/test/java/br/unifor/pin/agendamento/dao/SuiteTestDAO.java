@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.dao;
+/*package br.unifor.pin.agendamento.dao;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -7,4 +7,4 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ LoginTest.class, SolicitacaoTest.class })
 public class SuiteTestDAO {
 
-}
+}*/

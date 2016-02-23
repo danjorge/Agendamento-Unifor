@@ -1,4 +1,4 @@
-package br.unifor.pin.agendamento.dao;
+/*package br.unifor.pin.agendamento.dao;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -66,3 +66,4 @@ public class SolicitacaoTest {
 	
 
 }
+*/

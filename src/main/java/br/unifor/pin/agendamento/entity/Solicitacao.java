@@ -11,11 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.unifor.pin.agendamento.utils.BaseEntity;
 
 @Entity
 @Table(name="TB_SOLICITACOES")
+@XmlRootElement
 public class Solicitacao implements Serializable, BaseEntity {
 
 	/**

@@ -8,5 +8,6 @@
 
 	<aop:aspectj-autoproxy />
 	<import resource="db.xml" />
+	<context:component-scan base-package="br.unifor.pin.agendamento.ws"/>
 
 </beans>

@@ -38,7 +38,9 @@ public class UsuarioDAO {
 	
 	public Usuarios buscarPorMatricula(String matricula){
 		try {
-			return (Usuarios) entityManager.createQuery("Select u from Usuarios u where u.matricula = :matricula")
+			return (Usuarios) entityManager.createQuery("Select u from Usuarios u "
+													  + "inner join fetch u.cursos c "
+													  + "where u.matricula = :matricula")
 														.setParameter("matricula", matricula)
 														.getSingleResult();
 		} catch(NoResultException e){

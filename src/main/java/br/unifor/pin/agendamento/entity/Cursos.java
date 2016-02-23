@@ -1,10 +1,6 @@
 package br.unifor.pin.agendamento.entity;
 
 import java.io.Serializable;
-import java.util.List;
-
-
-
 
 //github.com/danjorge/Agendamento-Unifor
 import javax.persistence.Column;
@@ -12,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.unifor.pin.agendamento.utils.BaseEntity;
@@ -30,8 +25,8 @@ public class Cursos implements Serializable, BaseEntity {
 	@Column(name="DSC_CURSOS", nullable = false)
 	private String descricao;
 	
-	@ManyToMany(mappedBy="cursos")
-	private List<Usuarios> usuarios;
+	/*@ManyToMany(mappedBy="cursos")
+	private List<Usuarios> usuarios;*/
 
 	public Integer getId() {
 		return id;
@@ -53,13 +48,14 @@ public class Cursos implements Serializable, BaseEntity {
 		return serialVersionUID;
 	}
 
+	/*@XmlTransient
 	public List<Usuarios> getUsuarios() {
 		return usuarios;
 	}
 
 	public void setUsuarios(List<Usuarios> usuarios) {
 		this.usuarios = usuarios;
-	}
+	}*/
 	
 	@Override
 	public int hashCode() {

@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.unifor.pin.agendamento.utils.BaseEntity;
 /**
@@ -21,6 +22,7 @@ import br.unifor.pin.agendamento.utils.BaseEntity;
  */
 @Entity
 @Table(name = "usuarios")
+@XmlRootElement
 public class Usuarios implements Serializable, BaseEntity {
 
 	/**
