@@ -17,6 +17,7 @@ import br.unifor.pin.agendamento.business.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.exceptions.DAOException;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 
 import com.sun.jersey.spi.resource.Singleton;
@@ -61,7 +62,7 @@ public class SolicitacaoResource {
 	@Path("/json")
 	//@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces("application/json")
-	public List<Solicitacao> getListaSolicitacoes(){
+	public List<Solicitacao> getListaSolicitacoes() throws DAOException{
 		
 		Usuarios usuario = new Usuarios();
 		usuario.setMatricula("1413556-1");
@@ -77,7 +78,7 @@ public class SolicitacaoResource {
 		seguranca.setUsuario(usuario1);
 		
 		try {
-			listaSolicitacao = solicitacaoBusiness.buscarRespostasSolicitacoesPorCurso(); 
+			listaSolicitacao = solicitacaoBusiness.buscarSolcitacoesPorCurso(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception

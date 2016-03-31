@@ -64,13 +64,13 @@ public class UsuarioBO {
 	
 	@PermitAll
 	@Loggable(enable = false)
-	public List<Cursos> retornaTodosCursos(){
+	public List<Cursos> retornaTodosCursos() throws DAOException{
 		return usuarioDAO.retornaTodosCursos();
 	}
 
 	@RolesAllowed(value = { "LISTAR_USUARIO" })
 	@Loggable(enable = false)
-	public List<Usuarios> listaUsuarioPorNome(String nome) {
+	public List<Usuarios> listaUsuarioPorNome(String nome) throws DAOException{
 		List<Usuarios> usuarios = usuarioDAO.listarPorNome(nome);
 		return usuarios;
 	}
@@ -85,6 +85,14 @@ public class UsuarioBO {
 		}
 		return null;
 	}
+	
+	
+	@PermitAll
+	@Loggable(enable = false)
+	public List<Usuarios> buscarTodosUsuarios() throws DAOException{
+		return usuarioDAO.buscarTodosUsuarios();
+	}
+	
 
 	@RolesAllowed(value = { "EXCLUIR_USUARIO" })
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -98,7 +106,7 @@ public class UsuarioBO {
 		usuarioDAO.excluir(usuario);
 	}
 	
-	public List<Papeis> retornaTodosPapeis(){
+	public List<Papeis> retornaTodosPapeis() throws DAOException{
 		return usuarioDAO.buscaTodosPapeis();
 	}
 

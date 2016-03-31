@@ -13,6 +13,7 @@ import br.unifor.pin.agendamento.business.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.exceptions.DAOException;
 import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Encripta;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
@@ -42,11 +43,11 @@ public class CadUsuarioManager {
 	private List<Cursos> listaCursos;
 	private List<Papeis> listaPapeis;
 	
-	public List<Cursos> listarCursos(){
+	public List<Cursos> listarCursos() throws DAOException{
 		return listaCursos = usuarioBO.retornaTodosCursos();
 	}
 	
-	public List<Papeis> listarPapeis(){
+	public List<Papeis> listarPapeis() throws DAOException{
 		return listaPapeis = usuarioBO.retornaTodosPapeis(); 
 	}
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.business.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
+import br.unifor.pin.agendamento.exceptions.DAOException;
 import br.unifor.pin.agendamento.utils.Navigation;
 /**
  * @author patrick.cunha
@@ -25,13 +26,13 @@ public class ListUsuarioManager {
 	private String nome;
 	private List<Usuarios> usuarios;
 	
-	public void lista(){
+	public void lista() throws DAOException{
 		
 		usuarios = usuarioBO.listaUsuarioPorNome(nome);
 		
 	}
 	
-	public void excluir(Usuarios usuario){
+	public void excluir(Usuarios usuario) throws DAOException{
 		usuarioBO.excluir(usuario);
 		usuarios = usuarioBO.listaUsuarioPorNome(nome);
 	}

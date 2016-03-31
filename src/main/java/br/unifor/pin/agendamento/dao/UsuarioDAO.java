@@ -36,6 +36,16 @@ public class UsuarioDAO {
 		entityManager.merge(usuario);
 	}
 	
+	public List<Usuarios> buscarTodosUsuarios(){
+		try {
+			return entityManager.createQuery("Select u from Usuarios u")
+								.getResultList();			
+		} catch (NoResultException e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+	
 	public Usuarios buscarPorMatricula(String matricula){
 		try {
 			return (Usuarios) entityManager.createQuery("Select u from Usuarios u "
