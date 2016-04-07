@@ -87,8 +87,6 @@ public class UsuarioBO {
 	}
 	
 	
-	@PermitAll
-	@Loggable(enable = false)
 	public List<Usuarios> buscarTodosUsuarios() throws DAOException{
 		return usuarioDAO.buscarTodosUsuarios();
 	}

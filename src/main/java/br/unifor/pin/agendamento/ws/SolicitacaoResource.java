@@ -7,10 +7,15 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.Providers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.sun.jersey.spi.resource.Singleton;
 
 import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.business.UsuarioBO;
@@ -19,8 +24,6 @@ import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
 import br.unifor.pin.agendamento.to.SegurancaTO;
-
-import com.sun.jersey.spi.resource.Singleton;
 
 @Component
 @Singleton
@@ -38,6 +41,9 @@ public class SolicitacaoResource {
 	private UsuarioBO usuarioBO;
 	
 	private List<Solicitacao> listaSolicitacao;
+	
+	@Context
+	private Providers providers;
 	
 
 	
@@ -60,12 +66,11 @@ public class SolicitacaoResource {
 	
 	@GET
 	@Path("/json")
-	//@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	@Produces("application/json")
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public List<Solicitacao> getListaSolicitacoes() throws DAOException{
 		
 		Usuarios usuario = new Usuarios();
-		usuario.setMatricula("1413556-1");
+		usuario.setMatricula("1413556");
 		
 		Usuarios usuario1 = usuarioBO.buscarUsuarioPorMatricula(usuario.getMatricula());
 		
@@ -83,6 +88,11 @@ public class SolicitacaoResource {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
+		
+		if(listaSolicitacao.size() == 1){
+			listaSolicitacao.add(new Solicitacao());
+		}
+		
 		
 		return listaSolicitacao;
 	}

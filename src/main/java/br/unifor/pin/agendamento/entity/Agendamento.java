@@ -15,11 +15,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.primefaces.model.ScheduleEvent;
 
 @Entity
 @Table(name="TB_AGENDAMENTO")
+@XmlRootElement
 public class Agendamento implements Serializable, ScheduleEvent{
 
 	/**

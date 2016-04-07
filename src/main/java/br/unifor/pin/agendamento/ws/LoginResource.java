@@ -6,14 +6,20 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.sun.jersey.spi.resource.Singleton;
 
 import br.unifor.pin.agendamento.business.UsuarioBO;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
 
+@Component
+@Singleton
 @Path("/login")
 public class LoginResource {
 	
@@ -21,10 +27,12 @@ public class LoginResource {
 	private UsuarioBO usuarioBO;
 	private Usuarios usuario;
 	
+	private List<Usuarios> listaUsuarios;
+	
 	
 	@GET
 	@Path("/{matricula}/json")
-	@Produces("application/json")
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Response getUsuarioByMatricula(@PathParam("matricula") String matricula){
 		
 		String result = "";
@@ -41,9 +49,12 @@ public class LoginResource {
 	
 	@GET
 	@Path("/json")
-	@Produces("application/json")
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public List<Usuarios> retornaTodosUsuarios() throws DAOException{
-		return usuarioBO.buscarTodosUsuarios();
+		
+		listaUsuarios = usuarioBO.buscarTodosUsuarios();
+		
+		return listaUsuarios;
 	}
 
 

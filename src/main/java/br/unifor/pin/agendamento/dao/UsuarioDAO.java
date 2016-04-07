@@ -41,7 +41,7 @@ public class UsuarioDAO {
 			return entityManager.createQuery("Select u from Usuarios u")
 								.getResultList();			
 		} catch (NoResultException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 			return null;
 		}
 	}
