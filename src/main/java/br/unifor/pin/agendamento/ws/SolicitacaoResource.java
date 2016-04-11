@@ -48,8 +48,8 @@ public class SolicitacaoResource {
 
 	
 	@GET
-	@Path("/{solicitacaoId}/json")
-	@Produces("application/json")
+	@Path("/{solicitacaoId}/xml")
+	@Produces("application/xml")
 	public Response getSolicitacaoByIdJSON(@PathParam("solicitacaoId") Integer solicitacaoId){
 		
 		String result = "";
@@ -65,12 +65,12 @@ public class SolicitacaoResource {
 	}
 	
 	@GET
-	@Path("/json")
+	@Path("/{matricula}/json")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	public List<Solicitacao> getListaSolicitacoes() throws DAOException{
+	public List<Solicitacao> getListaSolicitacoes(@PathParam("matricula") String matricula) throws DAOException{
 		
 		Usuarios usuario = new Usuarios();
-		usuario.setMatricula("1413556");
+		usuario.setMatricula(matricula);
 		
 		Usuarios usuario1 = usuarioBO.buscarUsuarioPorMatricula(usuario.getMatricula());
 		
