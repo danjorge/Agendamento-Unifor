@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -14,11 +15,13 @@ import javax.ws.rs.ext.Providers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.sun.jersey.spi.resource.Singleton;
 
 import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.business.UsuarioBO;
+import br.unifor.pin.agendamento.dao.SolicitacaoDAO;
 import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
@@ -33,6 +36,9 @@ public class SolicitacaoResource {
 	@Autowired
 	private SolicitacaoBO solicitacaoBusiness;
 	private Solicitacao solicitacao;
+	
+	@Autowired
+	private SolicitacaoDAO solicitacaoDAO;
 	
 	@Autowired
 	private SegurancaTO seguranca;
@@ -97,6 +103,11 @@ public class SolicitacaoResource {
 		return listaSolicitacao;
 	}
 	
+	@POST
+	@Path("/salvarSolicitacao")
+	public void salvarSolicitacao(@RequestBody Solicitacao solicitacao){
+		solicitacaoDAO.salvarSolicitacao(solicitacao);
+	}
 	
 	
 }
