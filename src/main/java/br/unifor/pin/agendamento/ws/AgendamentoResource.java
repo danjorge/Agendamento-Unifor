@@ -40,8 +40,8 @@ public class AgendamentoResource {
 	private List<Agendamento> listaAgendamento;
 	
 	@GET
-	@Path("/{solicitacaoId}/json")
-	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	@Path("/{solicitacaoId}/xml")
+	@Produces(MediaType.APPLICATION_XML)
 	public Response getAgendamentoBySolicitacaoIdJSON(@PathParam("solicitacaoId") Integer solicitacaoId){
 		
 		Agendamento agendamento = null;
@@ -56,31 +56,15 @@ public class AgendamentoResource {
 		}
 		return Response.status(200).entity( (agendamento != null ? agendamento : result) ).build();
 		
-	}
+	}	
 	
 	@GET
-	@Path("/{agendamentoId}/xml")
-	@Produces(MediaType.APPLICATION_XML)
-	public Agendamento getAgendamentoByIdJSON(@PathParam("agendamentoId") Integer agendamentoId){
-		try {
-			return agendamentoBusiness.retornaAgendamentoPorId(agendamentoId);
-		} catch (Exception e) {
-			e.getMessage();
-			e.printStackTrace();
-			// TODO: handle exception
-		}
-		
-		return null;
-	}
-	
-	
-	@GET
-	@Path("/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Agendamento> getAgendamentosJSON() throws DAOException{
+	@Path("/{matricula}/json")
+	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	public List<Agendamento> getAgendamentosJSON(@PathParam("matricula") String matricula) throws DAOException{
 		
 		Usuarios usuario = new Usuarios();
-		usuario.setMatricula("1413556");
+		usuario.setMatricula(matricula);
 		
 		Usuarios usuario1 = usuarioBO.buscarUsuarioPorMatricula(usuario.getMatricula());
 		
@@ -94,9 +78,16 @@ public class AgendamentoResource {
 		
 		
 		try {
-			listaAgendamento = agendamentoBusiness.buscarAgendamentosPorCurso();
+			@SuppressWarnings("unchecked")
+			ArrayList<Agendamento> lst = (ArrayList)agendamentoBusiness.buscarAgendamentosPorCurso();
+			
+			listaAgendamento = lst;
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		
+		if(listaAgendamento.size() == 1){
+			listaAgendamento.add(new Agendamento());
 		}
 		
 		return listaAgendamento;

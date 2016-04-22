@@ -39,10 +39,10 @@ public class AgendamentoBO {
 	public Agendamento salvarAgendamento(ScheduleEvent event){
 		//guarda as informações do evento em tela no banco
 		Agendamento agendamento = new Agendamento();
-		agendamento.setTitulo(event.getTitle());
-		agendamento.setDscAgendamentoEvent(event.getDescription());
-		agendamento.setDataInicio(event.getStartDate());
-		agendamento.setDataFim(event.getEndDate());
+		agendamento.setTitle(event.getTitle());
+		agendamento.setDescription(event.getDescription());
+		agendamento.setStartDate(event.getStartDate());
+		agendamento.setEndDate(event.getEndDate());
 		agendamento.setAllDay(event.isAllDay());
 		
 		//guarda as informações da solicitação e do evento em tela no banco

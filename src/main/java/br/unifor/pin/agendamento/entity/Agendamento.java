@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.primefaces.model.ScheduleEvent;
@@ -35,89 +36,108 @@ public class Agendamento implements Serializable, ScheduleEvent{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
+	@XmlElement
 	private Integer idEvent;
 	
+	@XmlElement
 	private String titulo;
 	
+	@XmlElement
 	@Column(name="DSC_AGENDAMENTO_EVENT")
 	private String dscAgendamentoEvent;
 	
+	@XmlElement
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicio;
 	
+	@XmlElement
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFim;
 	
+	@XmlElement
 	@Column(name="is_All_Day")
 	private boolean isAllDay;
+	
 	
 	@OneToOne
 	@JoinColumn(name="solicitacao_id", nullable=false)
 	private Solicitacao solicitacao;
 	
+	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="status_agendamento", nullable=false)
 	private Status StatusAgendamento;
 	
+	@XmlElement
 	@Override
 	public Object getData() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@XmlElement
 	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
-		return this.getTitulo();
-	}
+		return this.titulo;
+	}	
 	
 	public void setTitle(String title){
 		titulo = title;
 	}
 
+	@XmlElement
 	@Override
 	public Date getStartDate() {
 		// TODO Auto-generated method stub
-		return this.getDataInicio();
+		return this.dataInicio;
 	}
+	
 	
 	public void setStartDate(Date startDate) {
 		dataInicio = startDate;
 	}
-
+	
+	@XmlElement
 	@Override
 	public Date getEndDate() {
 		// TODO Auto-generated method stub
-		return this.getDataFim();
+		return this.dataFim;
 	}
+	
 	
 	public void setEndDate(Date endDate){
 		dataFim = endDate;
 	}
 
+	@XmlElement
 	@Override
 	public boolean isAllDay() {
 		// TODO Auto-generated method stub
 		return this.isAllDay;
 	}
 	
+	@XmlElement
 	@Override
 	public String getStyleClass() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@XmlElement
 	@Override
 	public boolean isEditable() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@XmlElement
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		return this.getDscAgendamentoEvent();
+		return this.dscAgendamentoEvent;
 	}
+	
 	
 	public void setDescription(String description){
 		dscAgendamentoEvent = description;
@@ -141,6 +161,7 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		this.idEvent = idEvent;
 	}
 
+	@XmlElement
 	public Solicitacao getSolicitacao() {
 		return solicitacao;
 	}
@@ -149,6 +170,7 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		this.solicitacao = solicitacao;
 	}
 	
+	@XmlElement
 	public Status getStatusAgendamento() {
 		return StatusAgendamento;
 	}
@@ -157,38 +179,7 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		StatusAgendamento = statusAgendamento;
 	}
 
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public String getDscAgendamentoEvent() {
-		return dscAgendamentoEvent;
-	}
-
-	public void setDscAgendamentoEvent(String dscAgendamentoEvent) {
-		this.dscAgendamentoEvent = dscAgendamentoEvent;
-	}
-
-	public Date getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public Date getDataFim() {
-		return dataFim;
-	}
-
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
-
+	
 	public void setAllDay(boolean isAllDay) {
 		this.isAllDay = isAllDay;
 	}
