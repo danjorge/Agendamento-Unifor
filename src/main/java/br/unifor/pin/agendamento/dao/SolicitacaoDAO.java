@@ -40,6 +40,18 @@ public class SolicitacaoDAO {
 														   .getResultList();
 	}
 	
+	public List<Solicitacao> retornaListaTodasSolicitacoesPorCurso(Usuarios usuario){
+		return (List<Solicitacao>) entityManager.createQuery("Select s "
+														   + "from Solicitacao s "
+														   + "inner join fetch s.usuario u "
+														   + "inner join fetch u.cursos c "
+														   + "where c.id = :cursoId "
+														   + "and s.statusSolicitacao.id in (1,2,3) "
+														   + (usuario.getPapel().getId() == 3 ? " and u.id = " + usuario.getId() : ""))
+														   .setParameter("cursoId", usuario.getCursos().get(0).getId())
+														   .getResultList();
+	}
+	
 	public Solicitacao retornaSolicitacaoPorId(Integer solId){
 		return (Solicitacao) entityManager.find(Solicitacao.class, solId);
 	}

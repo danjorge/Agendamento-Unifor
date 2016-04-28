@@ -77,18 +77,15 @@ public class AgendamentoResource {
 		seguranca.setUsuario(usuario1);
 		
 		
-		try {
-			@SuppressWarnings("unchecked")
-			ArrayList<Agendamento> lst = (ArrayList)agendamentoBusiness.buscarAgendamentosPorCurso();
-			
-			listaAgendamento = lst;
+		try {			
+			listaAgendamento = agendamentoBusiness.buscarAgendamentosPorCurso();;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		
-		if(listaAgendamento.size() == 1){
-			listaAgendamento.add(new Agendamento());
-		}
+//		if(listaAgendamento.size() == 1){
+//			listaAgendamento.add(new Agendamento());
+//		}
 		
 		return listaAgendamento;
 	}

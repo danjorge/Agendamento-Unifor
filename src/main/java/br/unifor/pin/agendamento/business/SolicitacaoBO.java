@@ -28,6 +28,10 @@ public class SolicitacaoBO {
 		return solicitacaoDAO.retornaListaSolicitacoesPorCurso(seguranca.getUsuario());
 	}
 	
+	public List<Solicitacao> buscarTodasSolicitacoesPorCurso(){
+		return solicitacaoDAO.retornaListaTodasSolicitacoesPorCurso(seguranca.getUsuario());
+	}
+	
 	public List<Solicitacao> buscarRespostasSolicitacoesPorCurso(){
 		return solicitacaoDAO.retornaListaRespostaSolicitacoesPorCurso(seguranca.getUsuario());
 	}

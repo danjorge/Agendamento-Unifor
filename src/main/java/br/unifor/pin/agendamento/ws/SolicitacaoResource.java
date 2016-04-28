@@ -89,15 +89,15 @@ public class SolicitacaoResource {
 		seguranca.setUsuario(usuario1);
 		
 		try {
-			listaSolicitacao = solicitacaoBusiness.buscarSolcitacoesPorCurso(); 
+			listaSolicitacao = solicitacaoBusiness.buscarTodasSolicitacoesPorCurso(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
 		
-		if(listaSolicitacao.size() == 1){
-			listaSolicitacao.add(new Solicitacao());
-		}
+//		if(listaSolicitacao.size() == 1){
+//			listaSolicitacao.add(new Solicitacao());
+//		}
 		
 		
 		return listaSolicitacao;

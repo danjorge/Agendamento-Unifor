@@ -39,43 +39,34 @@ public class Agendamento implements Serializable, ScheduleEvent{
 	@XmlElement
 	private Integer idEvent;
 	
-	@XmlElement
 	private String titulo;
 	
-	@XmlElement
 	@Column(name="DSC_AGENDAMENTO_EVENT")
 	private String dscAgendamentoEvent;
 	
-	@XmlElement
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicio;
 	
-	@XmlElement
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFim;
 	
-	@XmlElement
 	@Column(name="is_All_Day")
 	private boolean isAllDay;
-	
 	
 	@OneToOne
 	@JoinColumn(name="solicitacao_id", nullable=false)
 	private Solicitacao solicitacao;
 	
-	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="status_agendamento", nullable=false)
 	private Status StatusAgendamento;
 	
-	@XmlElement
 	@Override
 	public Object getData() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@XmlElement
 	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
@@ -86,7 +77,6 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		titulo = title;
 	}
 
-	@XmlElement
 	@Override
 	public Date getStartDate() {
 		// TODO Auto-generated method stub
@@ -98,7 +88,6 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		dataInicio = startDate;
 	}
 	
-	@XmlElement
 	@Override
 	public Date getEndDate() {
 		// TODO Auto-generated method stub
@@ -110,28 +99,24 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		dataFim = endDate;
 	}
 
-	@XmlElement
 	@Override
 	public boolean isAllDay() {
 		// TODO Auto-generated method stub
 		return this.isAllDay;
 	}
 	
-	@XmlElement
 	@Override
 	public String getStyleClass() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@XmlElement
 	@Override
 	public boolean isEditable() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@XmlElement
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
@@ -161,7 +146,6 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		this.idEvent = idEvent;
 	}
 
-	@XmlElement
 	public Solicitacao getSolicitacao() {
 		return solicitacao;
 	}
@@ -170,7 +154,6 @@ public class Agendamento implements Serializable, ScheduleEvent{
 		this.solicitacao = solicitacao;
 	}
 	
-	@XmlElement
 	public Status getStatusAgendamento() {
 		return StatusAgendamento;
 	}
