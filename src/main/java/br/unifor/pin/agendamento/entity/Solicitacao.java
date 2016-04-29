@@ -34,7 +34,7 @@ public class Solicitacao implements Serializable, BaseEntity {
 	private String descricao;
 	
 	private String respostaSolicitacao;
-	
+
 	private String segundaRespostaSolicitacao;
 	
 	@OneToOne(fetch=FetchType.EAGER)

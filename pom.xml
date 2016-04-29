@@ -256,6 +256,13 @@
 			<version>1.19</version>
 		</dependency> -->
 		
+		<!-- GOOGLE GSON -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+		
 		<!-- Jersey + Spring -->
 		
 		<dependency>

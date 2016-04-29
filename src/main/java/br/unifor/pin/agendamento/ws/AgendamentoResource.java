@@ -3,6 +3,7 @@ package br.unifor.pin.agendamento.ws;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -25,6 +26,7 @@ import br.unifor.pin.agendamento.to.SegurancaTO;
 
 @Singleton
 @Component
+@Consumes(MediaType.APPLICATION_JSON)
 @Path("/agendamento")
 public class AgendamentoResource {
 	

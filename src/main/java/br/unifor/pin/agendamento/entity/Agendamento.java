@@ -15,10 +15,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.primefaces.model.ScheduleEvent;
+
+import br.unifor.pin.agendamento.utils.GsonExclude;
 
 @Entity
 @Table(name="TB_AGENDAMENTO")
@@ -30,13 +31,13 @@ public class Agendamento implements Serializable, ScheduleEvent{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@GsonExclude
 	@Transient
 	private String id;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
-	@XmlElement
 	private Integer idEvent;
 	
 	private String titulo;
@@ -59,7 +60,7 @@ public class Agendamento implements Serializable, ScheduleEvent{
 	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="status_agendamento", nullable=false)
-	private Status StatusAgendamento;
+	private Status statusAgendamento;
 	
 	@Override
 	public Object getData() {
@@ -155,11 +156,11 @@ public class Agendamento implements Serializable, ScheduleEvent{
 	}
 	
 	public Status getStatusAgendamento() {
-		return StatusAgendamento;
+		return statusAgendamento;
 	}
 
 	public void setStatusAgendamento(Status statusAgendamento) {
-		StatusAgendamento = statusAgendamento;
+		this.statusAgendamento = statusAgendamento;
 	}
 
 	
