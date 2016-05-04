@@ -2,6 +2,7 @@ package br.unifor.pin.agendamento.managers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,8 @@ public class MenuManagedBean {
 	@Autowired
 	private SessionContext sessao;
 	
+	private String contextPath;
+	
 	public MenuManagedBean() {}
 	
 	public String logoff(){
@@ -49,6 +52,10 @@ public class MenuManagedBean {
 		solicitacaoManagedBean.retornaCoordenador();
 		sessao.setarObjetoSessao("edicao", false);
 		return Navigation.PRINCIPAL;
+	}
+	
+	public String getContextPath(){
+		return contextPath = FacesContext.getCurrentInstance().getExternalContext().getRequestServerName();
 	}
 	
 	public String pesquisarSolicitacao(){

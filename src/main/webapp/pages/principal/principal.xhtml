@@ -28,6 +28,7 @@
 							</h:panelGrid>
 						</p:tab>
 					</p:tabView>
+					<p:poll interval="3" listener="#{solicitacaoManagedBean.atualizarListas()}" update="formTabView" stop="#{solicitacaoManagedBean.stopPoll}"/>
 				</h:form>
 			</p:panel>
 	</ui:define>	

@@ -32,7 +32,8 @@ public class SolicitacaoDAO {
 		return (List<Solicitacao>) entityManager.createQuery("Select s "
 														   + "from Solicitacao s "
 														   + "inner join fetch s.usuario u "
-														   + "inner join fetch u.cursos c " 
+														   + "inner join fetch s.statusSolicitacao st" 
+														   + "inner join fetch u.cursos c "
 														   + "where c.id = :cursoId "
 														   + "and s.statusSolicitacao.id = 1 "
 														   + (usuario.getPapel().getId() == 3 ? " and u.id = " + usuario.getId() : ""))
@@ -44,6 +45,7 @@ public class SolicitacaoDAO {
 		return (List<Solicitacao>) entityManager.createQuery("Select s "
 														   + "from Solicitacao s "
 														   + "inner join fetch s.usuario u "
+														   + "inner join fetch s.statusSolicitacao st"
 														   + "inner join fetch u.cursos c "
 														   + "where c.id = :cursoId "
 														   + "and s.statusSolicitacao.id in (1,2,3) "

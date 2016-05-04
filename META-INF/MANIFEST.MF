@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: AgendamentoUnifor
+Bundle-SymbolicName: AgendamentoUnifor
+Bundle-Version: 1.0.0.qualifier
+Export-Package: br.unifor.pin.agendamento.aspectj,
+ br.unifor.pin.agendamento.business,
+ br.unifor.pin.agendamento.converter,
+ br.unifor.pin.agendamento.dao,
+ br.unifor.pin.agendamento.entity,
+ br.unifor.pin.agendamento.exceptions,
+ br.unifor.pin.agendamento.filter,
+ br.unifor.pin.agendamento.managers,
+ br.unifor.pin.agendamento.to,
+ br.unifor.pin.agendamento.utils,
+ br.unifor.pin.agendamento.ws

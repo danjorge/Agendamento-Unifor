@@ -13,6 +13,7 @@ import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.filter.SessionContext;
+import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
 
@@ -30,6 +31,9 @@ public class SolicitacaoManager {
 	@Autowired
 	private SessionContext sessao;
 	
+	@Autowired
+	private SegurancaTO seguranca;
+	
 	private Usuarios usuario;
 	
 	private Solicitacao solicitacao;
@@ -44,6 +48,7 @@ public class SolicitacaoManager {
 	private boolean escondeBtnResponderSolicitacao = false;
 	private boolean exibeCampoAlunoResponderSolicitacao = false;
 	private boolean escondeBtnRespostaSolicitacaoAluno = false; 
+	private boolean stopPoll = false;
 	// -----------------------------------------------------------
 	
 	private boolean edicao;
@@ -131,6 +136,21 @@ public class SolicitacaoManager {
 	
 	public void fecharSolicitacao(Solicitacao solicitacao){
 		solicitacaoBO.fecharSolicitacao(solicitacao);
+	}
+	
+	public void atualizarListas(){
+		limparListas(null);
+		carregarListas();
+		if(seguranca.getUsuario().getNome() == null){
+			stopPoll = true;
+		}
+	}
+	
+	private void limparListas(Integer size){
+		if(size == null){
+		  listaSolicitacoes.clear();
+		  listaRespostasSolicitacoes.clear();
+		}
 	}
 	//-------------------------------------------------------------------------------------
 	
@@ -291,5 +311,13 @@ public class SolicitacaoManager {
 
 	public void setUsuario(Usuarios usuario) {
 		this.usuario = usuario;
+	}
+
+	public boolean isStopPoll() {
+		return stopPoll;
+	}
+
+	public void setStopPoll(boolean stopPoll) {
+		this.stopPoll = stopPoll;
 	}
 }
