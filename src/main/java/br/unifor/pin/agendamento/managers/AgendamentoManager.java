@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.unifor.pin.agendamento.business.AgendamentoBO;
-import br.unifor.pin.agendamento.business.SolicitacaoBO;
 import br.unifor.pin.agendamento.entity.Agendamento;
 import br.unifor.pin.agendamento.entity.Solicitacao;
 import br.unifor.pin.agendamento.entity.Usuarios;
@@ -24,17 +23,13 @@ import br.unifor.pin.agendamento.filter.SessionContext;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
 
-
-@ViewScoped
+@RequestScoped
 @ManagedBean(name="agendamentoManagedBean")
 @Component(value="agendamentoManagedBean")
 public class AgendamentoManager {
 	
 	@Autowired
 	private AgendamentoBO agendamentoBO;
-	
-	@Autowired
-	private SolicitacaoBO solicitacaoBO;
 	
 	@Autowired
 	private SolicitacaoManager solicitacaoManagedBean;

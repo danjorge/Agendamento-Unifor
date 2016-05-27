@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.unifor.pin.agendamento.entity.Anexos;
 import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
@@ -102,6 +103,10 @@ public class UsuarioDAO {
 	public List<Papeis> buscaTodosPapeis(){
 		return (List<Papeis>) entityManager.createQuery("Select p from Papeis p")
 										   .getResultList();
+	}
+	
+	public void salvarAnexo(Anexos anexo){
+		entityManager.persist(anexo);
 	}
 	
 	public void excluir(Usuarios usuario) {

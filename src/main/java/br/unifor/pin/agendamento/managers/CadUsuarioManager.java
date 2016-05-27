@@ -14,7 +14,6 @@ import br.unifor.pin.agendamento.entity.Cursos;
 import br.unifor.pin.agendamento.entity.Papeis;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
-import br.unifor.pin.agendamento.to.SegurancaTO;
 import br.unifor.pin.agendamento.utils.Encripta;
 import br.unifor.pin.agendamento.utils.MessagesUtils;
 import br.unifor.pin.agendamento.utils.Navigation;
@@ -30,10 +29,6 @@ public class CadUsuarioManager {
 
 	@Autowired
 	private UsuarioBO usuarioBO;
-	@Autowired
-	private ListUsuarioManager listUsuario;
-	@Autowired
-	private SegurancaTO segurancaTO;
 	private String nome;
 	private String matricula;
 	private String senha;

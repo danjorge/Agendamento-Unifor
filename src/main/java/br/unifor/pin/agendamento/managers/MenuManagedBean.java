@@ -54,10 +54,6 @@ public class MenuManagedBean {
 		return Navigation.PRINCIPAL;
 	}
 	
-	public String getContextPath(){
-		return contextPath = FacesContext.getCurrentInstance().getExternalContext().getRequestServerName();
-	}
-	
 	public String pesquisarSolicitacao(){
 		return Navigation.PESQUISARSOLICITACAO;
 	}
@@ -72,5 +68,13 @@ public class MenuManagedBean {
 
 	public void setSeguranca(SegurancaTO seguranca) {
 		this.seguranca = seguranca;
+	}
+	
+	public String getContextPath(){
+		return contextPath = FacesContext.getCurrentInstance().getExternalContext().getRequestServerName();
+	}
+	
+	public void setContextPath(String contextPath){
+		this.contextPath = contextPath;
 	}
 }

@@ -2,19 +2,25 @@ package br.unifor.pin.agendamento.ws;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.sun.jersey.spi.resource.Singleton;
 
+import br.unifor.pin.agendamento.business.AnexosBO;
 import br.unifor.pin.agendamento.business.UsuarioBO;
+import br.unifor.pin.agendamento.entity.Anexos;
 import br.unifor.pin.agendamento.entity.Usuarios;
 import br.unifor.pin.agendamento.exceptions.DAOException;
 
@@ -25,6 +31,9 @@ public class LoginResource {
 	
 	@Autowired
 	private UsuarioBO usuarioBO;
+	@Autowired
+	private AnexosBO anexosBO;
+	
 	private Usuarios usuario;
 	
 	private List<Usuarios> listaUsuarios;
@@ -57,5 +66,14 @@ public class LoginResource {
 		return listaUsuarios;
 	}
 
+	@POST
+	@Path("/{matricula}/salvarImagemUsuario")
+	public void salvarImagemUsuario(@PathParam("matricula") String matricula,@RequestBody Anexos anexos, @Context HttpServletRequest request){		
+		Usuarios usuarios = usuarioBO.buscarUsuarioPorMatricula(matricula);
+		anexos.setUsuarios(usuarios);
+		Anexos anexos1 = new Anexos();
+		anexos1 = anexos;
+		anexosBO.handlerFileUpload(anexos1, request);
+	}
 
 }

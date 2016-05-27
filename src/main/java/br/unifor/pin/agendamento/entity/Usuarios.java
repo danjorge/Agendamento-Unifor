@@ -12,10 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.unifor.pin.agendamento.utils.BaseEntity;
+import br.unifor.pin.agendamento.utils.GsonExclude;
 /**
  * @author patrick.cunha
  * 
@@ -56,6 +58,10 @@ public class Usuarios implements Serializable, BaseEntity {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="curso_id", nullable = false)
 	private List<Cursos> cursos;
+	
+	@GsonExclude
+	@OneToMany(mappedBy="usuarios")
+	private List<Anexos> anexos; 
 	
 	public Usuarios() {
 	}
@@ -107,6 +113,15 @@ public class Usuarios implements Serializable, BaseEntity {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	
+	public List<Anexos> getAnexos(){
+		return anexos;
+	}
+	
+	public void setAnexos(List<Anexos> anexos){
+		this.anexos = anexos;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
